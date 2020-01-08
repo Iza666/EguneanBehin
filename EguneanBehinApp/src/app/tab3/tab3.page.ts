@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
 export class Tab3Page {
 
   constructor() {}
-
+  
+  darkMode(){
+    //var body = document.getElementById
+    //var colClass = el.getAttribute('class');
+    document.body.classList.add('dark');
+}
 }

@@ -6,4 +6,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-item lines="full">
+    <ion-icon slot="start" name="moon"></ion-icon>
+    <ion-label>
+      Toggle Dark Theme
+    </ion-label>
+    <ion-checkbox color="light" checked="false" (click)='darkMode()'></ion-checkbox>
+
+   
+  </ion-item>
+</ion-content>

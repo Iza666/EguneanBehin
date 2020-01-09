@@ -10,8 +10,10 @@ export class Tab3Page {
   constructor() {}
   
   darkMode(){
-    //var body = document.getElementById
-    //var colClass = el.getAttribute('class');
-    document.body.classList.add('dark');
+    if(document.body.className != "dark")
+      document.body.classList.add('dark');
+    else{
+      document.body.classList.remove("dark");
+    }
 }
 }

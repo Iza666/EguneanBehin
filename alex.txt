@@ -1,0 +1,15 @@
+1) 
+	- App hasierako maketazioa planteatu. Dok
+	- Koloreak erabaki.
+	- CSS estiloak definitu. CSS estilo gida. Dok
+2)
+	- HTML-a sortu
+	- CSS aplikatu
+	- Irisgarritasuna (Justifikatu)
+	- Erabilgarritasuna (Justifikatu)
+3)
+	- Elementu multimedia gaineratu, justififkatu
+4)
+	- Eduki interaktiboa gaineratu
+5)
+	- Responsive Web Design

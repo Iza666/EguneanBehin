@@ -3,6 +3,18 @@
 
 /** Ionic CSS Variables **/
 :root {
+  /** botoia **/
+  --ion-color-botoia: linear-gradient(to bottom right, #FF8000, #FF0080);
+  --ion-color-botoia-rgb: 255, 215, 0;
+  --ion-color-botoia-contrast: #FFFFFF;
+  --ion-color-botoia-contrast-rgb: 0, 0, 0;
+  --ion-color-botoia-shade: linear-gradient(to bottom right, #FF8000, #FF0080);
+  --ion-color-botoia-tint: linear-gradient(to bottom right, #FF8000, #FF0080);
+
+  // icon
+  --ion-color-icon: #FF3849;
+  --ion-color-icon-selected: #FD4A38;
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;

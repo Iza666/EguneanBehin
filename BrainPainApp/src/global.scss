@@ -24,6 +24,22 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+.ion-color-botoia {
+  --ion-color-base: var(--ion-color-botoia) !important;
+  --ion-color-base-rgb: var(--ion-color-botoia-rgb) !important;
+  --ion-color-contrast: var(--ion-color-botoia-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-botoia-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-botoia-shade) !important;
+  --ion-color-tint: var(--ion-color-botoia-tint) !important;
+}
+
+.ion-color-icon{
+  --ion-color-base: var(--ion-color-icon) !important;
+}
+.ion-color-icon-selected{
+  --ion-color-base: var(--ion-color-icon-selected) !important;
+}
+
 body.dark {
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66, 140, 255;

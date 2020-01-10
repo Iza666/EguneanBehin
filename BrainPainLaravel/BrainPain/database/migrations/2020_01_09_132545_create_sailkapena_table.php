@@ -14,8 +14,8 @@ class CreateSailkapenaTable extends Migration
     public function up()
     {
         Schema::create('sailkapena', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->increments('id_erabiltzailea');$table->foreign('id_erabiltzailea')->references('id')->on('users');
+            $table->integer('puntuak');
         });
     }
 

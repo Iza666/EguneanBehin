@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOharrakTable extends Migration
+class CreateGalderakTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateOharrakTable extends Migration
      */
     public function up()
     {
-        Schema::create('oharrak', function (Blueprint $table) {
+        Schema::create('galderak', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('oharra');
-            $table->date('data');
-
+            $table->string('galdera');
+            $table->string('opt1');
+            $table->string('opt2');
+            $table->string('opt3');
+            $table->string('erantzuna');
+            $table->string('argazkia');
         });
     }
 
@@ -28,6 +31,6 @@ class CreateOharrakTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oharrak');
+        Schema::dropIfExists('galderak');
     }
 }

@@ -9,4 +9,9 @@ export class Tab1Page {
 
   constructor() {}
 
+  myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
 }
+}
+

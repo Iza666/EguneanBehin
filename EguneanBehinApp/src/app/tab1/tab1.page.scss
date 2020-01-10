@@ -1,7 +1,21 @@
+ion-header{
+  --ion-background-color: rgb(60, 60, 60);
+}
+ion-content{
+  --ion-background-color: rgb(30, 30, 30);
+  --ion-color: rgb(200, 200, 200);
+}
+ion-content #titulua{
+  color: rgb(230, 230, 230);
+}
+.labelColor{
+  color: rgb(230, 230, 230);
+}
 .welcome-card img {
   max-height: 35vh;
   overflow: hidden;
 }
 #hasiera{
   text-align: center;
+  color: rgb(200, 200, 200);
 }

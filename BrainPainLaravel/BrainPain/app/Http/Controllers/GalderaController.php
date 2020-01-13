@@ -14,9 +14,16 @@ class GalderaController extends Controller
      */
     public function index()
     {
-        $galderak = Galdera::all();
-        return response()->json($galderak, 200);
+        $galderaDenak = Galdera::all();
+        $count = count($galderaDenak);
+        $id = rand(1,$count);
+        foreach($galderaDenak as $galdera) {
+            if($id == $galdera['id']){
+                return response()->json($galdera, 200);
+            }                
+        }
     }
+    
 
     /**
      * Show the form for creating a new resource.

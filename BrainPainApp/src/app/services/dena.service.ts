@@ -17,7 +17,7 @@ export class DenaService {
 
   private produktuaUrl = 'api/produktuak';  // URL produktuak api     
 
-  getGalderak(): Observable<Galdera[]> { 	     
-    return this.http.get<Galdera[]>(this.url);
+  getGalderak(): Observable<Galdera> { 	     
+    return this.http.get<Galdera>(this.url);
   }
 }

@@ -11,13 +11,17 @@
   --ion-color-laranjaLarrosa-shade: linear-gradient(to bottom right, #FF8000, #FF0080);
   --ion-color-laranjaLarrosa-tint: linear-gradient(to bottom right, #FF8000, #FF0080);
 
-  /** jokatu **/
-  --ion-color-jokatu: linear-gradient(to bottom right, #2B00FF, #FF00D4);
-  --ion-color-jokatu-rgb: 255, 215, 0;
-  --ion-color-jokatu-contrast: #FFFFFF;
-  --ion-color-jokatu-contrast-rgb: 0, 0, 0;
-  --ion-color-jokatu-shade: linear-gradient(to bottom right, #FF8000, #FF0080);
-  --ion-color-jokatu-tint: linear-gradient(to bottom right, #FF8000, #FF0080);
+  /** jokatuBotoia **/
+  --ion-color-jokatuBotoia: #282828;
+  --ion-color-jokatuBotoia-rgb: 40, 40, 40;
+  --ion-color-jokatuBotoia-contrast: #FFFFFF;
+  --ion-color-jokatuBotoia-contrast-rgb: 0, 0, 0;
+  --ion-color-jokatuBotoia-shade: #4b4b4b;
+  --ion-color-jokatuBotoia-tint: #4b4b4b;
+
+  // Jokatu colors
+  --ion-color-jokatu: linear-gradient(to bottom right, #FF198C, #1919FF);
+  //--ion-color-jokatu: linear-gradient(to bottom right, #0000FF, #FF00AA);
 
   // icon
   --ion-color-icon: #FF3849;

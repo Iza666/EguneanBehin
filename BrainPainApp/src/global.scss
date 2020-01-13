@@ -32,15 +32,17 @@
   --ion-color-shade: var(--ion-color-laranjaLarrosa-shade) !important;
   --ion-color-tint: var(--ion-color-laranjaLarrosa-tint) !important;
 }
-.ion-color-jokatu {
-  --ion-color-base: var(--ion-color-jokatu) !important;
-  --ion-color-base-rgb: var(--ion-color-jokatu-rgb) !important;
-  --ion-color-contrast: var(--ion-color-jokatu-contrast) !important;
-  --ion-color-contrast-rgb: var(--ion-color-jokatu-contrast-rgb) !important;
-  --ion-color-shade: var(--ion-color-jokatu-shade) !important;
-  --ion-color-tint: var(--ion-color-jokatu-tint) !important;
+.ion-color-jokatuBotoia {
+  --ion-color-base: var(--ion-color-jokatuBotoia) !important;
+  --ion-color-base-rgb: var(--ion-color-jokatuBotoia-rgb) !important;
+  --ion-color-contrast: var(--ion-color-jokatuBotoia-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-jokatuBotoia-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-jokatuBotoia-shade) !important;
+  --ion-color-tint: var(--ion-color-jokatuBotoia-tint) !important;
 }
-
+.ion-color-jokatu{
+  --ion-color-base: var(--ion-color-jokatu) !important;
+}
 .ion-color-icon{
   --ion-color-base: var(--ion-color-icon) !important;
 }

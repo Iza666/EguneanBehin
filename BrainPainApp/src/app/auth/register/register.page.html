@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title id="register_izenburua">
+      Erregistratu
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-item-divider color="laranjaLarrosa"></ion-item-divider>
+
+
+<ion-content>
+  <div id="register">
+    <form action="/action_page.php">
+      <table id="register_taula">
+        <tr>
+          <td class="letra_txuria">Izena</td>&nbsp;<td><input class="fondo_grisa" name="izena" type="text"></td>
+        </tr>
+        <br>
+        <tr>
+          <td class="letra_txuria"> Mugikorra</td>&nbsp;<td><input class="fondo_grisa" name="mugikorra" type="text"></td>
+        </tr>
+        <br>
+        <tr>
+          <td class="letra_txuria"> Pasahitza</td>&nbsp;<td><input class="fondo_grisa" type="password" name="pasahitza" maxlength="8"></td>
+        </tr>
+        <br>
+        <tr>
+          <td class="letra_txuria"> Argazkia</td>
+        </tr>
+        <br>
+        <tr>
+          <td></td><td colspan="2"><input type="file"  name="argazkia" accept=".pdf,.jpg,.png" multiple></td>
+        </tr>
+      </table>
+      <br><br>
+      <ion-button id="bidali" color="laranjaLarrosa" expand="block">Bidali</ion-button>
+    </form>
+  </div>
+</ion-content>

@@ -8,10 +8,10 @@
 <ion-item-divider color="jokatu"></ion-item-divider>
 
 <ion-content>
-  <ion-card>
-    <!-- Lehenengo txartela-->
+  <ion-card class="welcome-card" >
+    <!-- Lehenengo txartela          *ngFor="let galdera of galderak"-->
     <ion-card-header>
-      <ion-card-title id="titulua">Zein da argazkiko gizarajo hau?</ion-card-title>
+      <ion-card-title id="titulua">{{galdera.galdera}}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="centered">
       <ion-img id="galderaIrudiak" src="assets/img/eguzkitze.png"></ion-img>
@@ -31,4 +31,4 @@
     </ion-item>
   </ion-list>
 
-</ion-content>
+</ion-content >

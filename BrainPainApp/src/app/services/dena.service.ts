@@ -1,48 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TaskI } from '../modeloak/task.interface';
+import { Galdera } from './../modeloak/galdera';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DenaService {
 
-  private denaCollection: AngularFirestoreCollection<TaskI>;
-  private dena: Observable<TaskI[]>;
+  url = 'http://127.0.0.1:8000/api/galderak';
 
-  constructor(db: AngularFirestore) { 
-    this.denaCollection = db.collection<TaskI>('dena');
-    this.dena = this.denaCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return {id, ...data};
-        });
-      })
-    );
+  constructor(public http: HttpClient) { 
+    
   }
 
-  getDenak(){
-    return this.dena;
-  }
+  private produktuaUrl = 'api/produktuak';  // URL produktuak api     
 
-  getDena(id: string){
-    return this.denaCollection.doc<TaskI>(id).valueChanges();
+  getGalderak(): Observable<Galdera[]> { 	     
+    return this.http.get<Galdera[]>(this.url);
   }
-
-  updateDena(dena:TaskI, id: string){
-    return this.denaCollection.doc(id).update(dena);
-  }
-  
-  addDena(dena: TaskI){
-    return this.denaCollection.add(dena);
-  }
-  
-  removeDena(id: string){
-    return this.denaCollection.doc(id).delete();
-  }
-
 }

@@ -9,7 +9,21 @@ const routes: Routes = [
   {
     path: 'galdera',
     loadChildren: () => import('./galdera/galdera.module').then( m => m.GalderaPageModule)
+  },
+  //ESTO ESTA EDITADO
+/*   {
+    path: 'register',
+    loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
+  } */
+  { path:  'register',
+   loadChildren:  './auth/register/register.module#RegisterPageModule' 
+  },  {
+    path: 'login',
+    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
   }
+
+
+
 
 ];
 @NgModule({

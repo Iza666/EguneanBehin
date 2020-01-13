@@ -1,1 +1,11 @@
+
+Laravel:
+
 https://www.nigmacode.com/laravel/Solucionar-cors-en-laravel
+
+php artisan migrate / migrate:reset
+
+Ionic:
+
+ionic serve
+

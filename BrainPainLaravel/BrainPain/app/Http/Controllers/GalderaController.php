@@ -14,14 +14,8 @@ class GalderaController extends Controller
      */
     public function index()
     {
-        $galderaDenak = Galdera::all();
-        $count = count($galderaDenak);
-        $id = rand(1,$count);
-        foreach($galderaDenak as $galdera) {
-            if($id == $galdera['id']){
-                return response()->json($galdera, 200);
-            }                
-        }
+        $b = Galdera::orderByRaw("RAND()")->get()->take(10);
+        return response()->json($b, 200);
     }
     
 

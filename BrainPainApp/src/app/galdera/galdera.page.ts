@@ -20,7 +20,8 @@ export class GalderaPage implements OnInit {
   galdera : Galdera;
   getGalderak(): void{
     this.DenaService.getGalderak()
-    .subscribe(data => {this.galdera = data},
+    .subscribe(data => {this.galderak = data},
        error=> console.log("Error ::"+ error));
   }
+  
 }

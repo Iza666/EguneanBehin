@@ -1,9 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>galdera</ion-title>
+    <ion-title id="hasiera">
+      Hasiera
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-item-divider color="botoia"></ion-item-divider>
 
 <ion-content>
+  <ion-card class="welcome-card">
+    <!-- Lehenengo txartela-->
+    <ion-card-header>
+      <ion-card-title id="titulua">Gaurko partida</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button [routerLink]="['/galdera']" color="botoia" expand="block">Jokatu</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <!-- Bigarren txartela-->
+
+  <ion-list lines="none">
+    <ion-list-header>
+
+    </ion-list-header>
+    <!--Popup-->
+    <ion-item>
+      <ion-icon slot="start" color="medium" name="book"></ion-icon>
+      <div class="popup" (click)='myFunction()'>
+        <ion-label class="labelColor">Arauak
+          <span class="popuptext" id="myPopup">Arauak: Irabazi, emen ez nahi ditugu galtzaileak!!</span>
+        </ion-label>
+      </div>
+    </ion-item>
+    
+    <ion-item href="../tab2/tab2.page.html">
+      <ion-icon slot="start" color="medium" name="build"></ion-icon>
+      <ion-label class="labelColor">Oharrak</ion-label>
+    </ion-item>
+    <ion-item href="">
+      <ion-icon slot="start" color="medium" name="grid"></ion-icon>
+      <ion-label class="labelColor">Mezuak bidali</ion-label>
+    </ion-item>
+    <ion-item href="">
+      <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
+      <ion-label class="labelColor">Aplikazioa baloratu</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

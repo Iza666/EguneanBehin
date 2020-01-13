@@ -3,13 +3,21 @@
 
 /** Ionic CSS Variables **/
 :root {
-  /** botoia **/
-  --ion-color-botoia: linear-gradient(to bottom right, #FF8000, #FF0080);
-  --ion-color-botoia-rgb: 255, 215, 0;
-  --ion-color-botoia-contrast: #FFFFFF;
-  --ion-color-botoia-contrast-rgb: 0, 0, 0;
-  --ion-color-botoia-shade: linear-gradient(to bottom right, #FF8000, #FF0080);
-  --ion-color-botoia-tint: linear-gradient(to bottom right, #FF8000, #FF0080);
+  /** laranjaLarrosa **/
+  --ion-color-laranjaLarrosa: linear-gradient(to bottom right, #FF8000, #FF0080);
+  --ion-color-laranjaLarrosa-rgb: 255, 215, 0;
+  --ion-color-laranjaLarrosa-contrast: #FFFFFF;
+  --ion-color-laranjaLarrosa-contrast-rgb: 0, 0, 0;
+  --ion-color-laranjaLarrosa-shade: linear-gradient(to bottom right, #FF8000, #FF0080);
+  --ion-color-laranjaLarrosa-tint: linear-gradient(to bottom right, #FF8000, #FF0080);
+
+  /** jokatu **/
+  --ion-color-jokatu: linear-gradient(to bottom right, #2B00FF, #FF00D4);
+  --ion-color-jokatu-rgb: 255, 215, 0;
+  --ion-color-jokatu-contrast: #FFFFFF;
+  --ion-color-jokatu-contrast-rgb: 0, 0, 0;
+  --ion-color-jokatu-shade: linear-gradient(to bottom right, #FF8000, #FF0080);
+  --ion-color-jokatu-tint: linear-gradient(to bottom right, #FF8000, #FF0080);
 
   // icon
   --ion-color-icon: #FF3849;

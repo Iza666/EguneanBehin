@@ -24,13 +24,21 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-.ion-color-botoia {
-  --ion-color-base: var(--ion-color-botoia) !important;
-  --ion-color-base-rgb: var(--ion-color-botoia-rgb) !important;
-  --ion-color-contrast: var(--ion-color-botoia-contrast) !important;
-  --ion-color-contrast-rgb: var(--ion-color-botoia-contrast-rgb) !important;
-  --ion-color-shade: var(--ion-color-botoia-shade) !important;
-  --ion-color-tint: var(--ion-color-botoia-tint) !important;
+.ion-color-laranjaLarrosa {
+  --ion-color-base: var(--ion-color-laranjaLarrosa) !important;
+  --ion-color-base-rgb: var(--ion-color-laranjaLarrosa-rgb) !important;
+  --ion-color-contrast: var(--ion-color-laranjaLarrosa-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-laranjaLarrosa-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-laranjaLarrosa-shade) !important;
+  --ion-color-tint: var(--ion-color-laranjaLarrosa-tint) !important;
+}
+.ion-color-jokatu {
+  --ion-color-base: var(--ion-color-jokatu) !important;
+  --ion-color-base-rgb: var(--ion-color-jokatu-rgb) !important;
+  --ion-color-contrast: var(--ion-color-jokatu-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-jokatu-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-jokatu-shade) !important;
+  --ion-color-tint: var(--ion-color-jokatu-tint) !important;
 }
 
 .ion-color-icon{

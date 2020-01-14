@@ -14,9 +14,14 @@ class CreatePartidakTable extends Migration
     public function up()
     {
         Schema::create('partidak', function (Blueprint $table) {
-            $table->increments('id_erabiltzailea');$table->foreign('id_erabiltzailea')->references('id')->on('users');
+            $table->increments('id');
+            $table->unsignedinteger('id_erabiltzailea');
+            $table->foreign('id_erabiltzailea')->references('id')->on('users')->unsigned()->index();
             $table->date('data');
             $table->integer('puntuak');
+            $table->integer('zenbat_zuzen');
+            $table->integer('zenbat_denbora');
+
         });
     }
 

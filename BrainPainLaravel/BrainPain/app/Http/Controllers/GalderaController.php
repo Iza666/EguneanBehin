@@ -14,8 +14,9 @@ class GalderaController extends Controller
      */
     public function index()
     {
-        $b = Galdera::orderByRaw("RAND()")->get()->take(10);
-        return response()->json($b, 200);
+        $hamargaldera = Galdera::orderByRaw("RAND()")->get()->take(10);
+        echo(gettype($hamargaldera));
+        return response()->json($hamargaldera, 200);
     }
     
 
@@ -26,7 +27,7 @@ class GalderaController extends Controller
      */
     public function create()
     {
-        //
+        echo "hola";
     }
 
     /**

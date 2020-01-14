@@ -14,7 +14,7 @@ class CreateOharrakTable extends Migration
     public function up()
     {
         Schema::create('oharrak', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('oharra');
             $table->date('data');
 

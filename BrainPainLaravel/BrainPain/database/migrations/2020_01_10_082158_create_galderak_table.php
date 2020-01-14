@@ -16,10 +16,9 @@ class CreateGalderakTable extends Migration
         Schema::create('galderak', function (Blueprint $table) {
             $table->increments('id');
             $table->string('galdera');
-            $table->string('opt1');
+            $table->string('opt1_erantzuna');
             $table->string('opt2');
             $table->string('opt3');
-            $table->string('erantzuna');
             $table->string('argazkia');
         });
     }

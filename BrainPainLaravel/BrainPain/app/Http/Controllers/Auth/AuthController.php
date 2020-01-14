@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -35,14 +38,13 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'fName' => 'required|string',
-            'lName' => 'required|string',
+            'erabiltzailea' => 'required|string|unique:users',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string'
         ]);
         $user = new User;
-        $user->first_name = $request->fName;
-        $user->last_name = $request->lName;
+        $user->erabiltzailea = $request->erabiltzailea;
+        $user->telefonoa = $request->telefonoa;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();

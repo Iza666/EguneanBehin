@@ -1,35 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title id="register_izenburua">
-      Logeatu
-    </ion-title>
+    <ion-button color="light" (click)="dismissLogin()">Close</ion-button>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-item-divider color="laranjaLarrosa"></ion-item-divider>
-
-
-<ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div  id="register">
-          <div class="letra_txuria">
-            Korreoa
-          </div>
-          <div>
-            <input class="fondo_grisa" name="Korreoa" type="text">
-          </div>
-          <div class="letra_txuria">
-            Pasahitza
-          </div>
-          <div>
-            <input class="fondo_grisa" type="password" name="pasahitza" maxlength="8">
-          </div>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-    <br>
-    <ion-button id="bidali" color="laranjaLarrosa" expand="block">Sartu</ion-button>
-
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="login(form)" method="post">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input ngModel type="email" name="email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input ngModel type="password" name="password"></ion-input>
+    </ion-item>
+  
+    <p text-right>Forgot Password?</p>
+  
+    <ion-button type="submit" expand="full" color="primary">Login</ion-button>
+  </form>
+  <p text-center>Don't have a account?</p>
+  <ion-button expand="full" color="danger" (click)="registerModal()">Register</ion-button>
 </ion-content>

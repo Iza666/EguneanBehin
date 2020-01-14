@@ -9,11 +9,11 @@ export class Tab3Page {
 
   constructor() {}
   
-  darkMode(){
+  /*darkMode(){
     if(document.body.className != "dark")
       document.body.classList.add('dark');
     else{
       document.body.classList.remove("dark");
     }
-}
+  }*/
 }

@@ -31,9 +31,13 @@ ion-content #titulua{
 ion-list{
     margin: 0 auto;
 }
+.behera{
+    margin-top: 5%;
+}
 .galderaBotoia{
-    width: 65%;
-    height: 40px;
+    position:fixed;
+    left: 50%;
+    transform: translate(-50%, 0%);
     border: double 3px transparent;
     border-radius: 80px;
     --border-radius: 80px;

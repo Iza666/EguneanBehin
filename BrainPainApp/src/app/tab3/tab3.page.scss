@@ -1,1 +1,39 @@
-
+ion-header{
+    --ion-background-color: rgb(20, 20, 20);
+}
+#profila{
+    text-align: center;
+    color: rgb(200, 200, 200);
+}
+ion-item-divider{
+    min-height: 1px !important;
+}
+ion-content{
+    --ion-background-color: rgb(30, 30, 30);
+    --ion-color: rgb(200, 200, 200);
+}
+.labelColor{
+    color: rgb(230, 230, 230);
+}
+.avatarArgazkia{
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 10%);
+    /*position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -65%);*/
+    width:150px;
+    height:150px;
+    border-radius: 50%;
+    --border-radius: 50%;
+    border: double 3px transparent;
+    background-image: linear-gradient(#282828, #282828), linear-gradient(to bottom right, #FF8000, #FF0080);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+#argazkiBtn{
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 300%);
+}

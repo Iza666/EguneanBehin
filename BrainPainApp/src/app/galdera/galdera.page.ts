@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DenaService } from './../services/dena.service';
 import { Galdera } from './../modeloak/galdera';
 
+import {Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-galdera',
@@ -10,7 +12,7 @@ import { Galdera } from './../modeloak/galdera';
 })
 export class GalderaPage implements OnInit {
 
-  constructor(private DenaService : DenaService) { }
+  constructor(private DenaService : DenaService,) { }
 
   id = 0;
   ngOnInit() {

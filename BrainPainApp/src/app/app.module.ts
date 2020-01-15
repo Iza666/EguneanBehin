@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-import {platformBrowser} from "../../node_modules/@angular/platform-browser"
+import {platformBrowser} from "@angular/platform-browser";
 
 
 @NgModule({

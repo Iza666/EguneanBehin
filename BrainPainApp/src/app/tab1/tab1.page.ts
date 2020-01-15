@@ -27,5 +27,14 @@ export class Tab1Page implements OnInit {
       }
     );
   }
+  showAlert(){
+    const alert = document.createElement('ion-alert');
+    alert.header = 'Arauak';
+    alert.message = 'Ondo pasatu pasatu gabe!';
+    alert.buttons = ['Ederto'];
+
+    document.body.appendChild(alert);
+    return alert.present();
+  }
 
 }

@@ -1,5 +1,6 @@
 .erabiltzailea{
     color: white;
+    font-weight: bold;
 }
 
 .izenburua{
@@ -26,8 +27,13 @@
 }
 .lista{
     display:inline-block;
+    font-weight: bold;
 }
 .tabulazioa{
     overflow: auto;
     padding: 5px;
+}
+.posizioa{
+    color: rgb(170, 170, 170);
+    font-weight: bold;
 }

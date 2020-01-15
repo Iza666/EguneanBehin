@@ -1,32 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button color="light" href="" (click)="dismissRegister()">Itxi</ion-button>
-    <ion-title>Erregistratu</ion-title>
+    <ion-button  href="" (click)="dismissRegister()" class="button"><ion-icon name="home"></ion-icon></ion-button>
+    <ion-title class="hasiera">Erregistratu</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
   <form #form="ngForm" (ngSubmit)="register(form)" method="post">
   
     <ion-item>
-      <ion-label position="floating">Tu nick shur</ion-label>
-      <ion-input ngModel name="erabiltzailea"></ion-input>
+      <ion-label position="stacked" class="erabiltzailea-label">Sartu zure erabiltzailea:<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input ngModel name="erabiltzailea" class="erabiltzailea-input"></ion-input>
     </ion-item>
   
     <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" ngModel name="email"></ion-input>
+      <ion-label position="stacked" class="email-label">Sartu zure emaila:<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="email" ngModel name="email" class="email-input"></ion-input>
     </ion-item>
   
     <ion-item>
-      <ion-label position="floating">Pasahitza</ion-label>
-      <ion-input type="password" ngModel name="password"></ion-input>
+      <ion-label position="stacked" class="password-label">Sartu zure pasahitza:<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="password" ngModel name="password" class="password-input"></ion-input>
     </ion-item>
   
-    <ion-button type="submit" expand="full" color="danger">Erregistratu</ion-button>
+    <ion-button type="submit" expand="full" color="danger" class="erregistratu_botoia">Erregistratu</ion-button>
   </form>
 
-  <p text-center>Jada kontu bat daukazu?</p>
+  <p text-center class="textua">Jada kontu bat daukazu?</p>
   <ion-button expand="full" color="primary" (click)="loginModal()">Logeatu</ion-button>
 </ion-content>  

@@ -11,7 +11,7 @@ class GuztiaController extends Controller
 {
     public function index()
     {
-        $hamargaldera = Galdera::orderByRaw("RAND()")->get()->take(10);
+        $hamargaldera = Galdera::orderByRaw("RAND()")->get()->take(1);
         return response()->json($hamargaldera, 200);
     }
     

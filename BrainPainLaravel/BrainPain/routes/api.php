@@ -17,7 +17,7 @@ Route::group(['middleware' => ['cors']], function () {
     Route::middleware('auth:api')->get('/user', function (Request $request) {
         return $request->user();
     });
-    Route::resource('galderak', 'GalderaController');
+    Route::resource('galderak', 'GuztiaController');
 
 });
 Route::group([
@@ -32,3 +32,9 @@ Route::group([
         Route::get('user', 'Auth\AuthController@user');
     });
 });
+Route::group([
+    'middleware' => 'auth:api'
+  ], function() {
+  });
+  Route::get('ranking', 'GuztiaController@getranking');
+

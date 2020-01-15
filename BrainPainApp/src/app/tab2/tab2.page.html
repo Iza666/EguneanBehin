@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Two
+    <ion-title class="izenburua">
+      Sailkapena
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-item-divider color="laranjaLarrosa"></ion-item-divider>
+<ion-content>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-card *ngFor="let sailkapen of sailkapena; index as i;">
+    <ion-card-header>
+      <p>{{sailkapen.puntuak}} Posizioa: {{i+1}}</p>
+      <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
+      <ion-img  src="assets/img/eguzkitze.png" class="image circle-pic tabulazioa">Argazkia</ion-img>
+      </ion-card-header>
+  </ion-card>
+</ion-content>

@@ -24,7 +24,7 @@ ion-card{
 ion-content #titulua{
     color: rgb(230, 230, 230);
 }
-#hasiera{
+#hasiera, #galdera{
     text-align: center;
     color: rgb(200, 200, 200);
 }
@@ -53,3 +53,6 @@ ion-list{
     border-image-source: linear-gradient(to bottom right, #FF198C, #1919FF);
     border-image-slice: 1;
 }*/
+#hasiera-botoia{
+    --background: transparent;
+}

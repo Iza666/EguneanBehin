@@ -7,10 +7,13 @@
 </ion-header>
 <ion-item-divider color="laranjaLarrosa"></ion-item-divider>
 <ion-content>
+  
   <ion-card class="welcome-card">
     <!-- Lehenengo txartela-->
     <ion-card-header>
-      <ion-card-title id="titulua">Gaurko partida</ion-card-title>
+      <ion-card-title id="titulua">Gaurko partida<div *ngIf="user != undefined">
+        Kaixo {{ user["erabiltzailea"]  }}
+    </div></ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-button [routerLink]="['/galdera']" color="laranjaLarrosa" expand="block">Jokatu</ion-button>
@@ -45,12 +48,13 @@
       <ion-label class="labelColor">Aplikazioa baloratu</ion-label>
     </ion-item>
   </ion-list>
-  <ion-row>
+  
+  <ion-row *ngIf="user == undefined">
     <ion-col>
       <ion-button color="primary" expand="full" color="primary" [routerLink]="['/login']" >Logeatu</ion-button>
     </ion-col>
     <ion-col>
-      <ion-button color="primary" expand="full" color="danger" [routerLink]="['/register']">Register</ion-button>
+      <ion-button color="primary" expand="full" color="danger" [routerLink]="['/register']">Erregistratu</ion-button>
     </ion-col>
   </ion-row>
 

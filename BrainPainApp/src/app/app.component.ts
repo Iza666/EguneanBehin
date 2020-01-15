@@ -29,6 +29,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.authService.getToken();
+      
 
     });
   }
@@ -41,7 +42,7 @@ export class AppComponent {
         console.log(error);
       },
       () => {
-        this.navCtrl.navigateRoot('/landing');
+        this.navCtrl.navigateRoot('/login');
       }
     );
   }

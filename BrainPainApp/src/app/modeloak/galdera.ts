@@ -6,5 +6,4 @@ export class Galdera{
     opt3: string;
     erantzuna: string;
     argazkia: string;
-
 }

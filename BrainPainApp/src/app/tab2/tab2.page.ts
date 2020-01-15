@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DenaService } from './../services/dena.service';
+import { Sailkapena } from './../modeloak/sailkapena';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +9,18 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(private DenaService : DenaService) {}
+  id = 0;
+  ngOnInit() {
+    this.getSailkapena();
+  }
+  sailkapena : Sailkapena[];
+
+  getSailkapena(): void{
+    this.DenaService.getSailkapena()
+    .subscribe(data => {this.sailkapena = data},
+       error=> console.log("Error ::"+ error));
+  }
+  
 
 }

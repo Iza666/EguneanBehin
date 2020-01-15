@@ -1,25 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-button color="light" href="" (click)="dismissLogin()">Itxi</ion-button>
-    <ion-title>Login</ion-title>
+    <ion-title id="hasiera">Login</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
   <form #form="ngForm" (ngSubmit)="login(form)" method="post">
     <ion-item>
-      <ion-label position="floating">Email</ion-label>
+      <ion-label position="stacked" id="email-label">Sartu zure email-a:<ion-text color="danger">*</ion-text></ion-label>
       <ion-input ngModel type="email" name="email"></ion-input>
     </ion-item>
   
     <ion-item>
-      <ion-label position="floating">Pasahitza</ion-label>
+      <ion-label position="stacked">Sartu zure pasahitza:</ion-label>
       <ion-input ngModel type="password" name="password"></ion-input>
     </ion-item>
   
-    <p text-right>Ez zara pasahitzaz gogoratzen ?</p>
+    <p text-right>Ez zara pasahitzaz gogoratzen?</p>
   
     <ion-button type="submit" expand="full" color="primary">Logeatu</ion-button>
   </form>
   <p text-center>Ez daukazu konturik?</p>
-  <ion-button expand="full" color="danger" (click)="registerModal()">Erregistratu</ion-button>
+  <ion-button expand="full" color="danger" [routerLink]="['/register']">Erregistratu</ion-button>
 </ion-content>

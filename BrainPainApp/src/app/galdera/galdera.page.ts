@@ -23,5 +23,16 @@ export class GalderaPage implements OnInit {
     .subscribe(data => {this.galderak = data},
        error=> console.log("Error ::"+ error));
   }
+  bidaliGalderak(a: number): void{
+    if(a == 1){
+      alert("Ona");
+    }
+    if(a == 2){
+      alert("txarra");
+    }
+    if(a == 3){
+      alert("txarra");
+    }
+  }
   
 }

@@ -10,8 +10,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import {platformBrowser} from "../../node_modules/@angular/platform-browser"
+
 
 @NgModule({
   declarations: [AppComponent],

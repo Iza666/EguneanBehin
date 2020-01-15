@@ -36,6 +36,10 @@ class GuztiaController extends Controller
         ->get();
         return response()->json($sailkapena, 200);
     }
+    public function insertQuestion()
+    {
+        var_dump($_POST);
+    }
 
     public function show($id)
     {

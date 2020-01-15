@@ -37,4 +37,5 @@ Route::group([
   ], function() {
   });
   Route::get('ranking', 'GuztiaController@getranking');
+  Route::get('insertQuestion', 'GuztiaController@insertQuestion');
 

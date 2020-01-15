@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button color="light" (click)="dismissLogin()">Close</ion-button>
+    <ion-button color="light" href="" (click)="dismissLogin()">Itxi</ion-button>
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,14 +12,14 @@
     </ion-item>
   
     <ion-item>
-      <ion-label position="floating">Password</ion-label>
+      <ion-label position="floating">Pasahitza</ion-label>
       <ion-input ngModel type="password" name="password"></ion-input>
     </ion-item>
   
-    <p text-right>Forgot Password?</p>
+    <p text-right>Ez zara pasahitzaz gogoratzen ?</p>
   
-    <ion-button type="submit" expand="full" color="primary">Login</ion-button>
+    <ion-button type="submit" expand="full" color="primary">Logeatu</ion-button>
   </form>
-  <p text-center>Don't have a account?</p>
-  <ion-button expand="full" color="danger" (click)="registerModal()">Register</ion-button>
+  <p text-center>Ez daukazu konturik?</p>
+  <ion-button expand="full" color="danger" (click)="registerModal()">Erregistratu</ion-button>
 </ion-content>

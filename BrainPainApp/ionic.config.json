@@ -1,5 +1,7 @@
 {
   "name": "EguneanBehinApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

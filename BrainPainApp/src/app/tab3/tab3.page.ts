@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/modeloak/user';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-tab3',
@@ -7,13 +10,21 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  user: User;
+
+  constructor(private authService: AuthService,
+    private alertService: AlertService) {}
   
-  /*darkMode(){
-    if(document.body.className != "dark")
-      document.body.classList.add('dark');
-    else{
-      document.body.classList.remove("dark");
-    }
-  }*/
+  ngOnInit() {
+    
+  }
+  ionViewWillEnter() {
+
+    this.authService.user().subscribe(
+      user => {
+        this.user = user;
+        console.log(user);
+      }
+    );
+  }
 }

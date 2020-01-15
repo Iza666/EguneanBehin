@@ -7,11 +7,17 @@
 </ion-header>
 <ion-item-divider color="laranjaLarrosa"></ion-item-divider>
 
-<ion-content>
+<ion-content >
+  <!-- *ngIf="user != undefined" -->
     <ion-avatar>
       <ion-img class="avatarArgazkia" src="assets/img/eguzkitze.png"></ion-img>
     </ion-avatar>
     <ion-button id="argazkiBtn" color="laranjaLarrosa"><ion-icon name="camera"></ion-icon></ion-button>
+    <li class="lista">
+      <ion-card-title class="erabiltzailea">
+        {{ user["erabiltzailea"]  }}
+      </ion-card-title>
+  </li>
 </ion-content>
 
 

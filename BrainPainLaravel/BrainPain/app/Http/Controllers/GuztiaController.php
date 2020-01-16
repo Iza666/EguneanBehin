@@ -39,7 +39,16 @@ class GuztiaController extends Controller
     public function insertQuestion()
     {
         $postdata = file_get_contents("php://input");
-        echo $postdata;
+        if (isset($postdata)) {
+            $request = json_decode($postdata);
+            echo $request->id_erabiltzailea;
+            DB::table('erabiltzaile_galderak')->insert(
+                ['id_erabiltzailea' => $request->id_erabiltzailea,
+                 'id_galdera' => $request->id_galdera,
+                 'id_partida' => $request->id_partida,
+                 'erantzuna' => $request->erantzuna]
+            );
+        }
     }
 
     public function show($id)

@@ -48,9 +48,7 @@ export class LoginPage implements OnInit {
       () => {
         this.dismissLogin();
         this.navCtrl.navigateRoot('/tabs');
-
       }
-      
     );
   }
 }

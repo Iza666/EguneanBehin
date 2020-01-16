@@ -25,6 +25,7 @@ export class GalderaPage implements OnInit {
   id = 0;
   ngOnInit() {
     this.getGalderak();
+
   }
   galderak : Galdera[];
   user: User;
@@ -36,11 +37,22 @@ export class GalderaPage implements OnInit {
     .subscribe(data => {this.galderak = data},
        error=> console.log("Error ::"+ error));
   }
+  ionViewWillEnter() {
+    this.authService.user().subscribe(
+      user => {
+        this.user = user;
+        console.log(user); 
+      }
+    );
+  }
+  hurrengoa(){
+    alert("hi");
+  }
 
   // Galdera bakoitza bidaltzen bere erantzunarekin, falta da id_partida kontrolatzea
   bidaliGalderak(a: number): void{
     if(a == 1){
-      let  datuak = {"id_erabiltzailea" : this.user.id, "id_galdera": this.galderak[0].id, "id_partida" : 1, "erantzuna": this.galderak[0].opt1_erantzuna};
+      let datuak = {"id_erabiltzailea" : this.user.id, "id_galdera": this.galderak[0].id, "id_partida" : 1, "erantzuna": this.galderak[0].opt1_erantzuna};
       let options = {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -53,6 +65,7 @@ export class GalderaPage implements OnInit {
              resolve(data)
             })
           });
+      document.getElementById("galdera").style.display="none";
     }
     if(a == 2){
       let  datuak = {"id_erabiltzailea" : this.user.id, "id_galdera": this.galderak[0].id, "id_partida" : 1, "erantzuna": this.galderak[0].opt2};

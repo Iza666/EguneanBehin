@@ -33,8 +33,8 @@ ion-content{
     background-clip: content-box, border-box;
 }
 #argazkiBtn{
-    width: 4em;
-    height: 4em;
+    width: 3.8em;
+    height: 3.8em;
     position: fixed;
     left: 50%;
     transform: translate(190%, 60%);
@@ -60,11 +60,14 @@ ion-text{
 #erabiltzaileaText{
     transform: translate(-50%, 150%);
 }
-#tlfText{
+/*#tlfText{
     transform: translate(-50%, 250%);
-}
+}*/
 #emailText{
-    transform: translate(-50%, 250%);
+    transform: translate(-50%, 180%);
+}
+#emailText span{
+    color: rgb(150, 150, 150);
 }
 #icon1{
     position: fixed;

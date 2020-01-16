@@ -28,9 +28,20 @@ ion-content{
     color: white;
 }
 .email-input, .password-input, .erabiltzailea-input{
-    background-color: rgb(30, 30, 30);
     margin-top: 15px;
+    color: rgb(200, 200, 200);
 }
 .erregistratu_botoia{
     margin-top: 100px;
+}
+:host {
+    ion-item {
+        --background-focused: rgb(60, 60, 60);
+        //--color-focused: black;
+        //--color-selected: red;
+        --border-color: rgb(100, 100, 100);
+        --highlight-color-valid: linear-gradient(to bottom right, #FF8000, #FF0080);
+        --highlight-color-invalid: linear-gradient(to bottom right, #FF8000, #FF0080);
+        --highlight-color-focused: linear-gradient(to bottom right, #FF8000, #FF0080);        
+    }
 }

@@ -25,48 +25,15 @@ ion-content #titulua{
   max-height: 35vh;
   overflow: hidden;
 }
-
-/* Popup container - can be anything you want */
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+#laranja{
+  border: double 3px transparent;
+  background-image: linear-gradient(#282828, #282828), linear-gradient(to bottom right, #FF8000, #FF0080);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }
-
-
-/* The actual popup */
-.popup .popuptext {
-  visibility: hidden;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  float: center;
-}
-
-
-
-/* Toggle this class - hide and show the popup */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {opacity: 0;} 
-  to {opacity: 1;}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
-}
-.inactive{
-  background-color: grey;
+#urdina{
+  border: double 3px transparent;
+  background-image: linear-gradient(#282828, #282828), linear-gradient(to bottom right, #FF198C, #1919FF);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }

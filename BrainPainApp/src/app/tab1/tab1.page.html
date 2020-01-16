@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title id="hasiera">
-      <img alt="logo" height="40"   src="assets/img/BrainPainLogo.png" >
+      <img alt="logo" height="40" src="assets/img/BrainPainLogo.png" >
       Hasiera
     </ion-title>
   </ion-toolbar>
@@ -23,15 +23,10 @@
   <!-- Bigarren txartela-->
 
   <ion-list lines="none">
-    <ion-list-header>
-
-    </ion-list-header>
-    <!--Popup-->
     <ion-item>
       <ion-icon slot="start" color="medium" name="book"></ion-icon>
       <div (click)="showAlert()">
-        <ion-label class="labelColor">Arauak
-        </ion-label>
+        <ion-label class="labelColor">Arauak</ion-label>
       </div>
     </ion-item>
     
@@ -39,10 +34,12 @@
       <ion-icon slot="start" color="medium" name="build"></ion-icon>
       <ion-label class="labelColor">Oharrak</ion-label>
     </ion-item>
+
     <ion-item href="">
       <ion-icon slot="start" color="medium" name="grid"></ion-icon>
       <ion-label class="labelColor">Mezuak bidali</ion-label>
     </ion-item>
+
     <ion-item href="">
       <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
       <ion-label class="labelColor">Aplikazioa baloratu</ion-label>
@@ -51,10 +48,10 @@
   
   <ion-row *ngIf="user == undefined">
     <ion-col>
-      <ion-button color="primary" expand="full" color="primary" [routerLink]="['/login']" >Logeatu</ion-button>
+      <ion-button id="laranja" expand="full" color="jokatuBotoia" [routerLink]="['/login']" >Logeatu</ion-button>
     </ion-col>
     <ion-col>
-      <ion-button color="primary" expand="full" color="danger" [routerLink]="['/register']">Erregistratu</ion-button>
+      <ion-button id="urdina" expand="full" color="jokatuBotoia" [routerLink]="['/register']">Erregistratu</ion-button>
     </ion-col>
   </ion-row>
 

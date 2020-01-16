@@ -11,11 +11,16 @@
 <ion-content>
   <ion-card *ngFor="let sailkapen of sailkapena; index as i;">
     <ion-card-header>
+      <!-- Medallak jarteko IF, funtziona -->
+      <ion-img *ngIf=" i == 0" src="assets/img/Lehena.png"></ion-img>
+      <ion-img *ngIf=" i == 1" src="assets/img/Bigarrena.png"></ion-img>
+      <ion-img *ngIf=" i == 2" src="assets/img/Hirugarrena.png"></ion-img>
+
       <p class="posizioa">Puntuak: {{sailkapen.puntuak}} Posizioa: #{{i+1}}</p>
       <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
       <ion-avatar>
-      <ion-img  src="assets/img/eguzkitze.png" class="image circle-pic tabulazioa">Argazkia</ion-img>
-    </ion-avatar>
-      </ion-card-header>
+        <ion-img  src="assets/img/eguzkitze.png" class="image circle-pic tabulazioa">Argazkia</ion-img>
+      </ion-avatar>
+    </ion-card-header>
   </ion-card>
 </ion-content>

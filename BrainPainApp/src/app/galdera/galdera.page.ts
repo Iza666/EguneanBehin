@@ -29,12 +29,14 @@ export class GalderaPage implements OnInit {
   galderak : Galdera[];
   user: User;
 
-  galdera : Galdera;
+
+  //Galderak lortzeko metodoa
   getGalderak(): void{
     this.DenaService.getGalderak()
     .subscribe(data => {this.galderak = data},
        error=> console.log("Error ::"+ error));
   }
+
   // Galdera bakoitza bidaltzen bere erantzunarekin, falta da id_partida kontrolatzea
   bidaliGalderak(a: number): void{
     if(a == 1){
@@ -82,22 +84,27 @@ export class GalderaPage implements OnInit {
           });
     }
   }
-  ionViewWillEnter() {
-    this.authService.user().subscribe(
-      user => {
-        this.user = user;
-        console.log(user); 
-        if(this.authService.isLoggedIn == true){
-          var a = document.getElementById("buttons");
-          a.style.display="none";
-        }
-        else{
-    
-        }
-      }
-    );
-  }
 
-  //Galderen erantzunak kontrolatzen 'Partidak' taulara bidaltzeko
+  
+
+  //Galderen erantzunak kontrolatzen 'Partidak' taulara bidaltzeko, ID PARTIDA ONDO PENTSATU // PUNTUAK, DATA ETA DENBORA BIRPASATU
+  bidaliPartida(){
+    let  datuak = {"id": 1, "id_erabiltzailea" : this.user.id, "data": 2, "puntuak" : 100, "zenbat_zuzen": 2, "zenbat_denbora" : 20};
+      let options = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      };
+      var url = "http://localhost:8000/api/insertMatch";
+      new Promise(resolve => {
+        this.http.post(url,JSON.stringify(datuak),options)
+           .subscribe(data => {
+             resolve(data)
+            })
+          });
+  }
+  profilaAldatu(){
+    
+  }
   
 }

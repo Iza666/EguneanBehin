@@ -14,15 +14,6 @@ class GuztiaController extends Controller
         $hamargaldera = Galdera::orderByRaw("RAND()")->get()->take(1);
         return response()->json($hamargaldera, 200);
     }
-    
-    public function create()
-    {
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
     public function GetRanking()
     {
         $sailkapena = DB::table('sailkapena')
@@ -36,12 +27,12 @@ class GuztiaController extends Controller
         ->get();
         return response()->json($sailkapena, 200);
     }
+    //Galdera sartu BADABIL, partidak taularekin kombinatu behar da 
     public function insertQuestion()
     {
         $postdata = file_get_contents("php://input");
         if (isset($postdata)) {
             $request = json_decode($postdata);
-            echo $request->id_erabiltzailea;
             DB::table('erabiltzaile_galderak')->insert(
                 ['id_erabiltzailea' => $request->id_erabiltzailea,
                  'id_galdera' => $request->id_galdera,
@@ -50,25 +41,33 @@ class GuztiaController extends Controller
             );
         }
     }
-
-    public function show($id)
+    //Partida sartu PROVISIONAL
+    public function insertMatch()
     {
-        //
+        $postdata = file_get_contents("php://input");
+        if (isset($postdata)) {
+            $request = json_decode($postdata);
+            DB::table('partidak')->insert(
+                ['id' => $request->id,
+                 'id_erabiltzailea' => $request->id_erabiltzailea,
+                 'data' => $request->data,
+                 'puntuak' => $request->puntuak,
+                 'zenbat_zuzen' => $request->zenbat_zuzen,
+                 'zenbat_denbora' => $request->zenbat_denbora]
+            );
+        }
     }
-
-    public function edit($id)
-    {
-        //
-    }
-
-   
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+    //Profila aldatu PROVISIONAL
+    public function changeProfile(){
+        $postdata = file_get_contents("php://input");
+        if (isset($postdata)) {
+            $request = json_decode($postdata);
+            User::find($request->id)->update(
+                [
+                 'erabiltzailea' => $request->erabiltzailea,
+                 'email' => $request->email,
+                ]
+            );
+        }
     }
 }

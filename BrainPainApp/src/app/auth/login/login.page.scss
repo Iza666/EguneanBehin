@@ -23,7 +23,6 @@ ion-content{
     text-align: center;
     color: rgb(200, 200, 200);
 }
-
 #bidali{
     border-radius: 40px;
     width: 20%;
@@ -38,8 +37,11 @@ ion-content{
     color: white;
 }
 .email-input, .password-input{
-    background-color: rgb(30, 30, 30);
+    color: white;
     margin-top: 20px;
+}
+.email-input:host(.ion-focused), .password-input:hover{
+    color: var(rgb(10, 10, 10));
 }
 #hasiera, #galdera{
     text-align: center;
@@ -63,4 +65,15 @@ ion-input, ion-input:focus, ion-input:hover{
 .textua-margin{
     margin-top: 100px;
 }
+:host {
+    ion-item {
+        --background-focused: rgb(60, 60, 60);
+        --color-focused: black;
+        --border-color: rgb(100, 100, 100);
+        --highlight-color-valid: linear-gradient(to bottom right, #FF8000, #FF0080);
+        --highlight-color-invalid: linear-gradient(to bottom right, #FF8000, #FF0080);
+        --highlight-color-focused: linear-gradient(to bottom right, #FF8000, #FF0080);        
+    }
+}
+
 

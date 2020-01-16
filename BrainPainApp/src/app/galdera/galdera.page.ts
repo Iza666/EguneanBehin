@@ -25,7 +25,9 @@ export class GalderaPage implements OnInit {
   }
   bidaliGalderak(a: number): void{
     if(a == 1){
-      alert("Ona");
+      let id: number = 1;
+      let json : string = '{"id_erabiltzailea" : '+this.id+'}';
+      alert(JSON.parse(json));
     }
     if(a == 2){
       alert("txarra");

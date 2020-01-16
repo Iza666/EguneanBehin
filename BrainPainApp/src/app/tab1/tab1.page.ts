@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/modeloak/user';
 import { AlertService } from 'src/app/services/alert.service';
+import { Platform, NavController } from '@ionic/angular';
+import { LoginPage } from '../auth/login/login.page';
+
 
 @Component({
   selector: 'app-tab1',
@@ -11,19 +14,26 @@ import { AlertService } from 'src/app/services/alert.service';
 export class Tab1Page implements OnInit {
   user: User;
   constructor(private authService: AuthService,
-              private alertService: AlertService
+              private alertService: AlertService, private navController: NavController
     ) { 
     
   }
+  
   ngOnInit() {
     
   }
   ionViewWillEnter() {
-
     this.authService.user().subscribe(
       user => {
         this.user = user;
-        console.log(user);
+        console.log(user); 
+        if(this.authService.isLoggedIn == true){
+          var a = document.getElementById("buttons");
+          a.style.display="none";
+        }
+        else{
+    
+        }
       }
     );
   }

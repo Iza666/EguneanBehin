@@ -9,4 +9,10 @@ export class TabsPage {
 
   constructor() {}
   
+  ngOnInit(){
+}
+  ngDoCheck(){
+
+  }
+  
 }

@@ -19,11 +19,17 @@ export class Tab3Page {
     
   }
   ionViewWillEnter() {
-
     this.authService.user().subscribe(
       user => {
         this.user = user;
-        console.log(user);
+        console.log(user); 
+        if(this.authService.isLoggedIn == true){
+          var a = document.getElementById("buttons");
+          a.style.display="none";
+        }
+        else{
+    
+        }
       }
     );
   }

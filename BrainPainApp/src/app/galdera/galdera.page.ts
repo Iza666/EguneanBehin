@@ -4,11 +4,7 @@ import { Galdera } from './../modeloak/galdera';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/modeloak/user';
 import { HttpClient } from '@angular/common/http';
-//import 'rxjs/add/operator/toPromise';
-
-
-
-
+import 'rxjs/add/operator/toPromise';
 
 
 @Component({

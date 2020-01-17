@@ -10,17 +10,88 @@
 
 <ion-content>
   <ion-card *ngFor="let sailkapen of sailkapena; index as i;">
-    <ion-card-header>
+    <!--//////////////////////////////////////////////////////////////////////-->
+    <!--////////////////////////////////Lehen IF//////////////////////////////-->
+    <!--//////////////////////////////////////////////////////////////////////-->
+    <ion-card-content *ngIf=" i == 0 " class="urrea">
       <!-- Medallak jarteko IF, funtziona -->
       <ion-img *ngIf=" i == 0" src="assets/img/Lehena.png"></ion-img>
       <ion-img *ngIf=" i == 1" src="assets/img/Bigarrena.png"></ion-img>
       <ion-img *ngIf=" i == 2" src="assets/img/Hirugarrena.png"></ion-img>
-
-      <p class="posizioa">Puntuak: {{sailkapen.puntuak}} Posizioa: #{{i+1}}</p>
-      <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
+      <p *ngIf=" i > 2" class="posizioa">#{{i+1}}</p>
+      
       <ion-avatar>
-        <ion-img  src="assets/img/eguzkitze.png" class="image circle-pic tabulazioa">Argazkia</ion-img>
+        <ion-img  src="assets/img/eguzkitze.png" class="image">Argazkia</ion-img>
       </ion-avatar>
-    </ion-card-header>
+      <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
+
+      <ion-button [disabled]="true" color="jokatubotoia">
+        <p class="puntuak" t>{{sailkapen.puntuak}}</p>
+        <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
+      </ion-button>    
+    </ion-card-content>
+
+    <!--//////////////////////////////////////////////////////////////////////-->
+    <!--//////////////////////////////Bigarren IF/////////////////////////////-->
+    <!--//////////////////////////////////////////////////////////////////////-->
+    <ion-card-content *ngIf=" i == 1 " class="zilarra">
+      <!-- Medallak jarteko IF, funtziona -->
+      <ion-img *ngIf=" i == 0" src="assets/img/Lehena.png"></ion-img>
+      <ion-img *ngIf=" i == 1" src="assets/img/Bigarrena.png"></ion-img>
+      <ion-img *ngIf=" i == 2" src="assets/img/Hirugarrena.png"></ion-img>
+      <p *ngIf=" i > 2" class="posizioa">#{{i+1}}</p>
+      
+      <ion-avatar>
+        <ion-img  src="assets/img/eguzkitze.png" class="image">Argazkia</ion-img>
+      </ion-avatar>
+      <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
+
+      <ion-button [disabled]="true" color="jokatubotoia">
+        <p class="puntuak" t>{{sailkapen.puntuak}}</p>
+        <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
+      </ion-button>    
+    </ion-card-content>
+
+    <!--//////////////////////////////////////////////////////////////////////-->
+    <!--//////////////////////////////Hirugarren IF///////////////////////////-->
+    <!--//////////////////////////////////////////////////////////////////////-->
+    <ion-card-content *ngIf=" i == 2 " class="brontzea">
+      <!-- Medallak jarteko IF, funtziona -->
+      <ion-img *ngIf=" i == 0" src="assets/img/Lehena.png"></ion-img>
+      <ion-img *ngIf=" i == 1" src="assets/img/Bigarrena.png"></ion-img>
+      <ion-img *ngIf=" i == 2" src="assets/img/Hirugarrena.png"></ion-img>
+      <p *ngIf=" i > 2" class="posizioa">#{{i+1}}</p>
+      
+      <ion-avatar>
+        <ion-img  src="assets/img/eguzkitze.png" class="image">Argazkia</ion-img>
+      </ion-avatar>
+      <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
+
+      <ion-button [disabled]="true" color="jokatubotoia">
+        <p class="puntuak" t>{{sailkapen.puntuak}}</p>
+        <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
+      </ion-button>    
+    </ion-card-content>
+
+    <!--//////////////////////////////////////////////////////////////////////-->
+    <!--//////////////////////////////Laugarren IF////////////////////////////-->
+    <!--//////////////////////////////////////////////////////////////////////-->
+    <ion-card-content *ngIf=" i > 2 ">
+      <!-- Medallak jarteko IF, funtziona -->
+      <ion-img *ngIf=" i == 0" src="assets/img/Lehena.png"></ion-img>
+      <ion-img *ngIf=" i == 1" src="assets/img/Bigarrena.png"></ion-img>
+      <ion-img *ngIf=" i == 2" src="assets/img/Hirugarrena.png"></ion-img>
+      <p *ngIf=" i > 2" class="posizioa">#{{i+1}}</p>
+      
+      <ion-avatar>
+        <ion-img  src="assets/img/eguzkitze.png" class="image">Argazkia</ion-img>
+      </ion-avatar>
+      <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
+
+      <ion-button [disabled]="true" color="jokatubotoia">
+        <p class="puntuak" t>{{sailkapen.puntuak}}</p>
+        <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
+      </ion-button>    
+    </ion-card-content>
   </ion-card>
 </ion-content>

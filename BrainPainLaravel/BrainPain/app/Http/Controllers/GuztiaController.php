@@ -70,4 +70,33 @@ class GuztiaController extends Controller
             );
         }
     }
+    public function logedPersonMatch(){
+        $postdata = file_get_contents("php://input");
+        if (isset($postdata)) {
+            $request = json_decode($postdata);
+            $partida = DB::table('partidak')->
+                       select(DB::raw("*"))->
+                       where('id_erabiltzailea',$request->id_erabiltzailea)->
+                       where('data',$request->data)->get();
+            DB::table('partidak')->
+                where('id_erabiltzailea',$request->id_erabiltzailea)->
+                where('data',$request->data)->
+                update(['puntuak'=>$request->puntuak]);
+            DB::table('partidak')->
+                where('id_erabiltzailea',$request->id_erabiltzailea)->
+                where('data',$request->data)->  
+                update(['zenbat_zuzen'=>$request->zenbat_zuzen]);
+            DB::table('partidak')->
+                where('id_erabiltzailea',$request->id_erabiltzailea)->
+                where('data',$request->data)->    
+                update(['zenbat_denbora'=>$request->zenbat_denbora]);   
+        }
+    }
+    //Erabiltzailearen datuak hartuko ditu login egiterakoan eta partidak taulan komparatuz, egun horretako 
+    //data badu ezin izango du jolastu eta true edo false bueltatuko du
+    public function dailyMatchController(){
+        $postdata = file_get_contents("php://input");
+        if (isset($postdata)) {
+            $request = json_decode($postdata);
+    }
 }

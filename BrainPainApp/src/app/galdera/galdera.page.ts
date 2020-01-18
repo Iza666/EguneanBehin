@@ -42,7 +42,7 @@ export class GalderaPage implements OnInit {
     );
   }
   hurrengoa(){
-    alert("hi");
+    this.bidaliAmaitutakoPartida();
   }
 
   // Galdera bakoitza bidaltzen bere erantzunarekin, falta da id_partida kontrolatzea
@@ -92,28 +92,25 @@ export class GalderaPage implements OnInit {
             })
           });
     }
-    amaitu(){
-      
-    }
   }
 
-  
-
-  //Galderen erantzunak kontrolatzen 'Partidak' taulara bidaltzeko, ID PARTIDA ONDO PENTSATU // PUNTUAK, DATA ETA DENBORA BIRPASATU
-  bidaliPartida(){
-    let  datuak = {"id": 1, "id_erabiltzailea" : this.user.id, "data": 2, "puntuak" : 100, "zenbat_zuzen": 2, "zenbat_denbora" : 20};
+  bidaliAmaitutakoPartida(){
+    var dt = new Date();
+    var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+    let datuak = {"id":0,"id_erabiltzailea" : this.user.id, "data": d, "puntuak" : 40000,"zenbat_zuzen": 4,"zenbat_denbora" : 5};
       let options = {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       };
-      var url = "http://localhost:8000/api/insertMatch";
+      var url = "http://localhost:8000/api/logedPersonMatch";
       new Promise(resolve => {
         this.http.post(url,JSON.stringify(datuak),options)
-           .subscribe(data => {
-             resolve(data)
+            .subscribe(data => {
+              resolve(data)
             })
           });
+      document.getElementById("galdera").style.display="none";
   }
   profilaAldatu(){
     

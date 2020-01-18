@@ -40,5 +40,7 @@ Route::group([
   Route::post('insertQuestion', 'GuztiaController@insertQuestion');
   Route::post('insertMatch', 'GuztiaController@insertMatch');
   Route::post('changeProfile', 'GuztiaController@changeProfile');
+  Route::post('logedPersonMatch', 'GuztiaController@logedPersonMatch');
+
 
 

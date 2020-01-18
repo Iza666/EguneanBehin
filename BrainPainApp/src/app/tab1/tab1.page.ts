@@ -71,5 +71,14 @@ export class Tab1Page implements OnInit {
     document.body.appendChild(alert);
     return alert.present();
   }
+  showLogoutAlert(){
+    const alert = document.createElement('ion-alert');
+    alert.header = 'Logout';
+    alert.message = 'Logout egin nahi ahal duzu?';
+    alert.buttons = ['Bai', 'Ez'];
+
+    document.body.appendChild(alert);
+    return alert.present();
+  }
 
 }

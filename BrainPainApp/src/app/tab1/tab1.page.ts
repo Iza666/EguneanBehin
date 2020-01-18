@@ -4,6 +4,8 @@ import { User } from 'src/app/modeloak/user';
 import { AlertService } from 'src/app/services/alert.service';
 import { Platform, NavController } from '@ionic/angular';
 import { LoginPage } from '../auth/login/login.page';
+import { HttpClient } from '@angular/common/http';
+
 
 
 
@@ -17,6 +19,7 @@ export class Tab1Page implements OnInit {
   
   constructor(private authService: AuthService,
               private alertService: AlertService, private navController: NavController,
+              private http: HttpClient
             
     ) { 
       
@@ -40,7 +43,25 @@ export class Tab1Page implements OnInit {
           profila.removeAttribute("disabled"); */
         }
       }
-
+  partidaSortu(){
+    var dt = new Date();
+    var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+    let datuak = {"id":0,"id_erabiltzailea" : this.user.id, "data": d, "puntuak" : 0, "zenbat_zuzen": 0,"zenbat_denbora" : 0};
+      let options = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      };
+      var url = "http://localhost:8000/api/insertMatch";
+      new Promise(resolve => {
+        this.http.post(url,JSON.stringify(datuak),options)
+            .subscribe(data => {
+              resolve(data)
+            })
+          });
+      document.getElementById("galdera").style.display="none";
+  }
+  
   showAlert(){
     const alert = document.createElement('ion-alert');
     alert.header = 'Arauak';

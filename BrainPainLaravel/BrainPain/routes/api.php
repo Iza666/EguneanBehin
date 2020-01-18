@@ -38,7 +38,7 @@ Route::group([
   });
   Route::get('ranking', 'GuztiaController@getranking');
   Route::post('insertQuestion', 'GuztiaController@insertQuestion');
-  Route::post('insertMatch', 'GuztiaController@insertQuestion');
+  Route::post('insertMatch', 'GuztiaController@insertMatch');
   Route::post('changeProfile', 'GuztiaController@changeProfile');
 
 

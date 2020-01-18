@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/modeloak/user';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
+import { animationFrameScheduler } from 'rxjs';
 
 
 @Component({
@@ -21,7 +22,6 @@ export class GalderaPage implements OnInit {
   id = 0;
   ngOnInit() {
     this.getGalderak();
-
   }
   galderak : Galdera[];
   user: User;
@@ -91,6 +91,9 @@ export class GalderaPage implements OnInit {
              resolve(data)
             })
           });
+    }
+    amaitu(){
+      
     }
   }
 

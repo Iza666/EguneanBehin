@@ -6,6 +6,8 @@ import { User } from 'src/app/modeloak/user';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { animationFrameScheduler } from 'rxjs';
+import { Router } from '@angular/router'
+
 
 
 @Component({
@@ -16,7 +18,7 @@ import { animationFrameScheduler } from 'rxjs';
 export class GalderaPage implements OnInit {
 
   constructor(private DenaService : DenaService,
-    private authService: AuthService, private http: HttpClient
+    private authService: AuthService, private http: HttpClient,private router: Router
     ) { }
 
   id = 0;
@@ -28,11 +30,13 @@ export class GalderaPage implements OnInit {
 
 
   //Galderak lortzeko metodoa
-  getGalderak(): void{
+  getGalderak(): Galdera[]{
     this.DenaService.getGalderak()
     .subscribe(data => {this.galderak = data},
        error=> console.log("Error ::"+ error));
+       return this.galderak;
   }
+
   ionViewWillEnter() {
     this.authService.user().subscribe(
       user => {
@@ -41,8 +45,18 @@ export class GalderaPage implements OnInit {
       }
     );
   }
+   count : number = 0;
   hurrengoa(){
-    this.bidaliAmaitutakoPartida();
+    if(this.count!=10){
+      this.getGalderak();
+      this.count++;
+      alert(this.count);
+    }
+    else{
+      alert("Partida amaitu da, dena gordetzen...");
+      this.bidaliAmaitutakoPartida();
+      this.router.navigateByUrl('');
+    }
   }
 
   // Galdera bakoitza bidaltzen bere erantzunarekin, falta da id_partida kontrolatzea

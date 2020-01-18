@@ -2,8 +2,25 @@ ion-header{
   --ion-background-color: rgb(20, 20, 20);
 }
 #hasiera{
+  float: left;
+  width:100%;
   text-align: center;
   color: rgb(200, 200, 200);
+}
+ion-toolbar ion-button{
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translate(0%, -60%);
+  margin-right: 2%;
+}
+:host{
+  ion-toolbar ion-button{
+    --ripple-color: rgb(100, 100, 100);
+  }
+}
+#logoutButton ion-icon{
+  color: #FF3849;
 }
 ion-item-divider{
   min-height: 1px !important;

@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button  href="" (click)="dismissRegister()" class="button"><ion-icon name="home"></ion-icon></ion-button>
-    <ion-title class="hasiera">Erregistratu</ion-title>
+    <ion-button fill="none" href="" (click)="dismissRegister()" class="activated">
+      <ion-icon name="md-arrow-round-back"></ion-icon>
+    </ion-button>
+    <ion-title>Erregistratu</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -23,9 +25,9 @@
       <ion-input type="password" ngModel name="password" class="password-input"></ion-input>
     </ion-item>
   
-    <ion-button id="laranja" type="submit" expand="full" color="jokatuBotoia" class="erregistratu_botoia">Erregistratu</ion-button>
+    <ion-button id="urdina" type="submit" expand="full" color="jokatuBotoia" class="erregistratu_botoia">Erregistratu</ion-button>
   </form>
 
   <p text-center class="textua">Jada kontu bat daukazu?</p>
-  <ion-button id="urdina" expand="full" color="jokatuBotoia" (click)="loginModal()">Logeatu</ion-button>
+  <ion-button id="laranja" expand="full" color="jokatuBotoia" (click)="loginModal()">Logeatu</ion-button>
 </ion-content>  

@@ -7,11 +7,19 @@ ion-item-divider{
 ion-content{
     --ion-background-color: rgb(30, 30, 30);
 }
-
-.hasiera, .galdera{
-    text-align: center;
+ion-toolbar ion-button{
+    position: fixed;
+    left: 20px;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+ion-title{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     color: rgb(200, 200, 200);
-    margin-top: -30px;
 }
 .textua{
     color:white;

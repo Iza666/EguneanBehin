@@ -24,6 +24,16 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+:root {
+  ion-tab-button.tab-selected 
+  {
+    ion-icon, ion-label {
+      color: var(--ion-color-label-selected) !important;
+      --ion-color-base: var(--ion-color-icon-selected) !important;
+      //background-color: red !important;
+    }
+  }
+}
 .ion-color-laranjaLarrosa {
   --ion-color-base: var(--ion-color-laranjaLarrosa) !important;
   --ion-color-base-rgb: var(--ion-color-laranjaLarrosa-rgb) !important;

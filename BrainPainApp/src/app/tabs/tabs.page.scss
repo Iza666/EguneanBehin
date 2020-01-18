@@ -1,6 +1,11 @@
 ion-tabs{
     --ion-background-color: rgb(45, 45, 45);
 }
-.labelColor{
-    color: rgb(180, 180, 180);
+:host{
+    ion-tab-bar{
+        --background-focused: rgb(55, 55, 55);
+    }
+    ion-tab-button{
+        --ripple-color: #FD4A38;
+    }
 }

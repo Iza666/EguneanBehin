@@ -16,7 +16,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'kargatzen',
+    loadChildren: () => import('./kargatzen/kargatzen.module').then( m => m.KargatzenPageModule)
   },
+
 ];
 @NgModule({
   imports: [

@@ -27,6 +27,7 @@ export class GalderaPage implements OnInit {
   }
   galderak : Galdera[];
   user: User;
+  puntuak : number = 0;
 
 
   //Galderak lortzeko metodoa
@@ -76,6 +77,7 @@ export class GalderaPage implements OnInit {
             })
           });
       document.getElementById("galdera").style.display="none";
+      this.puntuak +=10;
     }
     if(a == 2){
       let  datuak = {"id_erabiltzailea" : this.user.id, "id_galdera": this.galderak[0].id, "id_partida" : 1, "erantzuna": this.galderak[0].opt2};
@@ -111,7 +113,7 @@ export class GalderaPage implements OnInit {
   bidaliAmaitutakoPartida(){
     var dt = new Date();
     var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
-    let datuak = {"id":0,"id_erabiltzailea" : this.user.id, "data": d, "puntuak" : 40000,"zenbat_zuzen": 4,"zenbat_denbora" : 5};
+    let datuak = {"id":0,"id_erabiltzailea" : this.user.id, "data": d, "puntuak" : this.puntuak,"zenbat_zuzen": 4,"zenbat_denbora" : 5};
       let options = {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'

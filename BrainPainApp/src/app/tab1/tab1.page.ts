@@ -20,11 +20,7 @@ export class Tab1Page implements OnInit {
   constructor(private authService: AuthService,
               private alertService: AlertService, private navController: NavController,
               private http: HttpClient
-            
-    ) { 
-      
-    
-  }
+    ) { }
   user: User;
 
   ngOnInit() {
@@ -39,8 +35,6 @@ export class Tab1Page implements OnInit {
           //botoiak
           var a = document.getElementById("buttons");
           a.style.display="none";
-          /* var profila = document.getElementById("profila");
-          profila.removeAttribute("disabled"); */
         }
       }
   partidaSortu(){

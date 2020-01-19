@@ -11,17 +11,13 @@ import { Sailkapena } from './../modeloak/sailkapena';
 })
 export class DenaService {
 
-  urlGalderak = 'http://127.0.0.1:8000/api/galderak';
   urlSailkapena = 'http://127.0.0.1:8000/api/ranking';
 
 
   constructor(public http: HttpClient) { 
     
   }
-  getGalderak(): Observable<Galdera[]> { 	     
-    return this.http.get<Galdera[]>(this.urlGalderak);
-  }
-  getSailkapena(): Observable<Sailkapena[]> { 	     
+  getSailkapena(): Observable<Sailkapena[]> {
     return this.http.get<Sailkapena[]>(this.urlSailkapena);
   }
 }

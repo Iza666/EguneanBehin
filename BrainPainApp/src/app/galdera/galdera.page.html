@@ -1,9 +1,11 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-button [routerLink]="['']" id="hasiera_botoia"><ion-icon slot="primary" name="home"></ion-icon></ion-button>
+    <ion-button fill="clear" [routerLink]="['']" class="homeBotoia"><ion-icon name="home"></ion-icon></ion-button>
     <ion-title id="galdera">
       Galdera
     </ion-title>
+    <p class="puntuazioa">Puntuazioa: {{puntuak}}</p>
+
   </ion-toolbar>
 </ion-header>
 <ion-item-divider color="jokatu"></ion-item-divider>
@@ -16,18 +18,13 @@
     </ion-card-header>
     <ion-card-content class="centered">
       <ion-img id="galderaIrudiak" src="assets/img/eguzkitze.png"></ion-img>
-    </ion-card-content>
-    <ion-button size="large" color="jokatuBotoia" name="opt1" class="galderaBotoia1" expand="block" (click)="bidaliGalderak(1)">{{galdera.opt1_erantzuna}}</ion-button>
+      <ion-button size="large" color="jokatuBotoia" name="opt1" class="galderaBotoia1" expand="block" (click)="bidaliGalderak(1)">{{galdera.opt1_erantzuna}}</ion-button>
     <ion-button size="large" color="jokatuBotoia" name="opt2" class="galderaBotoia2" expand="block" (click)="bidaliGalderak(2)">{{galdera.opt2}}</ion-button>
     <ion-button size="large" color="jokatuBotoia" name="opt3" class="galderaBotoia3" expand="block" (click)="bidaliGalderak(3)">{{galdera.opt3}}</ion-button>
-  </ion-card>
-  <ion-button color="light" id="galdera" (click)="hurrengoa()">Next</ion-button>
-  <ion-card>
-    <ion-card-content class="centered">
-      <p>Puntuazioa: {{puntuak}}</p>
     </ion-card-content>
+    
   </ion-card>
-
+  <ion-button expand="block" class="hurrengoa"  (click)="hurrengoa()"><span>Hurrengo galdera</span></ion-button>
 </ion-content>
 
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { timer } from 'rxjs/observable/timer';
 
 @Component({
   selector: 'app-kargatzen',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KargatzenPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    timer(3000).subscribe( x =>{
+      this.router.navigate(['/galdera']);
+    });
   }
-
 }

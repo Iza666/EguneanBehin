@@ -1,4 +1,30 @@
 .background{
-    --background: url('../../assets/img/Loading.png') no-repeat center center fixed;
-    --background-size: cover;
+    --background: url('../../assets/img/Loading.png') 0 0/100% 100% no-repeat;
+}
+ion-spinner{
+    position: fixed;
+    left: 50%;
+    top: 53%;
+    transform: translate(-50%, -47%);
+}
+#spinner1{
+    color: rgb(255, 43, 96);
+    width: 48px !important;
+    height: 48px !important;
+}
+#spinner2{
+    color: #FF3849;
+    width: 58px !important;
+    height: 58px !important;
+    
+}
+#spinner3{
+    color: #FD4A38;
+    width: 70px !important;
+    height: 70px !important;
+}
+#spinner4{
+    color: #ff5c33;
+    width: 85px !important;
+    height: 85px !important;
 }

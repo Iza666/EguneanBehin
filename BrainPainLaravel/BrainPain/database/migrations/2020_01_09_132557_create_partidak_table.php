@@ -20,7 +20,7 @@ class CreatePartidakTable extends Migration
             $table->date('data');
             $table->integer('puntuak');
             $table->integer('zenbat_zuzen');
-            $table->integer('zenbat_denbora');
+            $table->string('zenbat_denbora');
 
         });
     }

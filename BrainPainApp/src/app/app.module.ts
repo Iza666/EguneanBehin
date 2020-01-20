@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import {DenaService} from './services/dena.service';
+import {SailkapenaService} from './services/sailkapena.service';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -23,7 +23,7 @@ import {platformBrowser} from "@angular/platform-browser";
   providers: [
     StatusBar,
     SplashScreen,
-    DenaService,
+    SailkapenaService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     NativeStorage
   ],

@@ -78,10 +78,14 @@ class GuztiaController extends Controller
                        select(DB::raw("*"))->
                        where('id_erabiltzailea',$request->id_erabiltzailea)->
                        where('data',$request->data)->get();
+            $denbora = explode(":", $request->zenbat_denbora);
+            $minutuakSegundutan = floor(($denbora[0] / 60) % 60);
+            $totala = $minutuakSegundutan + $denbora[1];
+            $puntuFinal = $request->puntuak / $totala;
             DB::table('partidak')->
                 where('id_erabiltzailea',$request->id_erabiltzailea)->
                 where('data',$request->data)->
-                update(['puntuak'=>$request->puntuak]);
+                update(['puntuak'=>$puntuFinal]);
             DB::table('partidak')->
                 where('id_erabiltzailea',$request->id_erabiltzailea)->
                 where('data',$request->data)->  

@@ -16,14 +16,13 @@ class GuztiaController extends Controller
     }
     public function GetRanking()
     {
-        $sailkapena = DB::table('sailkapena')
+        $sailkapena = DB::table('partidak')
         ->join('users',function($join){
-            $join->on('sailkapena.id_erabiltzailea','=','users.id');
+            $join->on('partidak.id_erabiltzailea','=','users.id');
         })
-        ->from('sailkapena')
+        ->from('partidak')
         ->select('*')
-        ->orderBy('sailkapena.puntuak','DESC')
-
+        ->orderBy('partidak.puntuak','DESC')
         ->get();
         return response()->json($sailkapena, 200);
     }

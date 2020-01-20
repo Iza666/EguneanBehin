@@ -4,7 +4,7 @@
       Galdera
     </ion-title>
     <p class="puntuazioa">Puntuazioa: {{puntuak}}</p>
-    <label id="minutes">00</label>:<label [innerHTML]="seconds">00</label>
+    <label class="denbora" [innerHTML]="minutes">00</label><label class="denbora">:</label><label class="denbora" [innerHTML]="seconds">00</label>
   </ion-toolbar>
 </ion-header>
 <ion-item-divider color="jokatu"></ion-item-divider>
@@ -23,7 +23,6 @@
     </ion-card-content>
     
   </ion-card>
-  <ion-button expand="block" class="hurrengoa"  (click)="hurrengoa()"><span>Hurrengo galdera</span></ion-button>
 </ion-content>
 
 

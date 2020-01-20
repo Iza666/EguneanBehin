@@ -56,27 +56,33 @@ export class GalderaPage implements OnInit {
     else{
       alert("Partida amaitu da, dena gordetzen...");
       alert(this.puntuak);
-      this.galderakService.bidaliAmaitutakoPartida(this.puntuak, this.user);      this.router.navigateByUrl('');
+      this.galderakService.bidaliAmaitutakoPartida(this.puntuak, this.user, this.minutes, this.seconds);      this.router.navigateByUrl('');
     }
   }
   bidaliGalderak(a: number){
     this.puntuak = this.galderakService.bidaliGalderak(a, this.galderak, this.user);
+    this.hurrengoa();
   }
 
   seconds : number = 0;
-  public data:any;
+  minutes : number = 0;
 
-  incrementSeconds() {
-      this.seconds += 1;
-      this.data = this.seconds.toString();
-  }
-  
-  cancel = setInterval(this.incrementSeconds, 1000);
-
-  startTimer(){
+startTimer(){
     setInterval(function(){
-      this.seconds = this.timer++;
+      if(this.timer < 10 && this.timer != 0){
+        this.seconds = "0"+ this.timer;
+        ++this.timer;
+      }
+
+      else if(this.timer != 60){
+        this.seconds = this.timer++;
+      }
+      else{
+        this.timer = 0;
+        this.seconds = 0;
+        ++this.minutes;
+        ++this.timer;
+      }
     }.bind(this), 1000)
   }
-
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/modeloak/user';
 import { Galdera } from './../modeloak/galdera';
 import { Observable } from 'rxjs';
+import {GalderaPage} from 'src/app/galdera/galdera.page'
 
 
 
@@ -14,10 +15,11 @@ export class GalderakService {
 
   constructor(private http: HttpClient) { }
 
-  bidaliAmaitutakoPartida(puntuak:number, user:User){
+  bidaliAmaitutakoPartida(puntuak:number, user:User, min : number, secs: number){
     var dt = new Date();
+    var time = min +":"+secs;
     var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
-    let datuak = {"id":0,"id_erabiltzailea" : user.id, "data": d, "puntuak" : puntuak,"zenbat_zuzen": 4,"zenbat_denbora" : 5};
+    let datuak = {"id":0,"id_erabiltzailea" : user.id, "data": d, "puntuak" : puntuak,"zenbat_zuzen": 4,"zenbat_denbora" : time};
       let options = {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -49,7 +51,7 @@ export class GalderakService {
             })
           });
       document.getElementById("galdera").style.display="none";
-      this.puntuak +=10;
+      this.puntuak +=500;
       return this.puntuak;
     }
     if(a == 2){
@@ -65,9 +67,9 @@ export class GalderakService {
            .subscribe(data => {
              resolve(data)
             })
-          });    
+          });   
           return this.puntuak;
-        }
+      }
           
     if(a == 3){
       let  datuak = {"id_erabiltzailea" : user.id, "id_galdera": galderak[0].id, "id_partida" : 1, "erantzuna": 3};
@@ -84,7 +86,6 @@ export class GalderakService {
             })
           });
           return this.puntuak;
-
     }
   }
   getGalderak(): Observable<Galdera[]> { 	     
@@ -95,9 +96,6 @@ export class GalderakService {
 
   h = this.d.getUTCHours();
 
-  timerHasieratu(){
-
-  }
   partidaSortu(user:User){
     var dt = new Date();
     var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();

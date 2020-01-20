@@ -1,5 +1,5 @@
 ion-header{
-    --ion-background-color: rgb(45, 45, 45);
+    --ion-background-color: rgb(20, 20, 20);
 }
 ion-item-divider{
     min-height: 1px !important;
@@ -9,7 +9,7 @@ ion-content{
 }
 ion-toolbar ion-button{
     position: fixed;
-    left: 20px;
+    left: 15px;
     top: 60%;
     transform: translate(-50%, -50%);
     color: white;

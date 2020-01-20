@@ -1,29 +1,25 @@
-<ion-header translucent>
+<ion-header>
   <ion-toolbar>
-    <ion-title id="galdera">
-      Galdera
-    </ion-title>
-    <p class="puntuazioa">Puntuazioa: {{puntuak}}</p>
-
+    <ion-title id="galdera">Galdera</ion-title>
+    <ion-text>Puntuazioa: {{puntuak}}</ion-text>
   </ion-toolbar>
 </ion-header>
 <ion-item-divider color="jokatu"></ion-item-divider>
 
-<ion-content fullscreen>
-  <form #form="ngForm" (ngSubmit)="erantzuna(form)" method="post"></form>
-  <ion-card class="welcome-card" *ngFor="let galdera of galderak">
+<form #form="ngForm" (ngSubmit)="erantzuna(form)" method="post"></form>
+<ion-content *ngFor="let galdera of galderak">
+  <ion-card>
     <ion-card-header>
       <ion-card-title id="titulua">{{galdera.galdera}}</ion-card-title>
     </ion-card-header>
-    <ion-card-content class="centered">
+    <ion-card-content>
       <ion-img id="galderaIrudiak" src="assets/img/eguzkitze.png"></ion-img>
-      <ion-button size="large" color="jokatuBotoia" name="opt1" class="galderaBotoia1" expand="block" (click)="bidaliGalderak(1)">{{galdera.opt1_erantzuna}}</ion-button>
-    <ion-button size="large" color="jokatuBotoia" name="opt2" class="galderaBotoia2" expand="block" (click)="bidaliGalderak(2)">{{galdera.opt2}}</ion-button>
-    <ion-button size="large" color="jokatuBotoia" name="opt3" class="galderaBotoia3" expand="block" (click)="bidaliGalderak(3)">{{galdera.opt3}}</ion-button>
     </ion-card-content>
-    
   </ion-card>
-  <ion-button expand="block" class="hurrengoa"  (click)="hurrengoa()"><span>Hurrengo galdera</span></ion-button>
+  <ion-button size="large" color="jokatuBotoia" name="opt1" class="galderaBotoia gB1" expand="block" (click)="bidaliGalderak(1)">{{galdera.opt1_erantzuna}}</ion-button>
+  <ion-button size="large" color="jokatuBotoia" name="opt2" class="galderaBotoia gB2" expand="block" (click)="bidaliGalderak(2)">{{galdera.opt2}}</ion-button>
+  <ion-button size="large" color="jokatuBotoia" name="opt3" class="galderaBotoia gB3" expand="block" (click)="bidaliGalderak(3)">{{galdera.opt3}}</ion-button>
+  <ion-button expand="block" color="jokatuBotoia" class="hurrengoa" (click)="hurrengoa()"><span>Hurrengo galdera</span></ion-button>
 </ion-content>
 
 

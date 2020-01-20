@@ -4,6 +4,10 @@ ion-header{
 ion-item-divider{
     min-height: 1px !important;
 }
+ion-content{
+    --ion-background-color: rgb(30, 30, 30);
+    --ion-color: rgb(200, 200, 200);
+}
 .erabiltzailea{
     color: white;
     font-weight: bold;
@@ -12,7 +16,7 @@ ion-card-content{
     display: flex;
     align-items: center;
     padding-right: 30%;
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(60, 60, 60);
 }
 ion-card-content ion-img{
     width: 50px;

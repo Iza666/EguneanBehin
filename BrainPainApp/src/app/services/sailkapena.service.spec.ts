@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DenaService } from './dena.service';
+import { SailkapenaService } from './sailkapena.service';
 
-describe('DenaService', () => {
+describe('SailkapenaService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DenaService = TestBed.get(DenaService);
+    const service: SailkapenaService = TestBed.get(SailkapenaService);
     expect(service).toBeTruthy();
   });
 });

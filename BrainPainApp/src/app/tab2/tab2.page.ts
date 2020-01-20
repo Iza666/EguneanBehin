@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DenaService } from './../services/dena.service';
+import { SailkapenaService } from '../services/sailkapena.service';
 import { Sailkapena } from './../modeloak/sailkapena';
 
 @Component({
@@ -9,7 +9,7 @@ import { Sailkapena } from './../modeloak/sailkapena';
 })
 export class Tab2Page {
 
-  constructor(private DenaService : DenaService) {}
+  constructor(private SailkapenaService : SailkapenaService) {}
   id = 0;
   ngOnInit() {
     this.getSailkapena();
@@ -17,7 +17,7 @@ export class Tab2Page {
   sailkapena : Sailkapena[];
 
   getSailkapena(): void{
-    this.DenaService.getSailkapena()
+    this.SailkapenaService.getSailkapena()
     .subscribe(data => {this.sailkapena = data},
        error=> console.log("Error ::"+ error));
   }

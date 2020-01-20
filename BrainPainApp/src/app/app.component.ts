@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/auth.service';
 import { AlertService } from './services/alert.service';
 import { Platform, NavController } from '@ionic/angular';
+import { timer } from 'rxjs/Observable/timer'
 
 
 @Component({
@@ -13,6 +14,9 @@ import { Platform, NavController } from '@ionic/angular';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+  showSplash = true;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -28,9 +32,8 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.authService.getToken();
-      
-
+      this.authService.getToken();  
+      timer(3000).subscribe(() => this.showSplash = false);
     });
   }
   logout() {

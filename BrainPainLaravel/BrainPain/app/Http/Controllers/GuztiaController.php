@@ -11,29 +11,19 @@ class GuztiaController extends Controller
 {
     public function index()
     {
-        $hamargaldera = Galdera::orderByRaw("RAND()")->get()->take(1);
-        return response()->json($hamargaldera, 200);
+        $galdera = Galdera::orderByRaw("RAND()")->get()->take(1);
+        //$erantzunRandom = DB::table('galderak')->0select('opt1_erantzuna', 'opt2', 'opt3')->where('id', $galdera->id);
+
+        //echo $erantzunRandom;
+        return response()->json($galdera, 200);
     }
     public function GetRanking()
     {
         $sailkapena = DB::table('partidak')
-        ->join('users',function($join){
-            $join->on('partidak.id_erabiltzailea','=','users.id');
-        })
-        ->from('partidak')
-        ->select('*')
-        ->orderBy('partidak.puntuak','DESC')
-        ->get();
-        /* $array = json_decode($json, true);
-        foreach ($array as $row) {
-            if (isset($result[$row['size']])) {
-                $result[$row['size']] += $row['stock'];
-            } else {
-                $result[$row['size']] = (int)$row['stock'];
-            }
-        }
-        ksort($result);
-        var_export($result); */
+                    ->join('users', 'users.id', '=', 'partidak.id_erabiltzailea')
+                    ->select('id_erabiltzailea', 'users.id', 'users.erabiltzailea', DB::raw('sum(puntuak) as Totala'))
+                    ->groupBy('id_erabiltzailea', 'users.id', 'users.erabiltzailea')->get();
+        
         return response()->json($sailkapena, 200);
     }
     //Galdera sartu BADABIL, partidak taularekin kombinatu behar da 
@@ -113,4 +103,30 @@ class GuztiaController extends Controller
             $request = json_decode($postdata);
         }
     }
+    public function getUser(){
+        $user = auth()->user()->id;
+
+    }
+
+    /*
+
+
+            JONARE
+
+    public function getUserTaldea(Request $request) 
+      {
+         //$name = $request->input('name');
+-        $user = $request->user();
++        //$user = $request->user();
+        
+-        $user = Auth::user();
++        $user = auth()->user()->id;
++
++        //$user2 = AuthController.user;
+ 
+         //echo ($user);
+          $userTaldea = DB::table('taldeak_user')->where('taldea_id','=','2')->get();
+
+
+          */
 }

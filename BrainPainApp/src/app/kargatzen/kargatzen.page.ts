@@ -9,12 +9,24 @@ import { timer } from 'rxjs/observable/timer';
   styleUrls: ['./kargatzen.page.scss'],
 })
 export class KargatzenPage implements OnInit {
+  entered=false;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    timer(3000).subscribe( x =>{
-      this.router.navigate(['/galdera']);
-    });
+    
+  }
+
+  ionViewDidEnter(){
+    if(this.entered)
+    {
+      this.router.navigate(['/tabs/tab1']);
+    }
+    else{
+      this.entered = true;
+      timer(3000).subscribe( x =>{
+        this.router.navigate(['/galdera']);
+      });
+    }
   }
 }

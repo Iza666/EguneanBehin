@@ -78,7 +78,7 @@ class GuztiaController extends Controller
                        where('id_erabiltzailea',$request->id_erabiltzailea)->
                        where('data',$request->data)->get();
             $denbora = explode(":", $request->zenbat_denbora);
-            $minutuakSegundutan = floor(($denbora[0] / 60) % 60);
+            $minutuakSegundutan = floor($denbora[0] * 60);
             $totala = $minutuakSegundutan + $denbora[1];
             $puntuFinal = $request->puntuak / $totala;
             DB::table('partidak')->

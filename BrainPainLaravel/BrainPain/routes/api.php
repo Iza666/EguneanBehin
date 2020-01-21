@@ -42,5 +42,9 @@ Route::post('insertMatch', 'GuztiaController@insertMatch');
 Route::post('changeProfile', 'GuztiaController@changeProfile');
 Route::post('logedPersonMatch', 'GuztiaController@logedPersonMatch');
 
+Route::group([
+'middleware' => 'auth:api'], function() {
+Route::get('usertaldea', 'TaldeakController@getUserTaldea' );
+});
 
 

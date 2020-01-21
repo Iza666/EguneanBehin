@@ -24,6 +24,16 @@ class GuztiaController extends Controller
         ->select('*')
         ->orderBy('partidak.puntuak','DESC')
         ->get();
+        /* $array = json_decode($json, true);
+        foreach ($array as $row) {
+            if (isset($result[$row['size']])) {
+                $result[$row['size']] += $row['stock'];
+            } else {
+                $result[$row['size']] = (int)$row['stock'];
+            }
+        }
+        ksort($result);
+        var_export($result); */
         return response()->json($sailkapena, 200);
     }
     //Galdera sartu BADABIL, partidak taularekin kombinatu behar da 

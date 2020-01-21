@@ -9,12 +9,17 @@ import { timer } from 'rxjs/observable/timer';
   styleUrls: ['./kargatzen.page.scss'],
 })
 export class KargatzenPage implements OnInit {
-  entered=false;
+  entered = false;
+  gorde: boolean = false;
+  denbora: number = 3;
+  erlojua = 3;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    
+    timer(500).subscribe( ahh =>{
+      this.startTimer();
+    });
   }
 
   ionViewDidEnter(){
@@ -24,9 +29,26 @@ export class KargatzenPage implements OnInit {
     }
     else{
       this.entered = true;
-      timer(3000).subscribe( x =>{
-        this.router.navigate(['/galdera']);
+      timer(500).subscribe( x =>{
+        timer(3000).subscribe( ahh =>{
+          this.router.navigate(['/galdera']);
+        });
       });
     }
+  }
+  startTimer(){
+    setInterval(function(){
+      console.log(this.erlojua);
+      if(this.erlojua != '0'){
+        this.erlojua -= 1;
+        this.denbora = this.erlojua;
+        this.gorde = true;
+        console.log(""+this.erlojua);
+      }
+      else{
+        this.gorde = false;
+        console.log(this.erlojua);
+      }
+    }, 1000)
   }
 }

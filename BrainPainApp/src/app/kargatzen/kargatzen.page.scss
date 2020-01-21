@@ -1,11 +1,15 @@
 .background{
     --background: url('../../assets/img/Loading.png') 0 0/100% 100% no-repeat;
 }
-ion-spinner{
+ion-spinner, label{
     position: fixed;
     left: 50%;
     top: 53%;
     transform: translate(-50%, -47%);
+}
+label{
+    color: white;
+    font-size: 22px;
 }
 #spinner1{
     color: rgb(255, 43, 96);

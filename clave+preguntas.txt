@@ -11,6 +11,7 @@ ionic serve
 
 Preguntas:
 
--Partidas autoincrementales y enlazar con erabiltzaile galderak?? + puntos??
--Login penoso
+
 -Mirar opciones y deshabilitar cosas si no esta logeado
+-Poner id-erabiltzailea a la hora de insertar pregunta
+- problema update al finalizar partida

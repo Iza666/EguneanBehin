@@ -56,12 +56,20 @@ export class GalderaPage implements OnInit {
     )
   }
    count : number = 0;
-  hurrengoa(){
-
+  bidaliErantzuna(a: any){
     if(this.count!=10){
-
+      console.log("pidienmdo pregunta count != 10");
+      this.galderakService.bidaliErantzuna(this.galderak[0].id, a, this.respuesta.idPartida).subscribe(
+        respuesta => {
+          this.respuesta = respuesta;
+          this.galderak = [];
+          this.galderak.push(this.respuesta.galdera[0]);
+          console.log(this.galderak);
+          return this.respuesta;
+        }
+      )
       this.count++;
-      alert(this.count);
+      console.log(this.count);
     }
     else{
       alert("Partida amaitu da, dena gordetzen...");
@@ -69,17 +77,6 @@ export class GalderaPage implements OnInit {
       this.galderakService.bidaliAmaitutakoPartida(this.puntuak, this.user, this.minutes, this.seconds);
       this.router.navigateByUrl('');
     }
-  }
-  bidaliErantzuna(a: any){
-    console.log("pidienmdo pregunta");
-
-    this.galderakService.bidaliErantzuna(this.galderak[0].id, a,this.respuesta.idPartida).subscribe(
-      respuesta => {
-        this.respuesta = respuesta;
-        this.galderak.push(this.respuesta.galdera[0]);
-        console.log(this.galderak);
-      }
-    )
   }
 
   seconds : number = 0;

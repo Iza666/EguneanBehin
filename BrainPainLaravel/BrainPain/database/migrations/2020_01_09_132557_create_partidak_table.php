@@ -17,10 +17,10 @@ class CreatePartidakTable extends Migration
             $table->increments('id');
             $table->unsignedinteger('id_erabiltzailea');
             $table->foreign('id_erabiltzailea')->references('id')->on('users')->unsigned()->index();
-            $table->date('data');
-            $table->integer('puntuak');
-            $table->integer('zenbat_zuzen');
-            $table->string('zenbat_denbora');
+            $table->date('data')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->integer('puntuak')->default(0);
+            $table->integer('zenbat_zuzen')->default(0);
+            $table->string('zenbat_denbora')->default(0);
 
         });
     }

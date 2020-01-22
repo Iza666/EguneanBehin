@@ -67,4 +67,8 @@ class AuthController extends Controller
     {
         return response()->json($request->user());
     }
+    public function getId()
+    {
+        return $this->id;
+    }
 }

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Erabiltzaile_Galdera;
 use Illuminate\Http\Request;
 use App\Galdera;
 use App\User;
 use App\Partida;
 use DB;
+use Auth;
+
 
 class GuztiaController extends Controller
 {
@@ -30,14 +33,19 @@ class GuztiaController extends Controller
     //Galdera sartu BADABIL, partidak taularekin kombinatu behar da 
     public function insertQuestion(Request $request)
     {
-        DB::table('erabiltzaile_galderak')->insert(
-                ['id_erabiltzailea' => auth()->user()->id,
-                 'id_galdera' => $request->id_galdera,
-                 'id_partida' => $request->id_partida,
-                 'erantzuna' => $request->erantzuna]
-            );
-            $galdera = Galdera::orderByRaw("RAND()")->get()->take(1);
-            return response()->json($galdera, 200);
+        $Erabiltzaile_Galdera = new Erabiltzaile_Galdera();
+        $Erabiltzaile_Galdera->id_erabiltzailea =  3;
+        $Erabiltzaile_Galdera->id_galdera = $request->id_galdera;
+        $Erabiltzaile_Galdera->id_partida = $request->idPartida;
+        $Erabiltzaile_Galdera->erantzuna = $request->erantzuna;
+        $Erabiltzaile_Galdera->save();
+
+        $idPartida = $request->idPartida;
+        $galdera = Galdera::orderByRaw("RAND()")->get()->take(1);
+            $array = array(
+                'idPartida' => $idPartida,
+                'galdera' => $galdera);
+            return response()->json($array, 200);
     }
     //Partida sartu CLAAAAAAAAAAVE
     public function insertMatch()
@@ -66,7 +74,7 @@ class GuztiaController extends Controller
             );
         }
     }
-    public function logedPersonMatch(){
+    public function endedMatchInsert(){
         $postdata = file_get_contents("php://input");
         if (isset($postdata)) {
             $request = json_decode($postdata);

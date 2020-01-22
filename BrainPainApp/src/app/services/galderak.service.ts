@@ -51,21 +51,19 @@ export class GalderakService {
 
   puntuak :number = 0;
   datuak : Array<GalderaReply>;
-  bidaliErantzuna(id_galdera: number, erantzuna:number, id_partida: number) {
+  bidaliErantzuna(id_galdera: number, erantzuna:number, idPartida: number) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer"+" "+this.authService.token
     });
     console.log("Respondinedo  game with token"+ this.authService.token)
-    return this.http.post<GalderaReply[]>(this.envService.API_URL + 'insertQuestion', {id_galdera: id_galdera, erantzuna:erantzuna, id_partida: id_partida, headers: headers}
+    return this.http.post<GalderaReply[]>(this.envService.API_URL + 'insertQuestion', {id_galdera: id_galdera, erantzuna:erantzuna, idPartida: idPartida, headers: headers}
     ).pipe(
       tap(respuesta=> {
-        respuesta.forEach( ( x ) => {
-
-          this.datuak.push( x );
-      } );
+        var algo = respuesta[0];
+        return respuesta[0];
       }),
     );
-     }
+  }
   d = new Date();
   m = this.d.getUTCMinutes();
 

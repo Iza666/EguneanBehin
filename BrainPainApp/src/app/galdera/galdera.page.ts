@@ -27,7 +27,7 @@ export class GalderaPage implements OnInit {
   ngOnInit() {
 /*     this.getGalderak();
  */  }
-  galderak : Galdera[];
+  galderak : Galdera[] = [];
   user: User;
   puntuak : number = 0;
 
@@ -39,7 +39,7 @@ export class GalderaPage implements OnInit {
        error=> console.log("Error ::"+ error));
        return this.galderak;
   } */
-  galdera : Galdera;
+  galdera : any;
   ionViewWillEnter() {
     this.authService.user().subscribe(
       user => {
@@ -50,7 +50,7 @@ export class GalderaPage implements OnInit {
     this.galderakService.partidaSortu().subscribe(
       respuesta => {
         this.respuesta = respuesta;
-        this.galderak = this.respuesta.galdera[0];
+        this.galderak.push(this.respuesta.galdera[0]);
         console.log(this.galderak);
       }
     )
@@ -73,13 +73,13 @@ export class GalderaPage implements OnInit {
   bidaliErantzuna(a: any){
     console.log("pidienmdo pregunta");
 
-    this.galderakService.bidaliErantzuna(this.respuesta[0].galdera[0].id, a,this.respuesta[0].idPartida, ).subscribe(
+    this.galderakService.bidaliErantzuna(this.galderak[0].id, a,this.respuesta.idPartida).subscribe(
       respuesta => {
         this.respuesta = respuesta;
-        console.log(respuesta);
+        this.galderak.push(this.respuesta.galdera[0]);
+        console.log(this.galderak);
       }
     )
-   // this.hurrengoa(a);
   }
 
   seconds : number = 0;

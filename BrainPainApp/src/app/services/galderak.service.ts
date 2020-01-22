@@ -23,6 +23,8 @@ export class GalderakService {
 
   }
 
+
+  /////EGIN GABE
   bidaliAmaitutakoPartida(puntuak:number, user:User, min : number, secs: number){
     var dt = new Date();
     var time = min +":"+secs;
@@ -42,6 +44,11 @@ export class GalderakService {
           });
       document.getElementById("galdera").style.display="none";
   }
+
+
+
+
+
   puntuak :number = 0;
   datuak : Array<GalderaReply>;
   bidaliErantzuna(id_galdera: number, erantzuna:number, id_partida: number) {
@@ -49,7 +56,7 @@ export class GalderakService {
       'Authorization': "Bearer"+" "+this.authService.token
     });
     console.log("Respondinedo  game with token"+ this.authService.token)
-    return this.http.post<GalderaReply[]>(this.envService.API_URL + 'insertQuestion', { headers: headers, id_galdera: id_galdera, erantzuna:erantzuna, id_partida: id_partida}
+    return this.http.post<GalderaReply[]>(this.envService.API_URL + 'insertQuestion', {id_galdera: id_galdera, erantzuna:erantzuna, id_partida: id_partida, headers: headers}
     ).pipe(
       tap(respuesta=> {
         respuesta.forEach( ( x ) => {
@@ -64,6 +71,8 @@ export class GalderakService {
 
   h = this.d.getUTCHours();
 
+
+  //BADABIILL CLAVEE
   partidaSortu(){
     const headers = new HttpHeaders({
       'Authorization': "Bearer"+" "+this.authService.token

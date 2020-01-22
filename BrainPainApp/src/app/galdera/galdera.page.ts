@@ -74,7 +74,11 @@ export class GalderaPage implements OnInit {
     else{
       alert("Partida amaitu da, dena gordetzen...");
       alert(this.puntuak);
-      this.galderakService.bidaliAmaitutakoPartida(this.puntuak, this.user, this.minutes, this.seconds);
+      var dt = new Date();
+      var time = this.minutes +":"+this.seconds;
+      var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+      this.galderakService.bidaliAmaitutakoPartida(this.puntuak, d, this.minutes, this.seconds);
+      console.log("he hecho mierda");
       this.router.navigateByUrl('');
     }
   }

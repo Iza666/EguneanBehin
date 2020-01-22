@@ -19,7 +19,7 @@ Route::group(['middleware' => ['cors']], function () {
     });
     Route::resource('galderak', 'GuztiaController');
     Route::post('insertQuestion', 'GuztiaController@insertQuestion');
-    Route::post('logedPersonMatch', 'GuztiaController@endedMatchInsert');
+    Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert');
 
 
 

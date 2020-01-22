@@ -25,8 +25,25 @@ export class GalderakService {
 
 
   /////EGIN GABE
-  bidaliAmaitutakoPartida(puntuak:number, user:User, min : number, secs: number){
-    var dt = new Date();
+  bidaliAmaitutakoPartida(puntuak:number, d: string, min : number, secs: number){
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer"+" "+this.authService.token
+    });
+    console.log("Terminando with token"+ this.authService.token);
+    var time = min +":"+secs;
+    return this.http.post(this.envService.API_URL + 'endedMatchInsert', {puntuak: puntuak, zenbat_denbora: time, d: d, headers: headers }
+    ).pipe(
+      tap(respuesta=> {
+        var algo = respuesta[0];
+        console.log("He hecho la sentencia");
+        return respuesta[0];
+      }),
+    );
+
+
+
+
+    /* var dt = new Date();
     var time = min +":"+secs;
     var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
     let datuak = {"id":0,"id_erabiltzailea" : user.id, "data": d, "puntuak" : puntuak,"zenbat_zuzen": 4,"zenbat_denbora" : time};
@@ -42,7 +59,7 @@ export class GalderakService {
               resolve(data)
             })
           });
-      document.getElementById("galdera").style.display="none";
+      document.getElementById("galdera").style.display="none"; */
   }
 
 
@@ -55,7 +72,7 @@ export class GalderakService {
     const headers = new HttpHeaders({
       'Authorization': "Bearer"+" "+this.authService.token
     });
-    console.log("Respondinedo  game with token"+ this.authService.token)
+    console.log("Respondinedo  game with token"+ this.authService.token);
     return this.http.post<GalderaReply[]>(this.envService.API_URL + 'insertQuestion', {id_galdera: id_galdera, erantzuna:erantzuna, idPartida: idPartida, headers: headers}
     ).pipe(
       tap(respuesta=> {

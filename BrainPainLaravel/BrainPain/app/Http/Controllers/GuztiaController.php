@@ -74,31 +74,34 @@ class GuztiaController extends Controller
             );
         }
     }
-    public function endedMatchInsert(){
-        $postdata = file_get_contents("php://input");
-        if (isset($postdata)) {
-            $request = json_decode($postdata);
-            $partida = DB::table('partidak')->
+    public function endedMatchInsert(Request $request){
+            /* $partida = DB::table('partidak')->
                        select(DB::raw("*"))->
-                       where('id_erabiltzailea',$request->id_erabiltzailea)->
-                       where('data',$request->data)->get();
+                       where('id_erabiltzailea',auth()->user()->id)->
+                       where('data',$request->d)->get(); */
             $denbora = explode(":", $request->zenbat_denbora);
             $minutuakSegundutan = floor($denbora[0] * 60);
             $totala = $minutuakSegundutan + $denbora[1];
             $puntuFinal = $request->puntuak / $totala;
            
-            DB::table('partidak')->
-                where('id_erabiltzailea',$request->id_erabiltzailea)->
-                where('data',$request->data)->  
-                update([
-                    'zenbat_zuzen'=>$request->zenbat_zuzen,
-                    'zenbat_denbora' => $request->zenbat_denbora,
-                    'puntuak'=>$puntuFinal
-                    ]);
+            $partida = Partida::where('id_erabiltzailea',auth()->user()->id)->where('data',$request->d)->first();
+            $partida->puntuak = $puntuFinal;
+            return response()->json("done", 200);
 
-                 
+           /*  DB::table('partidak')->
+                where('id_erabiltzailea',auth()->user()->id)->
+                where('data',$request->d)->
+                update(['puntuak'=>$puntuFinal]); */
+           
+           /*  DB::table('partidak')->
+                where('id_erabiltzailea',auth()->user()->id)->
+                where('data',$request->d)->  
+                update(['zenbat_zuzen'=>$request->zenbat_zuzen]);
+            DB::table('partidak')->
+                where('id_erabiltzailea',auth()->user()->id)->
+                where('data',$request->d)->    
+                update(['zenbat_denbora'=>$request->zenbat_denbora]);   */
         }
-    }
     //Erabiltzailearen datuak hartuko ditu login egiterakoan eta partidak taulan komparatuz, egun horretako 
     //data badu ezin izango du jolastu eta true edo false bueltatuko du
     public function dailyMatchController(){

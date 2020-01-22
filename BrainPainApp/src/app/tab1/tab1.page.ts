@@ -41,7 +41,7 @@ export class Tab1Page implements OnInit {
         
       }
   partidaSortu(){
-    this.galderakService.partidaSortu(this.user);
+    this.galderakService.partidaSortu();
   }
   
   showAlert(){

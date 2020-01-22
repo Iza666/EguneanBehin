@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/modeloak/user';
 import { Galdera } from './../modeloak/galdera';
 import { Observable } from 'rxjs';
 import {GalderaPage} from 'src/app/galdera/galdera.page'
+import { AuthService } from './auth.service';
+import { EnvService } from './env.service';
+import { tap } from 'rxjs/operators';
+import { AlertService } from './alert.service';
+import { GalderaReply } from '../modeloak/galderaReply';
 
 
 
@@ -13,7 +18,10 @@ import {GalderaPage} from 'src/app/galdera/galdera.page'
 })
 export class GalderakService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService, private envService: EnvService, private alertService: AlertService) { 
+
+
+  }
 
   bidaliAmaitutakoPartida(puntuak:number, user:User, min : number, secs: number){
     var dt = new Date();
@@ -35,83 +43,39 @@ export class GalderakService {
       document.getElementById("galdera").style.display="none";
   }
   puntuak :number = 0;
-  bidaliGalderak(a: number, galderak: Galdera[], user: User) : number{
-    if(a == 1){
-      let datuak = {"id_erabiltzailea" : user.id, "id_galdera": galderak[0].id, "id_partida" : 1, "erantzuna": 1};
-      let options = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      };
-      var url = "http://localhost:8000/api/insertQuestion";
-      new Promise(resolve => {
-        this.http.post(url,JSON.stringify(datuak),options)
-           .subscribe(data => {
-             resolve(data)
-            })
-          });
-      document.getElementById("galdera").style.display="none";
-      this.puntuak +=500;
-      return this.puntuak;
-    }
-    if(a == 2){
-      let  datuak = {"id_erabiltzailea" : user.id, "id_galdera": galderak[0].id, "id_partida" : 1, "erantzuna": 2};
-      let options = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      };
-      var url = "http://localhost:8000/api/insertQuestion";
-      new Promise(resolve => {
-        this.http.post(url,JSON.stringify(datuak),options)
-           .subscribe(data => {
-             resolve(data)
-            })
-          });   
-          return this.puntuak;
-      }
-          
-    if(a == 3){
-      let  datuak = {"id_erabiltzailea" : user.id, "id_galdera": galderak[0].id, "id_partida" : 1, "erantzuna": 3};
-      let options = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      };
-      var url = "http://localhost:8000/api/insertQuestion";
-      new Promise(resolve => {
-        this.http.post(url,JSON.stringify(datuak),options)
-           .subscribe(data => {
-             resolve(data)
-            })
-          });
-          return this.puntuak;
-    }
-  }
-  getGalderak(): Observable<Galdera[]> { 	     
-    return this.http.get<Galdera[]>('http://127.0.0.1:8000/api/galderak');
-  }
+  datuak : Array<GalderaReply>;
+  bidaliErantzuna(id_galdera: number, erantzuna:number, id_partida: number) {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer"+" "+this.authService.token
+    });
+    console.log("Respondinedo  game with token"+ this.authService.token)
+    return this.http.post<GalderaReply[]>(this.envService.API_URL + 'insertQuestion', { headers: headers, id_galdera: id_galdera, erantzuna:erantzuna, id_partida: id_partida}
+    ).pipe(
+      tap(respuesta=> {
+        respuesta.forEach( ( x ) => {
+
+          this.datuak.push( x );
+      } );
+      }),
+    );
+     }
   d = new Date();
   m = this.d.getUTCMinutes();
 
   h = this.d.getUTCHours();
 
-  partidaSortu(user:User){
-    var dt = new Date();
-    var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
-    let datuak = {"id":0,"id_erabiltzailea" : user.id, "data": d, "puntuak" : 0, "zenbat_zuzen": 0,"zenbat_denbora" : 0};
-      let options = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      };
-      var url = "http://localhost:8000/api/insertMatch";
-      new Promise(resolve => {
-        this.http.post(url,JSON.stringify(datuak),options)
-            .subscribe(data => {
-              resolve(data)
-            })
-          });
-      document.getElementById("galdera").style.display="none";
+  partidaSortu(){
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer"+" "+this.authService.token
+    });
+    console.log("Creando game with token"+ this.authService.token)
+    return this.http.get<GalderaReply[]>(this.envService.API_URL + 'insertMatch', { headers: headers }
+    ).pipe(
+      tap(respuesta=> {
+      var algo = respuesta[0];
+        return respuesta[0];
+      }),
+    );
   }
+  
 }

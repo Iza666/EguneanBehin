@@ -77,7 +77,6 @@ export class GalderaPage implements OnInit {
       alert("Partida amaitu da, dena gordetzen...");
       alert(this.puntuak);
       var dt = new Date();
-      var time = this.minutes +":"+this.seconds;
       var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
       this.galderakService.bidaliAmaitutakoPartida(this.puntuak, d, this.minutes, this.seconds);
       console.log("he hecho mierda");
@@ -87,8 +86,7 @@ export class GalderaPage implements OnInit {
 
   seconds : number = 0;
   minutes : number = 0;
-
-startTimer(){
+  startTimer(){
     setInterval(function(){
       if(this.timer < 10 && this.timer != 0){
         this.seconds = "0"+ this.timer;

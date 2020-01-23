@@ -36,7 +36,6 @@ export class KargatzenPage implements OnInit {
   }
   startTimer(){
     var intervala = setInterval(function(){
-      console.log(this.erlojua);
       if(this.erlojua != -1){
         this.erlojua -= 1;
         this.denbora = this.erlojua;

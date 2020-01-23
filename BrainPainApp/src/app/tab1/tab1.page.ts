@@ -6,6 +6,8 @@ import { Platform, NavController } from '@ionic/angular';
 import { LoginPage } from '../auth/login/login.page';
 import { HttpClient } from '@angular/common/http';
 import {GalderakService} from '../services/galderak.service';
+import { Router } from '@angular/router'
+
 
 
 
@@ -21,7 +23,7 @@ export class Tab1Page implements OnInit {
   
   constructor(private authService: AuthService,
               private alertService: AlertService, private navController: NavController,
-              private http: HttpClient, private galderakService : GalderakService
+              private http: HttpClient, private galderakService : GalderakService, private router : Router
     ) { }
   user: User;
 
@@ -38,8 +40,17 @@ export class Tab1Page implements OnInit {
     }
   }
   ngDoCheck() {
-        
-      }
+    if(this.authService.isLoggedIn == true && this.user == null){
+      this.authService.user().subscribe(
+        user => {
+          this.user = user;
+          });
+          console.log(this.user);
+      //botoiak
+      var a = document.getElementById("buttons");
+      a.style.display="none";
+    }
+  }
   partidaSortu(){
     this.galderakService.partidaSortu();
   }
@@ -63,7 +74,9 @@ export class Tab1Page implements OnInit {
     return alert.present();
   }
   logout(){
-    this.authService.logout();
+    this.authService.storage.remove('token');
+    this.router.navigateByUrl('/tabs/tab1');
+    location.reload;
   }
 
 }

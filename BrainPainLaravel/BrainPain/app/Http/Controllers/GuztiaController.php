@@ -84,7 +84,7 @@ class GuztiaController extends Controller
             $totala = $minutuakSegundutan + $denbora[1];
             $puntuFinal = $request->puntuak / $totala;
            
-            $partida = Partida::where('id_erabiltzailea',auth()->user()->id)->where('data',$request->d)->first();
+            $partida = Partida::where('id_erabiltzailea',auth()->user()->id)->where('data',$request->idPartida)->first();
             $partida->puntuak = $puntuFinal;
             return response()->json("done", 200);
 

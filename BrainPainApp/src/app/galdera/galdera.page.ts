@@ -50,6 +50,7 @@ export class GalderaPage implements OnInit {
     this.galderakService.partidaSortu().subscribe(
       respuesta => {
         this.respuesta = respuesta;
+        console.log(this.respuesta);
         this.galderak.push(this.respuesta.galdera[0]);
         console.log(this.galderak);
       }

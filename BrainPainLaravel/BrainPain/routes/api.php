@@ -19,7 +19,7 @@ Route::group(['middleware' => ['cors']], function () {
     });
     Route::resource('galderak', 'GuztiaController');
     Route::post('insertQuestion', 'GuztiaController@insertQuestion');
-    Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert');
+    
 
 
 
@@ -53,5 +53,5 @@ Route::group([
     Route::get('usertaldea', 'TaldeakController@getUserTaldea' );
 
 });
-
+Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert');
 

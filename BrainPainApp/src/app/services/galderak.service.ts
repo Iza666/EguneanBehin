@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/modeloak/user';
 import { Galdera } from './../modeloak/galdera';
 import { Observable } from 'rxjs';
-import {GalderaPage} from 'src/app/galdera/galdera.page'
+import { GalderaPage } from 'src/app/galdera/galdera.page'
 import { AuthService } from './auth.service';
 import { EnvService } from './env.service';
 import { tap } from 'rxjs/operators';
@@ -18,27 +18,21 @@ import { GalderaReply } from '../modeloak/galderaReply';
 })
 export class GalderakService {
 
-  constructor(private http: HttpClient, private authService: AuthService, private envService: EnvService, private alertService: AlertService) { 
+  constructor(private http: HttpClient, private authService: AuthService, private envService: EnvService, private alertService: AlertService) {
 
 
   }
 
 
   /////EGIN GABE
-  bidaliAmaitutakoPartida(puntuak:number, d: string, min : number, secs: number){
+  bidaliAmaitutakoPartida(puntuak: number, d: string, min: number, secs: number, idPartida: number) {
+    console.log(puntuak + ' ' + d + ' ' + min + ' ' + secs + ' ' + idPartida)
     const headers = new HttpHeaders({
-      'Authorization': "Bearer"+" "+this.authService.token
+      'Authorization': "Bearer" + " " + this.authService.token
     });
-    console.log("Terminando with token"+ this.authService.token);
-    var time = min +":"+secs;
-    return this.http.post(this.envService.API_URL + 'endedMatchInsert', {puntuak: puntuak, zenbat_denbora: time, d: d, headers: headers }
-    ).pipe(
-      tap(respuesta=> {
-        var algo = respuesta[0];
-        console.log("He hecho la sentencia");
-        return respuesta[0];
-      }),
-    );
+    console.log("Terminando with token" + this.authService.token);
+    var time = min + ":" + secs;
+    this.http.post(this.envService.API_URL + 'endedMatchInsert', { puntuak: puntuak, zenbat_denbora: time, d: d, idPartida: idPartida, headers: headers });
 
 
 
@@ -66,21 +60,22 @@ export class GalderakService {
 
 
 
-  puntuak :number = 0;
-  datuak : Array<GalderaReply>;
-  bidaliErantzuna(id_galdera: number, erantzuna:number, idPartida: number) {
+  puntuak: number = 0;
+  datuak: Array<GalderaReply>;
+  bidaliErantzuna(id_galdera: number, erantzuna: number, idPartida: number) {
     const headers = new HttpHeaders({
-      'Authorization': "Bearer"+" "+this.authService.token
+      'Authorization': "Bearer" + " " + this.authService.token
     });
-    console.log("Respondinedo  game with token"+ this.authService.token);
-    return this.http.post<GalderaReply[]>(this.envService.API_URL + 'insertQuestion', {id_galdera: id_galdera, erantzuna:erantzuna, idPartida: idPartida, headers: headers}
+    console.log("Respondinedo  game with token" + this.authService.token);
+    return this.http.post<GalderaReply>(this.envService.API_URL + 'insertQuestion', { id_galdera: id_galdera, erantzuna: erantzuna, idPartida: idPartida, headers: headers }
     ).pipe(
-      tap(respuesta=> {
-        var algo = respuesta[0];
-        return respuesta[0];
+      tap(respuesta => {
+        console.log(respuesta)
       }),
     );
   }
+
+
   d = new Date();
   m = this.d.getUTCMinutes();
 
@@ -88,18 +83,16 @@ export class GalderakService {
 
 
   //BADABIILL CLAVEE
-  partidaSortu(){
+  partidaSortu(): Observable<GalderaReply> {
     const headers = new HttpHeaders({
-      'Authorization': "Bearer"+" "+this.authService.token
+      'Authorization': "Bearer" + " " + this.authService.token
     });
-    console.log("Creando game with token"+ this.authService.token)
-    return this.http.get<GalderaReply[]>(this.envService.API_URL + 'insertMatch', { headers: headers }
-    ).pipe(
-      tap(respuesta=> {
-      var algo = respuesta[0];
-        return respuesta[0];
-      }),
-    );
+    console.log("Creando game with token" + this.authService.token)
+    console.log()
+    return this.http.get<GalderaReply>(this.envService.API_URL + 'insertMatch', { headers: headers }).pipe(tap(
+      partida =>
+        console.log(partida)
+    ));
   }
-  
+
 }

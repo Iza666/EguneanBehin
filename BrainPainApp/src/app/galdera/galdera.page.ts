@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { animationFrameScheduler } from 'rxjs';
 import { Router } from '@angular/router'
-import {GalderakService} from '../services/galderak.service';
+import { GalderakService } from '../services/galderak.service';
 import { GalderaReply } from '../modeloak/galderaReply';
 import { Galdera } from '../modeloak/galdera';
 
@@ -16,89 +16,98 @@ import { Galdera } from '../modeloak/galdera';
   styleUrls: ['./galdera.page.scss'],
 })
 export class GalderaPage implements OnInit {
+
   public timer = 0;
-  respuesta: GalderaReply[];
-  constructor(private SailkapenaService : SailkapenaService,
-    private authService: AuthService, private http: HttpClient,private router: Router, private galderakService : GalderakService){
-      this.startTimer();
-    }
+
+  respuesta: GalderaReply = {
+    idPartida: 0,
+    galdera: []
+  };
 
   id = 0;
+
+  galderak: Galdera[] = [];
+  user: User;
+  puntuak: number = 0;
+
+  galdera: any;
+
+  count: number = 0;
+
+  seconds: number = 0;
+  minutes: number = 0;
+
+  constructor(private SailkapenaService: SailkapenaService,
+    private authService: AuthService, private http: HttpClient, private router: Router, private galderakService: GalderakService) {
+    this.startTimer();
+  }
+
   ngOnInit() {
 /*     this.getGalderak();
  */  }
-  galderak : Galdera[] = [];
-  user: User;
-  puntuak : number = 0;
 
+  /*  //Galderak lortzeko metodoa
+   getGalderak(): Galdera[]{
+     this.galderakService.getGalderak()
+     .subscribe(data => {this.galderak = data},
+        error=> console.log("Error ::"+ error));
+        return this.galderak;
+   } */
 
- /*  //Galderak lortzeko metodoa
-  getGalderak(): Galdera[]{
-    this.galderakService.getGalderak()
-    .subscribe(data => {this.galderak = data},
-       error=> console.log("Error ::"+ error));
-       return this.galderak;
-  } */
-  galdera : any;
   ionViewWillEnter() {
     this.authService.user().subscribe(
       user => {
         this.user = user;
-        console.log(user); 
+        console.log(user);
       }
     );
-    this.galderakService.partidaSortu().subscribe(
-      respuesta => {
-        this.respuesta = respuesta;
-        console.log(this.respuesta);
-        this.galderak.push(this.respuesta.galdera[0]);
-        console.log(this.galderak);
-      }
+    this.galderakService.partidaSortu().subscribe(function(respuesta) {
+      console.log(respuesta);
+      this.respuesta=respuesta;
+      this.galderak = respuesta.galdera;
+    }.bind(this)
     )
   }
-   count : number = 0;
-  bidaliErantzuna(a: any){
-    if(this.count!=10){
-      console.log("pidienmdo pregunta count != 10");
+
+  bidaliErantzuna(a: number) {
+    if (this.count != 9) {
+      console.log("pidiendo pregunta count != 10");
       //[0] kendu eta ipini this.respuesta.idPartida izan behar da
-      this.galderakService.bidaliErantzuna(this.galderak[0].id, a, this.respuesta.idPartida).subscribe(  
+      this.galderakService.bidaliErantzuna(this.galderak[0].id, a, this.respuesta.idPartida).subscribe(
         respuesta => {
           this.respuesta = respuesta;
-          this.galderak = [];
-          this.galderak.push(this.respuesta.galdera[0]);
+          this.galderak = respuesta.galdera;
           console.log(this.galderak);
           return this.respuesta;
         }
       )
       this.count++;
-      console.log(this.count);
     }
-    else{
+    else {
       alert("Partida amaitu da, dena gordetzen...");
-      alert(this.puntuak);
+      console.log(this.puntuak);
       var dt = new Date();
-      var time = this.minutes +":"+this.seconds;
+      var time = this.minutes + ":" + this.seconds;
       var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
-      this.galderakService.bidaliAmaitutakoPartida(this.puntuak, d, this.minutes, this.seconds);
+      this.galderakService.bidaliAmaitutakoPartida(this.puntuak, d, this.minutes, this.seconds, this.respuesta.idPartida);
       console.log("he hecho mierda");
       this.router.navigateByUrl('');
     }
   }
 
-  seconds : number = 0;
-  minutes : number = 0;
 
-startTimer(){
-    setInterval(function(){
-      if(this.timer < 10 && this.timer != 0){
-        this.seconds = "0"+ this.timer;
+
+  startTimer() {
+    setInterval(function () {
+      if (this.timer < 10 && this.timer != 0) {
+        this.seconds = "0" + this.timer;
         ++this.timer;
       }
 
-      else if(this.timer != 60){
+      else if (this.timer != 60) {
         this.seconds = this.timer++;
       }
-      else{
+      else {
         this.timer = 0;
         this.seconds = 0;
         ++this.minutes;

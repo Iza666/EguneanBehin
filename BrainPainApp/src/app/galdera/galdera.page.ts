@@ -60,7 +60,8 @@ export class GalderaPage implements OnInit {
   bidaliErantzuna(a: any){
     if(this.count!=10){
       console.log("pidienmdo pregunta count != 10");
-      this.galderakService.bidaliErantzuna(this.galderak[0].id, a, this.respuesta.idPartida).subscribe(
+      //[0] kendu eta ipini this.respuesta.idPartida izan behar da
+      this.galderakService.bidaliErantzuna(this.galderak[0].id, a, this.respuesta.idPartida).subscribe(  
         respuesta => {
           this.respuesta = respuesta;
           this.galderak = [];

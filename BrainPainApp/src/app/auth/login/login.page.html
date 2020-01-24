@@ -5,7 +5,8 @@
     </ion-button>
     <ion-title>Login</ion-title>
   </ion-toolbar>
-</ion-header><ion-item-divider color="laranjaLarrosa"></ion-item-divider>
+</ion-header>
+<ion-item-divider color="laranjaLarrosa"></ion-item-divider>
 
 <ion-content padding>
   <form #form="ngForm" (ngSubmit)="login(form)" method="post">
@@ -20,7 +21,7 @@
       <ion-input type="password" ngModel name="password" class="password-input"></ion-input>
     </ion-item>
   
-    <p text-center class="textua textua-margin">Ez zara pasahitzaz gogoratzen?</p>
+    <p text-center class="textua textua-margin"></p>
   
     <ion-button id="laranja" type="submit" expand="full" color="jokatuBotoia" >Logeatu</ion-button>
   </form>

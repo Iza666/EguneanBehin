@@ -39,7 +39,6 @@ export class LoginPage implements OnInit {
   login(form: NgForm) {
     this.authService.login(form.value.email, form.value.password).subscribe(
       data => {
-      //  this.alertService.presentToast("Logged In");
 
       },
       error => {

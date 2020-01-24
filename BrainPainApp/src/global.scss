@@ -34,6 +34,9 @@
       --ion-color-base: var(--ion-color-icon-selected) !important;
     }
   }
+  ion-toolbar{
+    --ion-background-color: rgb(20, 20, 20);
+  }
 }
 .ion-color-laranjaLarrosa {
   --ion-color-base: var(--ion-color-laranjaLarrosa) !important;

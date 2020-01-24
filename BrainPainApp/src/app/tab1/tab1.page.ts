@@ -23,16 +23,7 @@ export class Tab1Page implements OnInit {
   user: User;
 
   ngOnInit() {
-    if(this.authService.isLoggedIn == true && this.user == null){
-      this.authService.user().subscribe(
-        user => {
-          this.user = user;
-          });
-          console.log(this.user);
-      //botoiak
-      var a = document.getElementById("buttons");
-      a.style.display="none";
-    }
+    
   }
   ngDoCheck() {
     if(this.authService.isLoggedIn == true && this.user == null){

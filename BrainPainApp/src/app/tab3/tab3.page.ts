@@ -9,7 +9,6 @@ import { AlertService } from 'src/app/services/alert.service';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-
   user: User;
 
   constructor(private authService: AuthService,
@@ -18,19 +17,14 @@ export class Tab3Page {
   ngOnInit() {
     
   }
-  ionViewWillEnter() {
-    this.authService.user().subscribe(
-      user => {
-        this.user = user;
-        console.log(user); 
-        if(this.authService.isLoggedIn == true){
-          var a = document.getElementById("buttons");
-          a.style.display="none";
+  ngDoCheck() {
+    if(this.authService.isLoggedIn == true && this.user == null){
+      this.authService.user().subscribe(
+        user => {
+          this.user = user;
+          console.log(user);
         }
-        else{
-    
-        }
-      }
-    );
+      );
+    }
   }
 }

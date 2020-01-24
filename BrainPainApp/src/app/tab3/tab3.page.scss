@@ -1,6 +1,3 @@
-ion-header{
-    --ion-background-color: rgb(20, 20, 20);
-}
 #profila{
     text-align: center;
     color: rgb(200, 200, 200);
@@ -19,10 +16,6 @@ ion-content{
     position: fixed;
     left: 50%;
     transform: translate(-50%, 10%);
-    /*position: fixed;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -65%);*/
     width:150px;
     height:150px;
     border-radius: 50%;
@@ -38,7 +31,6 @@ ion-content{
     position: fixed;
     left: 50%;
     transform: translate(190%, 60%);
-
     --box-shadow:none;
     border-radius: 50%;
     --border-radius: 50%;
@@ -47,24 +39,32 @@ ion-content{
     background-origin: border-box;
     background-clip: content-box, border-box;
 }
-li{
-    list-style-type: none;
-}
 ion-text{
+    width: 85%;
     position: fixed;
     left: 50%;
     background-color: rgb(30, 30, 30);
     color: rgb(230, 230, 230);
     font-size: 1.35em;
 }
-#erabiltzaileaText{
-    transform: translate(-50%, 150%);
+ion-text p{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
-/*#tlfText{
-    transform: translate(-50%, 250%);
-}*/
+#userSpan{
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#erabiltzaileaText{
+    top: 60%;
+    transform: translate(-50%, -0%);
+}
 #emailText{
-    transform: translate(-50%, 180%);
+    top: 75%;
+    transform: translate(-50%, -25%);
 }
 #emailText span{
     color: rgb(150, 150, 150);
@@ -72,7 +72,8 @@ ion-text{
 #icon1{
     position: fixed;
     left: 50%;
-    transform: translate(175%, 340%);
+    top: 60%;   
+    transform: translate(175%, -60%);
     --box-shadow:none;
     border-radius: 50px;
     --border-radius: 50px;

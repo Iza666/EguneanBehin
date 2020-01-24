@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <ion-title id="profila">
-      <img alt="logo" height="40"   src="assets/img/BrainPainLogo.png" >
       Profila
     </ion-title>
   </ion-toolbar>
@@ -16,26 +15,17 @@
     <ion-button color="jokatuBotoia" id="argazkiBtn">
       <ion-icon name="camera"></ion-icon>
     </ion-button>
-    <li class="lista">
-      <ion-card-title class="erabiltzailea">
-        <!--{{ user["erabiltzailea"]  }}-->
-      </ion-card-title>
-    </li>
     
-    <ion-text id="erabiltzaileaText">
-      <p>{{ user["erabiltzailea"]  }}</p>
+    <ion-text id="erabiltzaileaText" *ngIf="user != undefined">
+      <span id="userSpan">{{ user["erabiltzailea"]  }}</span>
     </ion-text>
     <ion-button color="jokatuBotoia" id="icon1">
       <ion-icon name="md-create"></ion-icon>
     </ion-button>
 
-    <!--<ion-text id="tlfText">
-      <p>Tlf: <span>666 666 666</span></p>      
-    </ion-text> -->
-
-    <ion-text id="emailText">
+    <ion-text id="emailText" *ngIf="user != undefined">
       <p>
-        E-mail: <span>{{ user["email"]  }}</span>
+        E-mail:<BR> <span>{{ user["email"] }}</span>
       </p>
     </ion-text>
 

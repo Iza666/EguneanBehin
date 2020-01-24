@@ -71,6 +71,9 @@ export class GalderaPage implements OnInit {
 
   bidaliErantzuna(a: number) {
     if (this.count != 9) {
+      if(a == 1){
+        this.puntuak += 500;
+      }
       console.log("pidiendo pregunta count != 10");
       //[0] kendu eta ipini this.respuesta.idPartida izan behar da
       this.galderakService.bidaliErantzuna(this.galderak[0].id, a, this.respuesta.idPartida).subscribe(
@@ -89,7 +92,10 @@ export class GalderaPage implements OnInit {
       var dt = new Date();
       var time = this.minutes + ":" + this.seconds;
       var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
-      this.galderakService.bidaliAmaitutakoPartida(this.puntuak, d, this.minutes, this.seconds, this.respuesta.idPartida);
+      this.galderakService.bidaliAmaitutakoPartida(this.puntuak, d, this.minutes, this.seconds, this.respuesta.idPartida).subscribe(
+        respuesta => {
+          console.log(respuesta);
+      });
       console.log("he hecho mierda");
       this.router.navigateByUrl('');
     }

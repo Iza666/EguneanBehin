@@ -9,11 +9,6 @@ import {GalderakService} from '../services/galderak.service';
 import { Router } from '@angular/router'
 
 
-
-
-
-
-
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -75,8 +70,7 @@ export class Tab1Page implements OnInit {
   }
   logout(){
     this.authService.storage.remove('token');
-    this.router.navigateByUrl('/tabs/tab1');
-    location.reload;
-  }
+    window.location.reload();
+  } 
 
 }

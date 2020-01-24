@@ -32,8 +32,14 @@ export class GalderakService {
     });
     console.log("Terminando with token" + this.authService.token);
     var time = min + ":" + secs;
-    this.http.post(this.envService.API_URL + 'endedMatchInsert', { puntuak: puntuak, zenbat_denbora: time, d: d, idPartida: idPartida, headers: headers });
+    console.log("prepost");
 
+    return this.http.post<string>(this.envService.API_URL + 'endedMatchInsert', { puntuak: puntuak, zenbat_denbora: time, d: d, idPartida: idPartida, headers: headers }).pipe(
+      tap(respuesta => {
+        console.log(respuesta)
+        console.log("he hecho mierda serv");
+      }),
+    );
 
 
 

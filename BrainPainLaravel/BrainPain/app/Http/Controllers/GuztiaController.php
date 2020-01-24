@@ -75,30 +75,26 @@ class GuztiaController extends Controller
             );
         }
     }
+
+    //ERABILTZAILEAREN ID-A SARTZEA FALTA DA
     public function endedMatchInsert(Request $request)
     {
-         /*$partidaa = DB::table('partidak')->
-                       select(DB::raw("*"))->
-                       where('id_erabiltzailea',auth()->user()->id)->
-                       where('data',$request->d)->get(); */
         $denbora = explode(":", $request->zenbat_denbora);
         $minutuakSegundutan = floor($denbora[0] * 60);
         $totala = $minutuakSegundutan + $denbora[1];
         $puntuFinal = $request->puntuak / $totala;
-        echo $request->idPartida;
 
-        /* $partida = Partida::where('id_erabiltzailea', auth()->user()->id)->where('id', $request->idPartida)->first();
-        $partida->puntuak = $puntuFinal; */
-/* 
-         DB::table('partidak')->where('id_erabiltzailea', 3)->where('data', $request->d)->update(['puntuak' => 9]); */
+        Partida::where('id_erabiltzailea',3)->
+            where('data',$request->d)->    
+            update(['zenbat_denbora'=>$request->zenbat_denbora]);   
+        Partida::where('id_erabiltzailea',3)->
+            where('data',$request->d)->    
+            update(['puntuak'=>$puntuFinal]);
+        Partida::where('id_erabiltzailea',3)->
+            where('data',$request->d)->    
+            update(['zenbat_zuzen'=>$request->zenbat_zuzen]);
+        return response()->json($puntuFinal, 200);
 
-        /*  DB::table('partidak')->
-                where('id_erabiltzailea',auth()->user()->id)->
-                where('data',$request->d)->  
-                update(['zenbat_zuzen'=>$request->zenbat_zuzen]);*/
-            Partida::where('id_erabiltzailea',3)->
-                where('data',$request->d)->    
-                update(['zenbat_denbora'=>$request->zenbat_denbora]);   
     }
     //Erabiltzailearen datuak hartuko ditu login egiterakoan eta partidak taulan komparatuz, egun horretako 
     //data badu ezin izango du jolastu eta true edo false bueltatuko du

@@ -29,8 +29,8 @@ ion-content{
     width: 3.8em;
     height: 3.8em;
     position: fixed;
-    left: 50%;
-    transform: translate(190%, 60%);
+    left: 80%;
+    transform: translate(-20%, 0%);
     --box-shadow:none;
     border-radius: 50%;
     --border-radius: 50%;
@@ -60,7 +60,7 @@ ion-text p{
 }
 #erabiltzaileaText{
     top: 60%;
-    transform: translate(-50%, -0%);
+    transform: translate(-50%, -40%);
 }
 #emailText{
     top: 75%;
@@ -71,9 +71,9 @@ ion-text p{
 }
 #icon1{
     position: fixed;
-    left: 50%;
+    left: 80%;
     top: 60%;   
-    transform: translate(175%, -60%);
+    transform: translate(-20%, -55%);
     --box-shadow:none;
     border-radius: 50px;
     --border-radius: 50px;

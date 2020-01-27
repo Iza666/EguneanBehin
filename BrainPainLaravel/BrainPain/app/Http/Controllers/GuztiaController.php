@@ -34,7 +34,7 @@ class GuztiaController extends Controller
     public function insertQuestion(Request $request)
     {
         $Erabiltzaile_Galdera = new Erabiltzaile_Galdera();
-        $Erabiltzaile_Galdera->id_erabiltzailea =  3;
+        $Erabiltzaile_Galdera->id_erabiltzailea =  1;
         $Erabiltzaile_Galdera->id_galdera = $request->id_galdera;
         $Erabiltzaile_Galdera->id_partida = $request->idPartida;
         $Erabiltzaile_Galdera->erantzuna = $request->erantzuna;
@@ -84,13 +84,13 @@ class GuztiaController extends Controller
         $totala = $minutuakSegundutan + $denbora[1];
         $puntuFinal = $request->puntuak / $totala;
 
-        Partida::where('id_erabiltzailea',3)->
+        Partida::where('id_erabiltzailea', 1)->
             where('data',$request->d)->    
             update(['zenbat_denbora'=>$request->zenbat_denbora]);   
-        Partida::where('id_erabiltzailea',3)->
+        Partida::where('id_erabiltzailea',1)->
             where('data',$request->d)->    
             update(['puntuak'=>$puntuFinal]);
-        Partida::where('id_erabiltzailea',3)->
+        Partida::where('id_erabiltzailea',1)->
             where('data',$request->d)->    
             update(['zenbat_zuzen'=>$request->zenbat_zuzen]);
         return response()->json($puntuFinal, 200);

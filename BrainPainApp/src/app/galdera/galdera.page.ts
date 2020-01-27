@@ -36,6 +36,8 @@ export class GalderaPage implements OnInit {
 
   seconds: number = 0;
   minutes: number = 0;
+  erantzuna: string;
+  optzioRandom: string[] = [];
 
   constructor(private SailkapenaService: SailkapenaService,
     private authService: AuthService, private http: HttpClient, private router: Router, private galderakService: GalderakService) {
@@ -65,21 +67,25 @@ export class GalderaPage implements OnInit {
       console.log(respuesta);
       this.respuesta=respuesta;
       this.galderak = respuesta.galdera;
+      //llamar a metodo que haga random de las respuestas
+      this.erantzunRandom();
     }.bind(this)
     )
   }
 
   bidaliErantzuna(a: number) {
     if (this.count != 9) {
-      if(a == 1){
+      if(this.erantzuna == this.optzioRandom[a]){
         this.puntuak += 500;
       }
       console.log("pidiendo pregunta count != 10");
-      //[0] kendu eta ipini this.respuesta.idPartida izan behar da
       this.galderakService.bidaliErantzuna(this.galderak[0].id, a, this.respuesta.idPartida).subscribe(
         respuesta => {
           this.respuesta = respuesta;
           this.galderak = respuesta.galdera;
+          this.erantzuna = this.galderak[0].opt1_erantzuna;
+          //llamar a metodo que haga random de las respuestas
+          this.erantzunRandom();
           console.log(this.galderak);
           return this.respuesta;
         }
@@ -99,6 +105,20 @@ export class GalderaPage implements OnInit {
       console.log("he hecho mierda");
       this.router.navigateByUrl('');
     }
+  }
+
+  erantzunRandom(){
+    this.optzioRandom = [this.galderak[0].opt1_erantzuna, this.galderak[0].opt2, this.galderak[0].opt3];
+    this.optzioRandom = this.shuffleArray();
+  }
+  shuffleArray() : string[]{
+    for (var i = this.optzioRandom.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = this.optzioRandom[i];
+        this.optzioRandom[i] = this.optzioRandom[j];
+        this.optzioRandom[j] = temp;
+    }
+    return this.optzioRandom;
   }
 
 

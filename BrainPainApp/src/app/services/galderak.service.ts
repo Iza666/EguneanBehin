@@ -25,8 +25,8 @@ export class GalderakService {
 
 
   /////EGIN GABE
-  bidaliAmaitutakoPartida(puntuak: number, d: string, min: number, secs: number, idPartida: number) {
-    console.log(puntuak + ' ' + d + ' ' + min + ' ' + secs + ' ' + idPartida)
+  bidaliAmaitutakoPartida(puntuak: number, d: string, min: number, secs: number, idPartida: number, zenbatZuzen: number) {
+    console.log(puntuak + ' ' + d + ' ' + min + ' ' + secs + ' ' + idPartida + ' ' + zenbatZuzen);
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token
     });
@@ -34,7 +34,7 @@ export class GalderakService {
     var time = min + ":" + secs;
     console.log("prepost");
 
-    return this.http.post<string>(this.envService.API_URL + 'endedMatchInsert', { puntuak: puntuak, zenbat_denbora: time, d: d, idPartida: idPartida, headers: headers }).pipe(
+    return this.http.post<string>(this.envService.API_URL + 'endedMatchInsert', { puntuak: puntuak, zenbat_denbora: time, d: d, idPartida: idPartida, zenbat_zuzen: zenbatZuzen },{ headers: headers}).pipe(
       tap(respuesta => {
         console.log(respuesta)
         console.log("he hecho mierda serv");
@@ -73,7 +73,7 @@ export class GalderakService {
       'Authorization': "Bearer" + " " + this.authService.token
     });
     console.log("Respondinedo  game with token" + this.authService.token);
-    return this.http.post<GalderaReply>(this.envService.API_URL + 'insertQuestion', { id_galdera: id_galdera, erantzuna: erantzuna, idPartida: idPartida, headers: headers }
+    return this.http.post<GalderaReply>(this.envService.API_URL + 'insertQuestion', { id_galdera: id_galdera, erantzuna: erantzuna, idPartida: idPartida }, { headers: headers }
     ).pipe(
       tap(respuesta => {
         console.log(respuesta)

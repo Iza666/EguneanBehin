@@ -18,7 +18,6 @@ Route::group(['middleware' => ['cors']], function () {
         return $request->user();
     });
     Route::resource('galderak', 'GuztiaController');
-    Route::post('insertQuestion', 'GuztiaController@insertQuestion');
     
 
 
@@ -40,18 +39,15 @@ Route::group([
 Route::group([
     'middleware' => 'auth:api'
   ], function() {
+      //TODAS LAS RUTAS QUE REQUIEREN LOGIN
     Route::get('insertMatch', 'GuztiaController@insertMatch');
+    Route::post('insertQuestion', 'GuztiaController@insertQuestion');
+    Route::get('usertaldea', 'TaldeakController@getUserTaldea' );
+    Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert');
+    Route::post('changeProfile', 'GuztiaController@changeProfile');
+    Route::get('ranking', 'GuztiaController@getranking');
 
 
   });
-Route::get('ranking', 'GuztiaController@getranking');
-Route::post('changeProfile', 'GuztiaController@changeProfile');
 
-
-Route::group([
-'middleware' => 'auth:api'], function() {
-    Route::get('usertaldea', 'TaldeakController@getUserTaldea' );
-
-});
-Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert');
 

@@ -8,19 +8,11 @@ use App\Galdera;
 use App\User;
 use App\Partida;
 use DB;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 
 class GuztiaController extends Controller
 {
-    /* public function index()
-    {
-        $galdera = Galdera::orderByRaw("RAND()")->get()->take(1);
-        //$erantzunRandom = DB::table('galderak')->0select('opt1_erantzuna', 'opt2', 'opt3')->where('id', $galdera->id);
-
-        //echo $erantzunRandom;
-        return response()->json($galdera, 200);
-    } */
     public function GetRanking()
     {
         $sailkapena = DB::table('partidak')
@@ -34,7 +26,7 @@ class GuztiaController extends Controller
     public function insertQuestion(Request $request)
     {
         $Erabiltzaile_Galdera = new Erabiltzaile_Galdera();
-        $Erabiltzaile_Galdera->id_erabiltzailea =  1;
+        $Erabiltzaile_Galdera->id_erabiltzailea =  auth()->user()->id;
         $Erabiltzaile_Galdera->id_galdera = $request->id_galdera;
         $Erabiltzaile_Galdera->id_partida = $request->idPartida;
         $Erabiltzaile_Galdera->erantzuna = $request->erantzuna;
@@ -105,10 +97,7 @@ class GuztiaController extends Controller
             $request = json_decode($postdata);
         }
     }
-    public function getUser()
-    {
-        $user = auth()->user()->id;
-    }
+
 
     /*
 

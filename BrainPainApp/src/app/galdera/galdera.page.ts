@@ -38,6 +38,7 @@ export class GalderaPage implements OnInit {
   minutes: number = 0;
   erantzuna: string;
   optzioRandom: string[] = [];
+  zenbatZuzen: number = 0;
 
   constructor(private SailkapenaService: SailkapenaService,
     private authService: AuthService, private http: HttpClient, private router: Router, private galderakService: GalderakService) {
@@ -77,6 +78,7 @@ export class GalderaPage implements OnInit {
     if (this.count != 9) {
       if(this.erantzuna == this.optzioRandom[a]){
         this.puntuak += 500;
+        this.zenbatZuzen += 1;
       }
       console.log("pidiendo pregunta count != 10");
       this.galderakService.bidaliErantzuna(this.galderak[0].id, a, this.respuesta.idPartida).subscribe(
@@ -98,7 +100,7 @@ export class GalderaPage implements OnInit {
       var dt = new Date();
       var time = this.minutes + ":" + this.seconds;
       var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
-      this.galderakService.bidaliAmaitutakoPartida(this.puntuak, d, this.minutes, this.seconds, this.respuesta.idPartida).subscribe(
+      this.galderakService.bidaliAmaitutakoPartida(this.puntuak, d, this.minutes, this.seconds, this.respuesta.idPartida, this.zenbatZuzen).subscribe(
         respuesta => {
           console.log(respuesta);
       });

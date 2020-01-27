@@ -19,7 +19,7 @@
     <ion-text id="erabiltzaileaText" *ngIf="user != undefined">
       <span id="userSpan">{{ user["erabiltzailea"]  }}</span>
     </ion-text>
-    <ion-button color="jokatuBotoia" id="icon1">
+    <ion-button (click)="aldatuizena()" color="jokatuBotoia" id="icon1">
       <ion-icon name="md-create"></ion-icon>
     </ion-button>
 

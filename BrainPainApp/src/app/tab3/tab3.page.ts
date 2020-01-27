@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/modeloak/user';
 import { AlertService } from 'src/app/services/alert.service';
-
+import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -12,7 +13,7 @@ export class Tab3Page {
   user: User;
 
   constructor(private authService: AuthService,
-    private alertService: AlertService) {}
+    private alertService: AlertService,private alertCtrl: AlertController) {}
   
   ngOnInit() {
     
@@ -27,4 +28,23 @@ export class Tab3Page {
       );
     }
   }
-}
+
+  async aldatuizena(){
+    let alert = await this.alertCtrl.create({
+      inputs: [
+        {
+          name: 'izena',
+          placeholder: 'izen berria idatzi'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Aldatu',
+          handler: data => {
+          }
+        }
+      ]
+    });
+    
+   await alert.present();
+}}

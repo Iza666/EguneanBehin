@@ -33,18 +33,30 @@ export class Tab3Page {
     let alert = await this.alertCtrl.create({
       inputs: [
         {
-          name: 'izena',
-          placeholder: 'izen berria idatzi'
+          name: 'erabiltzailea',
+          placeholder: 'Sartu erabiltzailea'
+        },
+        {
+          name: 'email',
+          placeholder: 'Sartu email-a'
+        },
+        {
+          name: 'argazkia',
+          placeholder: 'Sartu argazki bat'
         }
       ],
       buttons: [
         {
           text: 'Aldatu',
           handler: data => {
+            this.datuakAldatu(data.erabiltzailea, data.email);
           }
         }
       ]
     });
-    
    await alert.present();
-}}
+  }
+  datuakAldatu(erabiltzailea: string, email: string){
+    console.log(erabiltzailea+', '+email);
+  }
+}

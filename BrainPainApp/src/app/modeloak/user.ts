@@ -1,6 +1,6 @@
 export class User {
     id: number;
-    first_name: string;
-    last_name: string;
+    erabiltzailea: string;
     email: string;
+    argazkia: string;
 }

@@ -30,7 +30,6 @@ export class GalderakService {
   }
 
 
-  /////EGIN GABE
   bidaliAmaitutakoPartida(puntuak: number, d: string, min: number, secs: number, idPartida: number, zenbatZuzen: number) {
     console.log(puntuak + ' ' + d + ' ' + min + ' ' + secs + ' ' + idPartida + ' ' + zenbatZuzen);
     const headers = new HttpHeaders({
@@ -43,7 +42,6 @@ export class GalderakService {
     return this.http.post<string>(this.envService.API_URL + 'endedMatchInsert', { puntuak: puntuak, zenbat_denbora: time, d: d, idPartida: idPartida, zenbat_zuzen: zenbatZuzen },{ headers: headers}).pipe(
       tap(respuesta => {
         console.log(respuesta)
-        console.log("he hecho mierda serv");
       }),
     );
 

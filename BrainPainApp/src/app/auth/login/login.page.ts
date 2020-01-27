@@ -39,10 +39,13 @@ export class LoginPage implements OnInit {
   login(form: NgForm) {
     this.authService.login(form.value.email, form.value.password).subscribe(
       data => {
-
+        console.log(data);
       },
       error => {
         console.log(error);
+        if(error != null){
+          this.alertService.presentToast("Kontu hau ez da existitzen, errejistratu mesedez.")
+        }
       },
       () => {
         this.dismissLogin();

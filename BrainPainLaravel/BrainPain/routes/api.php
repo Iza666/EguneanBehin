@@ -43,12 +43,14 @@ Route::group([
     Route::get('insertMatch', 'GuztiaController@insertMatch');
     Route::post('insertQuestion', 'GuztiaController@insertQuestion');
     Route::get('usertaldea', 'TaldeakController@getUserTaldea' );
-    Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert');
-    Route::post('changeProfile', 'GuztiaController@changeProfile');
+    Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert'); 
+    Route::post('aldatuProfila', 'GuztiaController@aldatuProfila');
+
     
   });
   Route::get('jokatuta', 'GuztiaController@getjokatuta');
   Route::get('ranking', 'GuztiaController@getranking');
+
 
 
 

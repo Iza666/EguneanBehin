@@ -74,22 +74,16 @@ class GuztiaController extends Controller
         );
         return response()->json($array, 200);
     }
-    //Profila aldatu PROVISIONAL
-    public function changeProfile()
+    public function aldatuProfila(Request $request)
     {
-        $postdata = file_get_contents("php://input");
-        if (isset($postdata)) {
-            $request = json_decode($postdata);
-            User::find($request->id)->update(
-                [
-                    'erabiltzailea' => $request->erabiltzailea,
-                    'email' => $request->email,
-                ]
-            );
-        }
+        DB::table('users')
+            ->where('id_erabiltzailea', auth()->user()->id)
+            ->update(['erabiltzailea'=>$request->erabiltzailea])  
+            /* ->update(['email'=>$request->erabiltzailea])
+            ->update(['argazkia'=>$request->erabiltzailea]) */;
+            return response()->json("aldatuta", 200);
     }
 
-    //ERABILTZAILEAREN ID-A SARTZEA FALTA DA
     public function endedMatchInsert(Request $request)
     {
         $denbora = explode(":", $request->zenbat_denbora);
@@ -97,13 +91,13 @@ class GuztiaController extends Controller
         $totala = $minutuakSegundutan + $denbora[1];
         $puntuFinal = $request->puntuak / $totala;
 
-        Partida::where('id_erabiltzailea', 1)->
+        Partida::where('id_erabiltzailea', auth()->user()->id)->
             where('data',$request->d)->    
             update(['zenbat_denbora'=>$request->zenbat_denbora]);   
-        Partida::where('id_erabiltzailea',1)->
+        Partida::where('id_erabiltzailea',auth()->user()->id)->
             where('data',$request->d)->    
             update(['puntuak'=>$puntuFinal]);
-        Partida::where('id_erabiltzailea',1)->
+        Partida::where('id_erabiltzailea',auth()->user()->id)->
             where('data',$request->d)->    
             update(['zenbat_zuzen'=>$request->zenbat_zuzen]);
         return response()->json($puntuFinal, 200);

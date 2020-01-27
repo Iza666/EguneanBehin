@@ -17,7 +17,7 @@
     </div></ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-button id="jokatu" [routerLink]="['/kargatzen']" color="laranjaLarrosa" expand="block" (click)="partidaSortu()" [disabled]="user == undefined">Jokatu</ion-button>
+      <ion-button id="jokatu" [routerLink]="['/kargatzen']" color="laranjaLarrosa" expand="block" (click)="partidaSortu()" [disabled]="user == undefined || jokatuta == true">Jokatu</ion-button>
     </ion-card-content>
   </ion-card>
   <!-- Bigarren txartela-->

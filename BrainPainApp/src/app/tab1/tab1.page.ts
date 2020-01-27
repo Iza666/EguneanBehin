@@ -21,21 +21,27 @@ export class Tab1Page implements OnInit {
               private http: HttpClient, private galderakService : GalderakService, private router : Router
     ) { }
   user: User;
+  jokatuta: boolean = true;
 
   ngOnInit() {
     
   }
   ngDoCheck() {
     if(this.authService.isLoggedIn == true && this.user == null){
+      var a = document.getElementById("buttons");
       this.authService.user().subscribe(
         user => {
           this.user = user;
-          });
+          a.style.display="none";
+          this.checkJokatuta();
+        });
           console.log(this.user);
-      //botoiak
-      var a = document.getElementById("buttons");
-      a.style.display="none";
     }
+  }
+  checkJokatuta(){
+    this.galderakService.checkJokatutaService()
+    .subscribe(data => {this.jokatuta = data}, error => console.log("Error ::"+ error));
+    console.log(this.jokatuta);
   }
   partidaSortu(){
     this.galderakService.partidaSortu();

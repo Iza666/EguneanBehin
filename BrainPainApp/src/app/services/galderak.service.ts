@@ -23,6 +23,12 @@ export class GalderakService {
 
   }
 
+  //JOKATU AHAL DU GURE ERABILTZAILE MAITEAAAAAAK?!?!?!
+  urlJokatuta = 'http://127.0.0.1:8000/api/jokatuta';
+  checkJokatutaService(){
+    return this.http.get<boolean>(this.urlJokatuta);
+  }
+
 
   /////EGIN GABE
   bidaliAmaitutakoPartida(puntuak: number, d: string, min: number, secs: number, idPartida: number, zenbatZuzen: number) {

@@ -45,9 +45,10 @@ Route::group([
     Route::get('usertaldea', 'TaldeakController@getUserTaldea' );
     Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert');
     Route::post('changeProfile', 'GuztiaController@changeProfile');
-    Route::get('ranking', 'GuztiaController@getranking');
-
-
+    
   });
+  Route::get('jokatuta', 'GuztiaController@getjokatuta');
+  Route::get('ranking', 'GuztiaController@getranking');
+
 
 

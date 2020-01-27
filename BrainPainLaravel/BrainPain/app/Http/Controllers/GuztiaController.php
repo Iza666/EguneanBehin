@@ -9,10 +9,31 @@ use App\User;
 use App\Partida;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use carbon;
 
 
 class GuztiaController extends Controller
 {
+    public function GetJokatuta()
+    {
+        $time = Carbon\Carbon::now();
+        $date = $time->toDateTimeString();
+        $eguna = explode(" ",$time);
+        //$user = auth()->user()->id;
+        $azkenPartida = DB::table('partidak')->select('data')->where('id_erabiltzailea', "=", 6)->orderBy('data', 'desc')->first();
+        //$azkenPartida = "2020-01-27";
+        if($azkenPartida != null){
+            if($eguna[0] == $azkenPartida->data ){
+                return response()->json(true, 200);
+            }
+            else{
+                return response()->json(false, 200);
+            }
+        }
+        else{
+            return response()->json(false, 200);
+        }
+    }
     public function GetRanking()
     {
         $sailkapena = DB::table('partidak')

@@ -77,10 +77,14 @@ class GuztiaController extends Controller
     public function aldatuProfila(Request $request)
     {
         DB::table('users')
-            ->where('id_erabiltzailea', auth()->user()->id)
-            ->update(['erabiltzailea'=>$request->erabiltzailea])  
-            /* ->update(['email'=>$request->erabiltzailea])
-            ->update(['argazkia'=>$request->erabiltzailea]) */;
+            ->where('id', auth()->user()->id)
+            ->update(['erabiltzailea'=>$request->erabiltzailea]);  
+        DB::table('users')
+            ->where('id', auth()->user()->id)
+            ->update(['email'=>$request->email]);
+        DB::table('users')
+            ->where('id', auth()->user()->id)
+            ->update(['argazkia'=>$request->argazkia]);
             return response()->json("aldatuta", 200);
     }
 

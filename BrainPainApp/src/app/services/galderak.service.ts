@@ -44,26 +44,6 @@ export class GalderakService {
         console.log(respuesta)
       }),
     );
-
-
-
-    /* var dt = new Date();
-    var time = min +":"+secs;
-    var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
-    let datuak = {"id":0,"id_erabiltzailea" : user.id, "data": d, "puntuak" : puntuak,"zenbat_zuzen": 4,"zenbat_denbora" : time};
-      let options = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      };
-      var url = "http://localhost:8000/api/logedPersonMatch";
-      new Promise(resolve => {
-        this.http.post(url,JSON.stringify(datuak),options)
-            .subscribe(data => {
-              resolve(data)
-            })
-          });
-      document.getElementById("galdera").style.display="none"; */
   }
 
 

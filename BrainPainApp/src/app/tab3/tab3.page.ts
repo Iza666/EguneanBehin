@@ -31,7 +31,7 @@ export class Tab3Page {
   }
 
   async aldatuizena(){
-    if(this.user.argazkia == "0"){
+    if(this.user.argazkia == "a"){
       this.user.argazkia ="";
     }
     let alerta = await this.alertCtrl.create({
@@ -72,6 +72,11 @@ export class Tab3Page {
   }
   datuakAldatu(erabiltzailea: string, email: string, argazkia: string){
     console.log("Metodoan nago");
-    this.erabiltzaileakService.profilaAldatu(erabiltzailea, email, argazkia);
+    this.erabiltzaileakService.profilaAldatu(erabiltzailea, email, argazkia).subscribe(
+      respuesta => {
+        console.log(respuesta);
+        window.location.reload();
+        this.alertService.presentToast("Aldatuta, eguneratzen...")
+      });
   }
 }

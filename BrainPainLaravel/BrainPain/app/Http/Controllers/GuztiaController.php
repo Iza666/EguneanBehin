@@ -14,16 +14,15 @@ use carbon;
 
 class GuztiaController extends Controller
 {
-    public function GetJokatuta()
+    public function GetJokatuta(Request $request)
     {
         $time = Carbon\Carbon::now();
         $date = $time->toDateTimeString();
-        $eguna = explode(" ",$time);
-        //$user = auth()->user()->id;
-        $azkenPartida = DB::table('partidak')->select('data')->where('id_erabiltzailea', "=", 6)->orderBy('data', 'desc')->first();
-        //$azkenPartida = "2020-01-27";
-        if($azkenPartida != null){
-            if($eguna[0] == $azkenPartida->data ){
+        $eguna = explode(" ",$date);
+        $user = auth()->user();
+        $azkenPartida = DB::table('partidak')->select('data')->where('id_erabiltzailea', "=", $user->id)->orderBy('data', 'desc')->first();
+        if($azkenPartida != null || $azkenPartida != NULL){
+            if($eguna[0] == $azkenPartida->data){
                 return response()->json(true, 200);
             }
             else{

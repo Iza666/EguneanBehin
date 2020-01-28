@@ -24,9 +24,16 @@ export class GalderakService {
   }
 
   //JOKATU AHAL DU GURE ERABILTZAILE MAITEAAAAAAK?!?!?!
-  urlJokatuta = 'http://127.0.0.1:8000/api/jokatuta';
   checkJokatutaService(){
-    return this.http.get<boolean>(this.urlJokatuta);
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer" + " " + this.authService.token
+    });
+
+    return this.http.get<boolean>(this.envService.API_URL + 'jokatuta', { headers: headers }).pipe(
+      tap(respuesta => {
+        console.log(respuesta)
+      }),
+    );
   }
 
 

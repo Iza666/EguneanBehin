@@ -22,6 +22,7 @@ export class Tab1Page implements OnInit {
     ) { }
   user: User;
   jokatuta: boolean = true;
+  jokatutaChecked: boolean = false;
 
   ngOnInit() {
     
@@ -33,15 +34,18 @@ export class Tab1Page implements OnInit {
         user => {
           this.user = user;
           a.style.display="none";
-          this.checkJokatuta();
         });
-          console.log(this.user);
+        console.log(this.user);
+        this.checkJokatuta();
     }
   }
   checkJokatuta(){
-    this.galderakService.checkJokatutaService()
-    .subscribe(data => {this.jokatuta = data}, error => console.log("Error ::"+ error));
-    console.log(this.jokatuta);
+    if(!this.jokatutaChecked){
+      this.jokatutaChecked = true;
+      this.galderakService.checkJokatutaService()
+      .subscribe(data => {this.jokatuta = data}, error => console.log("Error ::"+ error));
+      console.log(this.jokatuta);
+    }
   }
   partidaSortu(){
     this.galderakService.partidaSortu();

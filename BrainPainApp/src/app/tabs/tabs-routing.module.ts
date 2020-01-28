@@ -38,6 +38,26 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'tabPartidak',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../tabPartidak/tabPartidak.module').then(m => m.TabPartidakPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tabTaldeak',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../tabTaldeak/tabTaldeak.module').then(m => m.TabTaldeakPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

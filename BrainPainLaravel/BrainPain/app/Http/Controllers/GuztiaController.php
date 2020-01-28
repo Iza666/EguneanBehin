@@ -112,6 +112,11 @@ class GuztiaController extends Controller
             $request = json_decode($postdata);
         }
     }
+    public function partidakLortu(){
+        $denak = DB::table('partidak')->where('id_erabiltzailea', auth()->user()->id)->get();
+        return response()->json($denak, 200);
+
+    }
 
 
     /*

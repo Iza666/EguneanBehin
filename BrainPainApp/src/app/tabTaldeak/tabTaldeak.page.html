@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title id="profila">
+      Taldeak
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-item-divider color="laranjaLarrosa"></ion-item-divider>
+
+<ion-content >
+  <!-- *ngIf="user != undefined" -->
+    <ion-avatar>
+      <ion-img class="avatarArgazkia" src="assets/img/eguzkitze.png"></ion-img>
+    </ion-avatar>
+    <!--irudia igo-->
+    <input type="file" id="fileLoader" #fileLoader name="files" title="Load File" hidden />
+    <ion-button color="jokatuBotoia" id="argazkiBtn" (click)="presentActionSheet(fileLoader)">
+      <ion-icon name="camera"></ion-icon>
+    </ion-button>
+    
+    <ion-text id="erabiltzaileaText" *ngIf="user != undefined">
+      <span id="userSpan">{{ user["erabiltzailea"]  }}</span>
+    </ion-text>
+    <ion-button (click)="aldatuizena()" color="jokatuBotoia" id="icon1">
+      <ion-icon name="md-create"></ion-icon>
+    </ion-button>
+
+    <ion-text id="emailText" *ngIf="user != undefined">
+      <p>
+        E-mail:<BR> <span>{{ user["email"] }}</span>
+      </p>
+    </ion-text>
+
+</ion-content>
+
+
+
+
+
+  <!-- <ion-item lines="full">
+    <ion-icon slot="start" name="moon"></ion-icon>
+    <ion-label>
+      Itxura iluna jarri
+    </ion-label>
+    <ion-toggle color="dark" checked="false" id="toggle" (click)='darkMode()'></ion-toggle>
+  </ion-item> -->
+

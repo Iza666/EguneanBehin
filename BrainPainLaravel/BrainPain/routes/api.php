@@ -18,10 +18,6 @@ Route::group(['middleware' => ['cors']], function () {
         return $request->user();
     });
     Route::resource('galderak', 'GuztiaController');
-    
-
-
-
 });
 Route::group([
     'prefix' => 'auth'
@@ -46,6 +42,7 @@ Route::group([
     Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert'); 
     Route::post('aldatuProfila', 'GuztiaController@aldatuProfila');
     Route::get('jokatuta', 'GuztiaController@getjokatuta');
+    Route::post('partidakLortu', 'GuztiaController@partidakLortu');
   });
   Route::get('ranking', 'GuztiaController@getranking');
 

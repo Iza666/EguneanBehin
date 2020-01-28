@@ -12,7 +12,9 @@
     <ion-avatar>
       <ion-img class="avatarArgazkia" src="assets/img/eguzkitze.png"></ion-img>
     </ion-avatar>
-    <ion-button color="jokatuBotoia" id="argazkiBtn">
+    <!--irudia igo-->
+    <input type="file" id="fileLoader" #fileLoader name="files" title="Load File" hidden />
+    <ion-button color="jokatuBotoia" id="argazkiBtn" (click)="presentActionSheet(fileLoader)">
       <ion-icon name="camera"></ion-icon>
     </ion-button>
     

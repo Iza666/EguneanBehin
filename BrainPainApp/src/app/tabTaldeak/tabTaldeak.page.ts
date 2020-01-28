@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/modeloak/user';
+import { Taldea } from 'src/app/modeloak/taldea';
+
 import { AlertService } from 'src/app/services/alert.service';
 import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { AlertController } from '@ionic/angular';
@@ -19,9 +21,6 @@ export class TabTaldeakPage {
     private alertService: AlertService,private alertCtrl: AlertController, private taldeakService: TaldeakService) {}
   
   ngOnInit() {
-    
-  }
-  ngDoCheck() {
     if(this.authService.isLoggedIn == true && this.user == null){
       this.authService.user().subscribe(
         user => {
@@ -30,6 +29,10 @@ export class TabTaldeakPage {
         }
       );
     }
+    this.taldeaLortu();
+  }
+  ngDoCheck() {
+    
   }
 
   async gehituTaldea(){
@@ -40,11 +43,7 @@ export class TabTaldeakPage {
           name: 'izena',
           placeholder: 'Sartu taldearen izena'
         },
-        {
-          name: 'partaide1',
-          placeholder: 'Sartu partaidea'
-        }
-        ,
+        
         {
           name: 'partaide2',
           placeholder: 'Sartu partaidea'
@@ -69,20 +68,27 @@ export class TabTaldeakPage {
         {
           text: 'Listo!',
           handler: data => {
-            this.taldeaSortu(data.izena, data.partaide1, data.partaide2, data.partaide3, data.partaide4, data.partaide5);
+            this.taldeaSortu(data.izena, data.partaide2, data.partaide3, data.partaide4, data.partaide5);
           }
         }
       ]
     });
    await alerta.present();
   }
-  taldeaSortu(izena: string, partaide1: string, partaide2: string, partaide3: string, partaide4: string, partaide5: string){
+  taldeak : Taldea[] = [];
+  taldeaSortu(izena: string, partaide2: string, partaide3: string, partaide4: string, partaide5: string){
     console.log("Metodoan nago");
-    this.taldeakService.taldeaSortu(izena, partaide1, partaide2, partaide3, partaide4, partaide5).subscribe(
+    this.taldeakService.taldeaSortu(izena, partaide2, partaide3, partaide4, partaide5).subscribe(
       respuesta => {
         console.log(respuesta);
-        window.location.reload();
+        this.taldeak = respuesta;
         this.alertService.presentToast("Taldea sortuta, eguneratzen...")
+      });
+  }
+  taldeaLortu(){
+    this.taldeakService.taldeaLortu().subscribe(
+      respuesta => {
+        this.taldeak = respuesta;
       });
   }
 }

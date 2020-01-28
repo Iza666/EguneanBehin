@@ -7,7 +7,15 @@
 </ion-header>
 <ion-item-divider color="laranjaLarrosa"></ion-item-divider>
 
-<ion-content >
+<ion-content>
+  <ion-card *ngFor="let talde of taldeak; index as i;">
+    <ion-card-content>
+      <ion-card-title class="taldeIzena">{{talde.izena}}</ion-card-title>
+    </ion-card-content>
+  </ion-card>
+  
+
+
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button color="light" (click)="gehituTaldea()">
       <ion-icon name="add"></ion-icon>

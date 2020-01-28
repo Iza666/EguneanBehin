@@ -124,15 +124,20 @@ class GuztiaController extends Controller
     public function taldeaSortu(Request $request){
         $taldea = new Taldea();
         $taldea->izena = $request->izena;
-        $taldea->partaide1 = $request->partaide1;
+        $taldea->partaide1 = auth()->user()->erabiltzailea;
         $taldea->partaide2 = $request->partaide2;
         $taldea->partaide3 = $request->partaide3;
         $taldea->partaide4 = $request->partaide4;
         $taldea->partaide5 = $request->partaide5;
         $taldea->save();
 
-        $denak = Taldea::all();
+        $denak = Taldea::where('partaide1', auth()->user()->erabiltzailea)->get();
 
+        return response()->json($denak, 200);
+
+    }
+    public function taldeaLortu(){
+        $denak = DB::table('taldeak')->where('partaide1', auth()->user()->erabiltzailea)->get();
         return response()->json($denak, 200);
 
     }

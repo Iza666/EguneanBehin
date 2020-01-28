@@ -44,7 +44,7 @@ Route::group([
     Route::get('jokatuta', 'GuztiaController@getjokatuta');
     Route::get('partidakLortu', 'GuztiaController@partidakLortu');
     Route::post('taldeaSortu', 'GuztiaController@taldeaSortu');
-
+    Route::post('taldeaLortu', 'GuztiaController@taldeaLortu');
 
     
   });

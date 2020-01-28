@@ -8,28 +8,11 @@
 <ion-item-divider color="laranjaLarrosa"></ion-item-divider>
 
 <ion-content >
-  <!-- *ngIf="user != undefined" -->
-    <ion-avatar>
-      <ion-img class="avatarArgazkia" src="assets/img/eguzkitze.png"></ion-img>
-    </ion-avatar>
-    <!--irudia igo-->
-    <input type="file" id="fileLoader" #fileLoader name="files" title="Load File" hidden />
-    <ion-button color="jokatuBotoia" id="argazkiBtn" (click)="presentActionSheet(fileLoader)">
-      <ion-icon name="camera"></ion-icon>
-    </ion-button>
-    
-    <ion-text id="erabiltzaileaText" *ngIf="user != undefined">
-      <span id="userSpan">{{ user["erabiltzailea"]  }}</span>
-    </ion-text>
-    <ion-button (click)="aldatuizena()" color="jokatuBotoia" id="icon1">
-      <ion-icon name="md-create"></ion-icon>
-    </ion-button>
-
-    <ion-text id="emailText" *ngIf="user != undefined">
-      <p>
-        E-mail:<BR> <span>{{ user["email"] }}</span>
-      </p>
-    </ion-text>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="light" (click)="gehituTaldea()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
 

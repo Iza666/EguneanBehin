@@ -5,6 +5,9 @@ import { AlertService } from 'src/app/services/alert.service';
 import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { AlertController } from '@ionic/angular';
 import { PartidakService } from '../services/partidak.service';
+import { Partida } from './../modeloak/partida';
+
+
 @Component({
   selector: 'app-tabPartidak',
   templateUrl: 'tabPartidak.page.html',
@@ -31,12 +34,13 @@ export class TabPartidakPage {
       console.log(this.user);
     }
   } */
-
+  erabPartidak : Partida[] = [];
   async partidakLortu(){
     this.partidakService.partidakLortu().subscribe(
       respuesta => {
-        console.log(respuesta);
+        this.erabPartidak = respuesta;
         this.alertService.presentToast("Datuak lortuta")
+        console.log(this.erabPartidak);
     });
   }
 

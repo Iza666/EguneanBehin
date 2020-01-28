@@ -20,7 +20,7 @@ export class PartidakService {
       'Authorization': "Bearer" + " " + this.authService.token
     });
     console.log("Obteniendo partidas con token " + this.authService.token);
-    return this.http.post<Partida[]>(this.envService.API_URL + 'partidakLortu', { headers: headers }
+    return this.http.get<Partida[]>(this.envService.API_URL + 'partidakLortu', { headers: headers }
     ).pipe(
       tap(respuesta => {
         console.log(respuesta)

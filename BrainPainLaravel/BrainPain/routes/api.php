@@ -42,7 +42,11 @@ Route::group([
     Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert'); 
     Route::post('aldatuProfila', 'GuztiaController@aldatuProfila');
     Route::get('jokatuta', 'GuztiaController@getjokatuta');
-    Route::post('partidakLortu', 'GuztiaController@partidakLortu');
+    Route::get('partidakLortu', 'GuztiaController@partidakLortu');
+    Route::post('taldeaSortu', 'GuztiaController@taldeaSortu');
+
+
+    
   });
   Route::get('ranking', 'GuztiaController@getranking');
 

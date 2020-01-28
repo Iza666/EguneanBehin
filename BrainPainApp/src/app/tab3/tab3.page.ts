@@ -48,11 +48,6 @@ export class Tab3Page {
           name: 'email',
           value: this.user.email,
           placeholder: 'Sartu email-a'
-        },
-        {
-          name: 'argazkia',
-          value: this.user.argazkia,
-          placeholder: 'Sartu argazki bat'
         }
       ],
       buttons: [
@@ -65,16 +60,16 @@ export class Tab3Page {
         {
           text: 'ALDATU',
           handler: data => {
-            this.datuakAldatu(data.erabiltzailea, data.email, data.argazkia);
+            this.datuakAldatu(data.erabiltzailea, data.email);
           }
         }
       ]
     });
    await alerta.present();
   }
-  datuakAldatu(erabiltzailea: string, email: string, argazkia: string){
+  datuakAldatu(erabiltzailea: string, email: string){
     console.log("Metodoan nago");
-    this.erabiltzaileakService.profilaAldatu(erabiltzailea, email, argazkia).subscribe(
+    this.erabiltzaileakService.profilaAldatu(erabiltzailea, email).subscribe(
       respuesta => {
         console.log(respuesta);
         window.location.reload();

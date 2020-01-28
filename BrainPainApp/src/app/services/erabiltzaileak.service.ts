@@ -15,12 +15,12 @@ export class ErabiltzaileakService {
               private envService: EnvService) { }
 
 
-  profilaAldatu(erabiltzailea: string, email: string, argazkia: string) {
+  profilaAldatu(erabiltzailea: string, email: string) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token
     });
-    console.log(erabiltzailea + " " + email + " " + argazkia);
-    return this.http.post<string>(this.envService.API_URL + 'aldatuProfila', { erabiltzailea: erabiltzailea, email: email, argazkia: argazkia },{ headers: headers}).pipe(
+    console.log(erabiltzailea + " " + email);
+    return this.http.post<string>(this.envService.API_URL + 'aldatuProfila', { erabiltzailea: erabiltzailea, email: email},{ headers: headers}).pipe(
       tap(respuesta => {
         console.log(respuesta)
       }),

@@ -81,9 +81,6 @@ class GuztiaController extends Controller
         DB::table('users')
             ->where('id', auth()->user()->id)
             ->update(['email'=>$request->email]);
-        DB::table('users')
-            ->where('id', auth()->user()->id)
-            ->update(['argazkia'=>$request->argazkia]);
             return response()->json("aldatuta", 200);
     }
 

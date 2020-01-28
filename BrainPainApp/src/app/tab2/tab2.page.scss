@@ -1,9 +1,10 @@
 ion-item-divider{
     min-height: 1px !important;
 }
-ion-content{
+ion-content, ion-text{
     --ion-background-color: rgb(30, 30, 30);
     --ion-color: rgb(200, 200, 200);
+    color: rgb(230, 230, 230);
 }
 .erabiltzailea{
     color: white;
@@ -86,4 +87,22 @@ ion-button.button-disabled ion-img{
 }
 .brontzea{
     border: 2px solid #EF9536;
+}
+
+.ehun{
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    margin-bottom: 5%;
+}
+.zurePosizioaCard{
+    box-shadow: none;
+}
+.zurePosizioa{
+    background: none;
+}
+.itemDivider{
+    
+    min-height: 2px !important;
+    background-color: rgb(45, 45, 45);
 }

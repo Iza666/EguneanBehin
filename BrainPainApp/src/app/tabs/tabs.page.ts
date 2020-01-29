@@ -12,20 +12,4 @@ export class TabsPage {
 user:User;
   constructor(private authService: AuthService) {}
 
-  ngOnInit(){
-  }
-  ngAfterViewInit(){
-    /* if(this.authService.isLoggedIn == true && this.user == null){
-      alert("entro");
-      this.authService.user().subscribe(
-        user => {
-          this.user = user;
-          });
-          var profila = document.getElementById("profila");
-          profila.removeAttribute("disabled");
-      //disable  
-    }
-  }*/
-  
-}
 }

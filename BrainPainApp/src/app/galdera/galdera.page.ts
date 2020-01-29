@@ -46,17 +46,8 @@ export class GalderaPage implements OnInit {
   }
 
   ngOnInit() {
-/*     this.getGalderak();
- */  }
-
-  /*  //Galderak lortzeko metodoa
-   getGalderak(): Galdera[]{
-     this.galderakService.getGalderak()
-     .subscribe(data => {this.galderak = data},
-        error=> console.log("Error ::"+ error));
-        return this.galderak;
-   } */
-
+  }
+  //hasieran user objetua deklaratzeko logeatutako erabiltzailearen datuekin
   ionViewWillEnter() {
     this.authService.user().subscribe(
       user => {
@@ -64,16 +55,18 @@ export class GalderaPage implements OnInit {
         console.log(user);
       }
     );
+    //partida berria sortu ondoren galdera random bat bueltatzen du eta this.galderak-en gordetzen du
     this.galderakService.partidaSortu().subscribe(function(respuesta) {
       console.log(respuesta);
       this.respuesta=respuesta;
       this.galderak = respuesta.galdera;
-      //llamar a metodo que haga random de las respuestas
       this.erantzunRandom();
     }.bind(this)
     )
   }
 
+  //erantzundako galderaren erantzuna bidaltzen du datu basera, hau 9 biderrez egiten du eta 10.enean beste metodo bateri deitzen dio
+  //partidaren emaitzak gordetzeko partidak taulan
   bidaliErantzuna(a: number) {
     if (this.count != 9) {
       if(this.erantzuna == this.optzioRandom[a]){
@@ -86,7 +79,6 @@ export class GalderaPage implements OnInit {
           this.respuesta = respuesta;
           this.galderak = respuesta.galdera;
           this.erantzuna = this.galderak[0].opt1_erantzuna;
-          //llamar a metodo que haga random de las respuestas
           this.erantzunRandom();
           console.log(this.galderak);
           return this.respuesta;
@@ -108,11 +100,12 @@ export class GalderaPage implements OnInit {
       this.router.navigateByUrl('');
     }
   }
-
+  //erantzun posibleak shuffle egiten ditu
   erantzunRandom(){
     this.optzioRandom = [this.galderak[0].opt1_erantzuna, this.galderak[0].opt2, this.galderak[0].opt3];
     this.optzioRandom = this.shuffleArray();
   }
+  //erantzunak random izateko guk sortutako metodoa
   shuffleArray() : string[]{
     for (var i = this.optzioRandom.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -122,9 +115,7 @@ export class GalderaPage implements OnInit {
     }
     return this.optzioRandom;
   }
-
-
-
+  //partida hasi baino lehen erabiltzen dugun transizioaren timer-a
   startTimer() {
     setInterval(function () {
       if (this.timer < 10 && this.timer != 0) {

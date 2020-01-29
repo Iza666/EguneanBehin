@@ -22,18 +22,10 @@ export class TabPartidakPage {
     private alertService: AlertService,private alertCtrl: AlertController, private partidakService: PartidakService) {}
   
   ngOnInit() {
-/*     this.partidakLortu();
- */    this.erabiltzaileaLortu();
+    this.erabiltzaileaLortu();
   }
-  /* ngDoCheck() {
-    if(this.authService.isLoggedIn == true && this.user == null){
-      this.authService.user().subscribe(
-        user => {
-          this.user = user;
-        });
-      console.log(this.user);
-    }
-  } */
+  
+  //erabiltzaielaren partidak kargatzen ditu
   erabPartidak : Partida[] = [];
   async partidakLortu(){
     this.partidakService.partidakLortu().subscribe(
@@ -43,7 +35,7 @@ export class TabPartidakPage {
         console.log(this.erabPartidak);
     });
   }
-
+  //erabiltzailearen objetua eratzen du
   erabiltzaileaLortu(){
     if(this.authService.isLoggedIn == true && this.user == null){
       this.authService.user().subscribe(

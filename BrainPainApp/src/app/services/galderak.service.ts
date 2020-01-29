@@ -36,7 +36,7 @@ export class GalderakService {
     );
   }
 
-
+  //amaitutako partidaren datuak laravel-era bidaltzeko metodoa
   bidaliAmaitutakoPartida(puntuak: number, d: string, min: number, secs: number, idPartida: number, zenbatZuzen: number) {
     console.log(puntuak + ' ' + d + ' ' + min + ' ' + secs + ' ' + idPartida + ' ' + zenbatZuzen);
     const headers = new HttpHeaders({

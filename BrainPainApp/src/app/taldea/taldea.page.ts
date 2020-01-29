@@ -3,8 +3,6 @@ import { TaldeakService } from '../services/taldeak.service';
 import { ActivatedRoute } from '@angular/router';
 import { Taldea } from '../modeloak/taldea';
 import { SailkapenaService } from '../services/sailkapena.service';
-import { Sailkapena } from '../modeloak/sailkapena';
-import { Observable } from 'rxjs';
 import { Sailkapena_simple } from '../modeloak/sailkapena_simple';
 
 
@@ -24,12 +22,14 @@ export class TaldeaPage implements OnInit {
   }
   taldeIzena : string;
   taldea : Taldea;
+  //taldeen taldekideak lortzeko
   taldekideakLortu(){
     this.taldeakService.taldekideakLortu(this.taldeIzena).subscribe(
       respuesta => {
         this.taldea = respuesta;
     });
   }
+  //timer bat denbora baten ondoren dena exekutatzeko
   startCountdown(seconds){
     var counter = seconds;
   
@@ -46,6 +46,7 @@ export class TaldeaPage implements OnInit {
       };
     }, 1000);
   }
+  //html-a betetzen du taldekideen informazioarekin
   bete(){
     var a = document.getElementById("taldeIzena");
     a.innerHTML= this.taldea[0].izena;
@@ -64,11 +65,13 @@ export class TaldeaPage implements OnInit {
 
   sailkapena: Sailkapena_simple[] = [];
   zurePuntuak: number;
+  //taldekideen sailkapeneko datuak hartzen ditu
   erabiltzaileenSailkapenekoDatuak(){
     this.taldeakService.taldekidePuntuakLortu(this.taldea[0].partaide2, this.taldea[0].partaide3,this.taldea[0].partaide4,this.taldea[0].partaide5).subscribe(respuesta => {
       this.sailkapena = respuesta;
       console.log(this.sailkapena);
   });
+  //logeatutako erabiltzailearen datuak hartzen ditu
     this.sailkapenaService.getZurePuntuak()
       .subscribe(data => {this.zurePuntuak = data[0].Totala}
         );

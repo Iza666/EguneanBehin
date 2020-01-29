@@ -35,7 +35,7 @@ export class Tab3Page {
       }
     }
   }
-
+  //datuak aldatzeko agertzen den alert-a
   async aldatuizena(){
     if(this.user.argazkia == "a"){
       this.user.argazkia ="";
@@ -71,6 +71,7 @@ export class Tab3Page {
     });
    await alerta.present();
   }
+  //datuak aldatzen dituen metodoa, sartutako datuak zerbitzura bidaltzen ditu
   datuakAldatu(erabiltzailea: string, email: string){
     console.log("Metodoan nago");
     this.erabiltzaileakService.profilaAldatu(erabiltzailea, email).subscribe(

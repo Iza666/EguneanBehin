@@ -18,7 +18,7 @@ export class Tab2Page {
   id = 0;
 
   constructor(private authService: AuthService, private SailkapenaService : SailkapenaService) {}
-  
+
   ngOnInit() {
     if(this.authService.isLoggedIn == true)
     {
@@ -34,21 +34,23 @@ export class Tab2Page {
       this.getSailkapena(false);
     }
   }
-  getSailkapena(logged:boolean): void{
+  //sailkapena bueltatzen duen metodoa
+  getSailkapena(logeatuta): void{
     this.SailkapenaService.getSailkapena()
     .subscribe(data => {this.sailkapena = data},
       error=> console.log("Error ::"+ error))
       .add(() => {
-        if(logged)
+        if(logeatuta)
           this.getZurePostua();
       });
   }
+  //erabiltzailearen postua buelatzen du
   getZurePostua(){
     console.log("2");
     this.SailkapenaService.getZurePuntuak()
     .subscribe(data => {this.zurePuntuak = data[0].Totala},
       error=> console.log("Error ::"+ error))
-      .add(() => { 
+      .add(() => {
         this.nullToZero();
       });
     this.zu = this.sailkapena.find( ({ erabiltzailea }) => erabiltzailea === this.user.erabiltzailea);

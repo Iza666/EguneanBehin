@@ -14,7 +14,7 @@ export class ErabiltzaileakService {
               private authService: AuthService,
               private envService: EnvService) { }
 
-
+  //profileko datuak aldatzeko erabiltzen duugn metodoa
   profilaAldatu(erabiltzailea: string, email: string) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token

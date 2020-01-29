@@ -8,6 +8,7 @@ import { ToastController } from '@ionic/angular';
 export class AlertService {
 
   constructor(private toastController: ToastController) { }
+  //toast bat eratzeko metodoa
   async presentToast(message: any) {
     const toast = await this.toastController.create({
       message: message,

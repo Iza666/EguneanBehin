@@ -18,6 +18,7 @@ export class AuthService {
       private env: EnvService,
       public storage: Storage
     ) { }
+    //login-a egiteko metodoa
     login(email: String, password: String) {
       return this.http.post(this.env.API_URL + 'auth/login',
         {email: email, password: password}
@@ -36,11 +37,13 @@ export class AuthService {
         }),
       );
     }
+    //register egiteko metodoa
     register(erabiltzailea: String, email: String, password: String) {
       return this.http.post(this.env.API_URL + 'auth/register',
         {erabiltzailea: erabiltzailea, email: email, password: password}
       )
     }
+    //logout egiteko metodoa
     logout() {
       const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.token
@@ -55,6 +58,7 @@ export class AuthService {
         })
       )
     }
+    //user-a bueltatzen duen metodoa
     user() {
       const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.token
@@ -66,6 +70,7 @@ export class AuthService {
         })
       )
     }
+    //logeatutako erabiltzailearen token-a bueltatzen duen metodoa
     getToken() {
       return this.storage.get('token').then(
         data => {
@@ -82,4 +87,7 @@ export class AuthService {
         }
       );
     }
+
+
+    //   https://blog.flicher.net/ionic-4-user-registration-login-tutorial/
   }

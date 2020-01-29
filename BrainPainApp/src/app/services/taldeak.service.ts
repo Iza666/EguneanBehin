@@ -18,7 +18,7 @@ export class TaldeakService {
 
   ) { }
 
-
+    //taldea sortzeko laravel-en
   taldeaSortu(izena: string, partaide2: string, partaide3: string, partaide4: string, partaide5: string) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token
@@ -29,6 +29,7 @@ export class TaldeakService {
       }),
     );
   }
+  //erabiltzailearn arabera taldeak lortzeko
   taldeaLortu() {
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token
@@ -39,6 +40,7 @@ export class TaldeakService {
       }),
     );
   }
+  //taldeko taldekideak lortzeko metodoa
   taldekideakLortu(taldeIzena: string){
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token
@@ -49,7 +51,7 @@ export class TaldeakService {
       }),
     );
   }
-
+  //taldekideen puntuak lortzeko metodoa
   taldekidePuntuakLortu(partaide2:string, partaide3:string, partaide4:string, partaide5:string ){
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token

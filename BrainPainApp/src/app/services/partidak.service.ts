@@ -15,6 +15,7 @@ export class PartidakService {
 
   constructor(private http: HttpClient, private authService: AuthService, private envService: EnvService, private alertService: AlertService) { }
   
+  //erabiltzaileak jokatutako partidak kargatzeko metodoa
   partidakLortu(){
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token

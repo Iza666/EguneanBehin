@@ -27,6 +27,9 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     
   }
+  //tab honetan gauden bitartean bueltak emoten egongo da barruan dagoenari, kasu honetan logeatuta
+  //badago komprobatuko du eta bestela datuak lortuko ditu eta horren arabera logeatzeko edo erregistratzeko 
+  //botoiak agertu edo desagertuko dira. Horretaz aparte, erabiltzaileak egun horretan partidaren bat jolastu duen komprobatzen du
   bueltak : number = 0;
   ngDoCheck() {
       if(this.bueltak!=4){
@@ -45,16 +48,17 @@ export class Tab1Page implements OnInit {
       }
     }
   }
+  //erabiltzaileak partida bat jokatu duen komprobatzen du
   checkJokatuta(){
       this.jokatutaChecked = true;
       this.galderakService.checkJokatutaService().subscribe(data => {this.jokatuta = data}, error => console.log("Error ::"+ error));
       console.log(this.jokatuta);
     }
-  
+  //jolastu botoiari ematerakoan partida bat sortuko du
   partidaSortu(){
     this.galderakService.partidaSortu();
   }
-  
+  //arauak botoiari klik egiterakoan agertzen den alerta
   showAlert(){
     const alert = document.createElement('ion-alert');
     alert.header = 'Arauak';
@@ -64,6 +68,7 @@ export class Tab1Page implements OnInit {
     document.body.appendChild(alert);
     return alert.present();
   }
+  //logout egiterakoan agertzen den alerta
   showLogoutAlert(){
     const alert = document.createElement('ion-alert');
     alert.header = 'Logout';
@@ -73,6 +78,7 @@ export class Tab1Page implements OnInit {
     document.body.appendChild(alert);
     return alert.present();
   }
+  //Logout egiteko metodoa
   logout(){
     this.authService.storage.remove('token');
     window.location.reload();

@@ -18,9 +18,11 @@ export class SailkapenaService {
   
   constructor(public http: HttpClient, private authService: AuthService, private envService: EnvService) { 
   }
+  //sailkapen osoa bueltatzen duen metodoa
   getSailkapena(): Observable<Sailkapena[]> {
     return this.http.get<Sailkapena[]>(this.urlSailkapena);
   }
+  //logeatutako erabiltzailearen puntuazioa bueltatzen duen metodoa
   getZurePuntuak(){
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token

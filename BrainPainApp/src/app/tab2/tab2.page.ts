@@ -51,6 +51,7 @@ export class Tab2Page {
       }
     }
   }
+  //sailkapena bueltatzen duen metodoa
   getSailkapena(logeatuta): void{
     this.SailkapenaService.getSailkapena()
     .subscribe(data => {this.sailkapena = data},
@@ -61,6 +62,7 @@ export class Tab2Page {
         }
       });
   }
+  //erabiltzailearen postua buelatzen du
   getZurePostua(){
     this.zu = this.sailkapena.find( ({ erabiltzailea }) => erabiltzailea === this.user.erabiltzailea);
     if(this.zu != undefined)

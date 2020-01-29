@@ -60,6 +60,8 @@ export class TaldeaPage implements OnInit {
     var a = document.getElementById("taldekide5");
     a.innerHTML= this.taldea[0].partaide5 + " " + this.sailkapena[3].Totala;
   }
+
+
   sailkapena: Sailkapena_simple[] = [];
   zurePuntuak: number;
   erabiltzaileenSailkapenekoDatuak(){
@@ -67,8 +69,8 @@ export class TaldeaPage implements OnInit {
       this.sailkapena = respuesta;
       console.log(this.sailkapena);
   });
-  this.sailkapenaService.getZurePuntuak()
-    .subscribe(data => {this.zurePuntuak = data[0].Totala}
-      );
-  }
+    this.sailkapenaService.getZurePuntuak()
+      .subscribe(data => {this.zurePuntuak = data[0].Totala}
+        );
+    }
 }

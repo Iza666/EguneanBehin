@@ -36,17 +36,17 @@ export class Tab1Page implements OnInit {
           a.style.display="none";
         });
         console.log(this.user);
-        this.checkJokatuta();
+        if(!this.jokatutaChecked){
+         this.checkJokatuta();
+        }
     }
   }
   checkJokatuta(){
-    if(!this.jokatutaChecked){
       this.jokatutaChecked = true;
-      this.galderakService.checkJokatutaService()
-      .subscribe(data => {this.jokatuta = data}, error => console.log("Error ::"+ error));
+      this.galderakService.checkJokatutaService().subscribe(data => {this.jokatuta = data}, error => console.log("Error ::"+ error));
       console.log(this.jokatuta);
     }
-  }
+  
   partidaSortu(){
     this.galderakService.partidaSortu();
   }

@@ -8,13 +8,13 @@
 <ion-item-divider color="laranjaLarrosa"></ion-item-divider>
 
 <ion-content>
-  <div class="ehun">
+  <div class="ehun" *ngIf="user != undefined">
     <ion-card class="zurePosizioaCard">
       <ion-card-content class="zurePosizioa">
         <ion-text>Zure postua: </ion-text>
-        <p class="posizioa">#301</p>
+        <p class="posizioa">#{{zurePosizioa}}</p>
         <ion-button [disabled]="true" color="jokatubotoia">
-          <p class="puntuak">100</p>
+          <p class="puntuak">{{zu.Totala}}</p>
           <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
         </ion-button>    
       </ion-card-content>

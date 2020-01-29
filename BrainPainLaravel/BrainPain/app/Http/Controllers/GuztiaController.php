@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Galdera;
 use App\User;
 use App\Partida;
+use App\Taldea;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use carbon;
@@ -112,6 +113,35 @@ class GuztiaController extends Controller
             $request = json_decode($postdata);
         }
     }
+    //partidak id-aren arabera + erabiltzaile horren datuak
+    public function partidakLortu(){
+        $denak = DB::table('partidak')->join('users', 'users.id', '=', 'partidak.id_erabiltzailea')->select('puntuak', 'users.erabiltzailea', 'data', 'zenbat_zuzen','zenbat_denbora')
+        ->where('id_erabiltzailea', auth()->user()->id)->orderBy('data', 'desc')->get();
+        return response()->json($denak, 200);
+
+    }
+    //talde bat sortu pasatutako datuekin
+    public function taldeaSortu(Request $request){
+        $taldea = new Taldea();
+        $taldea->izena = $request->izena;
+        $taldea->partaide1 = auth()->user()->erabiltzailea;
+        $taldea->partaide2 = $request->partaide2;
+        $taldea->partaide3 = $request->partaide3;
+        $taldea->partaide4 = $request->partaide4;
+        $taldea->partaide5 = $request->partaide5;
+        $taldea->save();
+
+        $denak = Taldea::where('partaide1', auth()->user()->erabiltzailea)->get();
+
+        return response()->json($denak, 200);
+
+    }
+    public function taldeaLortu(){
+        $denak = DB::table('taldeak')->where('partaide1', auth()->user()->erabiltzailea)->get();
+        return response()->json($denak, 200);
+
+    }
+
 
 
     /*

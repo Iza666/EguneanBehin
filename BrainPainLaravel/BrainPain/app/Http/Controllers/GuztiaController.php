@@ -34,12 +34,20 @@ class GuztiaController extends Controller
             return response()->json(false, 200);
         }
     }
+    public function GetZureRanking()
+    {
+        $zurePuntuak = DB::table('partidak')
+            ->select(DB::raw('sum(puntuak) as Totala'))->where('id', auth()->user()->id)->get();
+
+        return response()->json($zurePuntuak, 200);
+    }
     public function GetRanking()
     {
         $sailkapena = DB::table('partidak')
             ->join('users', 'users.id', '=', 'partidak.id_erabiltzailea')
             ->select('id_erabiltzailea', 'users.id', 'users.erabiltzailea', DB::raw('sum(puntuak) as Totala'))
-            ->groupBy('id_erabiltzailea', 'users.id', 'users.erabiltzailea')->get();
+            ->groupBy('id_erabiltzailea', 'users.id', 'users.erabiltzailea')
+            ->orderBy('Totala', 'desc')->get();
 
         return response()->json($sailkapena, 200);
     }

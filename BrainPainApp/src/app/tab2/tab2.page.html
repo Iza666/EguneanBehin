@@ -11,11 +11,11 @@
   <div class="ehun" *ngIf="user != undefined">
     <ion-card class="zurePosizioaCard">
       <ion-card-content class="zurePosizioa">
-        <ion-text>Zure postua: </ion-text>
-        <p class="posizioa">#{{zurePosizioa}}</p>
+        <ion-text>Zure postua:</ion-text>
+        <p class="zurePosizioa">#{{zurePosizioa}}</p>
         <ion-button [disabled]="true" color="jokatubotoia">
-          <p class="puntuak">{{zu.Totala}}</p>
-          <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
+          <p class="zurePuntuak">{{zurePuntuak}}</p>
+          <ion-img src="assets/img/puntuak.png" ></ion-img>
         </ion-button>    
       </ion-card-content>
     </ion-card>

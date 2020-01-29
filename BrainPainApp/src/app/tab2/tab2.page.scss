@@ -54,6 +54,7 @@ ion-card-content ion-img{
     font-size: 1.3em;
 }
 .puntuak{
+    margin-top: 3px;
     color: rgb(230, 230, 230);
     font-weight: bold;
     font-size: 1.3em;
@@ -92,8 +93,10 @@ ion-button.button-disabled ion-img{
 .ehun{
     width: 100%;
     margin-top: -10px;
-    margin-bottom: -10px;
     margin-bottom: 5%;
+}
+.ehun ion-card-content{
+    padding-left: 50px;
 }
 .zurePosizioaCard{
     box-shadow: none;
@@ -102,7 +105,26 @@ ion-button.button-disabled ion-img{
     background: none;
 }
 .itemDivider{
-    
     min-height: 2px !important;
     background-color: rgb(45, 45, 45);
+}
+.zurePosizioa{
+    margin-left: 5px;
+    margin-top: 3px;
+    text-align: center;
+    color: rgb(230, 230, 230);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.zurePuntuak{
+    color: rgb(230, 230, 230);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.ehun ion-button.button-disabled{
+    margin-right: 10%;
+}
+.ehun ion-img{
+    height: 20px;
+    width: 20px;
 }

@@ -21,6 +21,9 @@ export class Tab2Page {
   constructor(private authService: AuthService, private SailkapenaService : SailkapenaService) {}
   
   ngOnInit() {
+    this.SailkapenaService.getZurePuntuak()
+    .subscribe(data => {this.zurePuntuak = data},
+      error=> console.log("Error ::"+ error))
   }  
 
   ngDoCheck() {
@@ -54,6 +57,9 @@ export class Tab2Page {
   }
   getZurePostua(){
     this.zu = this.sailkapena.find( ({ erabiltzailea }) => erabiltzailea === this.user.erabiltzailea);
-    this.zurePosizioa = this.sailkapena.findIndex( ({ id_erabiltzailea }) => id_erabiltzailea === this.zu.id_erabiltzailea) + 1;
+    if(this.zu != undefined)
+    {
+      this.zurePosizioa = this.sailkapena.findIndex( ({ id_erabiltzailea }) => id_erabiltzailea === this.zu.id_erabiltzailea) + 1;
+    }
   }
 }

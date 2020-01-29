@@ -22,10 +22,16 @@ export class Tab2Page {
   
   ngOnInit() {
     this.SailkapenaService.getZurePuntuak()
-    .subscribe(data => {this.zurePuntuak = data},
-      error=> console.log("Error ::"+ error))
+    .subscribe(data => {this.zurePuntuak = data[0].Totala},
+      error=> console.log("Error ::"+ error)).add(() => { 
+        this.nullToZero(); //Bukatzean Azpiko funtziora bidaltzen du
+      });
   }  
-
+  nullToZero(){
+    if(this.zurePuntuak == null){
+      this.zurePuntuak = 0;
+    }
+  }
   ngDoCheck() {
     if(this.authService.isLoggedIn == true && this.user == null){
       this.authService.user().subscribe(

@@ -37,7 +37,7 @@ class GuztiaController extends Controller
     public function GetZureRanking()
     {
         $zurePuntuak = DB::table('partidak')
-            ->select(DB::raw('sum(puntuak) as Totala'))->where('id', auth()->user()->id)->get();
+            ->select(DB::raw('sum(puntuak) as Totala'))->where('id_erabiltzailea', "=", auth()->user()->id)->get();
 
         return response()->json($zurePuntuak, 200);
     }

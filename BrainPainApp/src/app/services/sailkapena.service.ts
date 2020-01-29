@@ -26,9 +26,9 @@ export class SailkapenaService {
       'Authorization': "Bearer" + " " + this.authService.token
     });
 
-    return this.http.get<number>(this.envService.API_URL + 'zurePartida', { headers: headers }).pipe(
+    return this.http.get<number>(this.envService.API_URL + 'zurePuntuak', { headers: headers }).pipe(
       tap(respuesta => {
-        console.log(respuesta)
+        console.log(respuesta[0].Totala)
       }),
     );
   }

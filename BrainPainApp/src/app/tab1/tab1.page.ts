@@ -27,9 +27,9 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     
   }
-  bueltak : number = 0;
+  bueltak : number = 2;
   ngDoCheck() {
-      if(this.bueltak!=4){
+    if(this.bueltak !=0 ){
       if(this.authService.isLoggedIn == true && this.user == null){
         var a = document.getElementById("buttons");
         this.authService.user().subscribe(
@@ -41,7 +41,7 @@ export class Tab1Page implements OnInit {
         if(!this.jokatutaChecked){
           this.checkJokatuta();
         }
-        this.bueltak++;
+        this.bueltak--;
       }
     }
   }

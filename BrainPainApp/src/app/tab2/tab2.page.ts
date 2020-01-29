@@ -16,56 +16,50 @@ export class Tab2Page {
   zurePosizioa: number = 0;
   zurePuntuak: number = 0;
   id = 0;
-  deituta: boolean = false;
 
   constructor(private authService: AuthService, private SailkapenaService : SailkapenaService) {}
   
   ngOnInit() {
-    this.SailkapenaService.getZurePuntuak()
-    .subscribe(data => {this.zurePuntuak = data[0].Totala},
-      error=> console.log("Error ::"+ error)).add(() => { 
-        this.nullToZero(); //Bukatzean Azpiko funtziora bidaltzen du
-      });
-  }  
-  nullToZero(){
-    if(this.zurePuntuak == null){
-      this.zurePuntuak = 0;
-    }
-  }
-  ngDoCheck() {
-    if(this.authService.isLoggedIn == true && this.user == null){
+    if(this.authService.isLoggedIn == true)
+    {
       this.authService.user().subscribe(
         user => {
           this.user = user;
-          console.log(user);
         }
-      ).add(() => { 
-        this.getSailkapena(true); //Bukatzean Azpiko funtziora bidaltzen du
+      ).add(() => {
+        this.getSailkapena(true);
       });
     }
     else{
-      if(!this.deituta)
-      {
-        this.deituta = true;
-        this.getSailkapena(false); //Erabiltzailea ez badago logeatuta
-      }
+      this.getSailkapena(false);
     }
   }
-  getSailkapena(logeatuta): void{
+  getSailkapena(logged:boolean): void{
     this.SailkapenaService.getSailkapena()
     .subscribe(data => {this.sailkapena = data},
       error=> console.log("Error ::"+ error))
       .add(() => {
-        if(logeatuta){
-          this.getZurePostua(); //Bukatzean Azpiko funtziora bidaltzen du
-        }
+        if(logged)
+          this.getZurePostua();
       });
   }
   getZurePostua(){
+    console.log("2");
+    this.SailkapenaService.getZurePuntuak()
+    .subscribe(data => {this.zurePuntuak = data[0].Totala},
+      error=> console.log("Error ::"+ error))
+      .add(() => { 
+        this.nullToZero();
+      });
     this.zu = this.sailkapena.find( ({ erabiltzailea }) => erabiltzailea === this.user.erabiltzailea);
     if(this.zu != undefined)
     {
       this.zurePosizioa = this.sailkapena.findIndex( ({ id_erabiltzailea }) => id_erabiltzailea === this.zu.id_erabiltzailea) + 1;
+    }
+  }
+  nullToZero(){
+    if(this.zurePuntuak == null){
+      this.zurePuntuak = 0;
     }
   }
 }

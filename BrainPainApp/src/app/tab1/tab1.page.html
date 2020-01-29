@@ -12,9 +12,10 @@
   <ion-card class="welcome-card">
     <!-- Lehenengo txartela-->
     <ion-card-header>
-      <ion-card-title id="titulua">Gaurko partida<div *ngIf="user != undefined">
+      <ion-card-title id="titulua"><div *ngIf="user != undefined">
         Kaixo {{ user["erabiltzailea"]  }}
-    </div></ion-card-title>
+      </div>
+      Gaurko partida</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-button id="jokatu" [routerLink]="['/kargatzen']" color="laranjaLarrosa" expand="block" (click)="partidaSortu()" [disabled]="user == undefined || jokatuta == true">Jokatu</ion-button>

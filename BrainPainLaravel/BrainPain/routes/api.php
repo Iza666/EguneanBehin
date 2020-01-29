@@ -36,22 +36,22 @@ Route::group([
     'middleware' => 'auth:api'
   ], function() {
       //TODAS LAS RUTAS QUE REQUIEREN LOGIN
-    Route::get('insertMatch', 'GuztiaController@insertMatch');
-    Route::post('insertQuestion', 'GuztiaController@insertQuestion');
+    Route::get('insertMatch', 'PartidaController@insertMatch');
+    Route::post('insertQuestion', 'PartidaController@insertQuestion');
     Route::get('usertaldea', 'TaldeakController@getUserTaldea' );
-    Route::post('endedMatchInsert', 'GuztiaController@endedMatchInsert'); 
-    Route::post('aldatuProfila', 'GuztiaController@aldatuProfila');
-    Route::get('jokatuta', 'GuztiaController@getjokatuta');
-    Route::get('partidakLortu', 'GuztiaController@partidakLortu');
-    Route::post('taldeaSortu', 'GuztiaController@taldeaSortu');
-    Route::post('taldeaLortu', 'GuztiaController@taldeaLortu');
-    Route::get('zurePuntuak', 'GuztiaController@GetZureRanking');
-    Route::post('taldekideakLortu', 'GuztiaController@taldekideakLortu');
-    Route::post('taldekidePuntuakLortu', 'GuztiaController@taldekidePuntuakLortu');
+    Route::post('endedMatchInsert', 'PartidaController@endedMatchInsert'); 
+    Route::post('aldatuProfila', 'ErabiltzaileaController@aldatuProfila');
+    Route::get('jokatuta', 'PartidaController@getjokatuta');
+    Route::get('partidakLortu', 'PartidaController@partidakLortu');
+    Route::post('taldeaSortu', 'TaldeaController@taldeaSortu');
+    Route::post('taldeaLortu', 'TaldeaController@taldeaLortu');
+    Route::get('zurePuntuak', 'SailkapenaController@GetZureRanking');
+    Route::post('taldekideakLortu', 'TaldeakController@taldekideakLortu');
+    Route::post('taldekidePuntuakLortu', 'TaldeakController@taldekidePuntuakLortu');
 
     
   });
-  Route::get('ranking', 'GuztiaController@getranking');
+  Route::get('ranking', 'SailkapenaController@getranking');
 
 
 

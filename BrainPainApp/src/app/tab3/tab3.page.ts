@@ -21,14 +21,18 @@ export class Tab3Page {
   ngOnInit() {
     
   }
+  bueltak : number = 0;
   ngDoCheck() {
-    if(this.authService.isLoggedIn == true && this.user == null){
-      this.authService.user().subscribe(
-        user => {
-          this.user = user;
-          console.log(user);
-        }
-      );
+    if(this.bueltak!=4){
+      if(this.authService.isLoggedIn == true && this.user == null){
+        this.authService.user().subscribe(
+          user => {
+            this.user = user;
+            console.log(user);
+          }
+        );
+        this.bueltak++;
+      }
     }
   }
 

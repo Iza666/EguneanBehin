@@ -149,6 +149,44 @@ class GuztiaController extends Controller
         return response()->json($denak, 200);
 
     }
+    public function taldekideakLortu(Request $request){
+        $taldea = DB::table('taldeak')->where('izena', $request->taldeIzena)->get();
+        return response()->json($taldea, 200);
+    }
+    public function taldekidePuntuakLortu(Request $request){
+        $taldekide2 = DB::table('partidak')
+            ->join('users', 'users.id', '=', 'partidak.id_erabiltzailea')
+            ->select('id_erabiltzailea', 'users.id', 'users.erabiltzailea', DB::raw('sum(puntuak) as Totala'))
+            ->where('users.erabiltzailea', $request->partaide2)
+            ->groupBy('id_erabiltzailea', 'users.id', 'users.erabiltzailea')
+            ->orderBy('Puntuak', 'desc')->get();
+        $taldekide3 = DB::table('partidak')
+            ->join('users', 'users.id', '=', 'partidak.id_erabiltzailea')
+            ->select('id_erabiltzailea', 'users.id', 'users.erabiltzailea', DB::raw('sum(puntuak) as Totala'))
+            ->where('users.erabiltzailea', $request->partaide3)
+            ->groupBy('id_erabiltzailea', 'users.id', 'users.erabiltzailea')
+            ->orderBy('Puntuak', 'desc')->get();
+        $taldekide4 = DB::table('partidak')
+            ->join('users', 'users.id', '=', 'partidak.id_erabiltzailea')
+            ->select('id_erabiltzailea', 'users.id', 'users.erabiltzailea', DB::raw('sum(puntuak) as Totala'))
+            ->where('users.erabiltzailea', $request->partaide4)
+            ->groupBy('id_erabiltzailea', 'users.id', 'users.erabiltzailea')
+            ->orderBy('Puntuak', 'desc')->get();
+        $taldekide5 = DB::table('partidak')
+            ->join('users', 'users.id', '=', 'partidak.id_erabiltzailea')
+            ->select('id_erabiltzailea', 'users.id', 'users.erabiltzailea', DB::raw('sum(puntuak) as Totala'))
+            ->where('users.erabiltzailea', $request->partaide5)
+            ->groupBy('id_erabiltzailea', 'users.id', 'users.erabiltzailea')
+            ->orderBy('Puntuak', 'desc')->get();
+
+            $array = array(
+                $taldekide2, $taldekide3, $taldekide4, $taldekide5 
+            );
+        return response()->json($array, 200);
+
+    }
+
+    
 
 
 

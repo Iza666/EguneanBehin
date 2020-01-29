@@ -8,9 +8,14 @@
 <ion-item-divider color="laranjaLarrosa"></ion-item-divider>
 
 <ion-content>
-  <ion-card *ngFor="let talde of taldeak; index as i;">
+  <ion-card   >
     <ion-card-content>
-      <ion-card-title class="taldeIzena" (click)="taldekideakLortu(talde.izena);">{{talde.izena}}</ion-card-title>
+      <p id="taldeIzena"></p>
+      <p id="taldekide1"></p>
+      <p id="taldekide2"></p>
+      <p id="taldekide3"></p>
+      <p id="taldekide4"></p>
+      <p id="taldekide5"></p>
     </ion-card-content>
   </ion-card>
   
@@ -23,16 +28,3 @@
   </ion-fab>
 
 </ion-content>
-
-
-
-
-
-  <!-- <ion-item lines="full">
-    <ion-icon slot="start" name="moon"></ion-icon>
-    <ion-label>
-      Itxura iluna jarri
-    </ion-label>
-    <ion-toggle color="dark" checked="false" id="toggle" (click)='darkMode()'></ion-toggle>
-  </ion-item> -->
-

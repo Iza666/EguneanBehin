@@ -7,6 +7,7 @@ import { AlertService } from 'src/app/services/alert.service';
 import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { AlertController } from '@ionic/angular';
 import { TaldeakService } from '../services/taldeak.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tabTaldeak',
   templateUrl: 'tabTaldeak.page.html',
@@ -18,7 +19,7 @@ export class TabTaldeakPage {
   uploadImage: string;
 
   constructor(private authService: AuthService,
-    private alertService: AlertService,private alertCtrl: AlertController, private taldeakService: TaldeakService) {}
+    private alertService: AlertService,private alertCtrl: AlertController, private taldeakService: TaldeakService, private router: Router) {}
   
   ngOnInit() {
     if(this.authService.isLoggedIn == true && this.user == null){
@@ -90,5 +91,9 @@ export class TabTaldeakPage {
       respuesta => {
         this.taldeak = respuesta;
       });
+  }
+  taldekideakLortu(taldeIzena : string){
+    this.taldeakService.taldeIzena(taldeIzena);
+    this.router.navigate(['/taldea']);
   }
 }

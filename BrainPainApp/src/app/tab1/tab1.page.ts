@@ -27,18 +27,22 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     
   }
+  bueltak : number = 0;
   ngDoCheck() {
-    if(this.authService.isLoggedIn == true && this.user == null){
-      var a = document.getElementById("buttons");
-      this.authService.user().subscribe(
-        user => {
-          this.user = user;
-          a.style.display="none";
-        });
-        console.log(this.user);
+      if(this.bueltak!=4){
+      if(this.authService.isLoggedIn == true && this.user == null){
+        var a = document.getElementById("buttons");
+        this.authService.user().subscribe(
+          user => {
+            this.user = user;
+            a.style.display="none";
+          });
+          console.log(this.user);
         if(!this.jokatutaChecked){
-         this.checkJokatuta();
+          this.checkJokatuta();
         }
+        this.bueltak++;
+      }
     }
   }
   checkJokatuta(){

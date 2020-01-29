@@ -46,6 +46,9 @@ Route::group([
     Route::post('taldeaSortu', 'GuztiaController@taldeaSortu');
     Route::post('taldeaLortu', 'GuztiaController@taldeaLortu');
     Route::get('zurePuntuak', 'GuztiaController@GetZureRanking');
+    Route::post('taldekideakLortu', 'GuztiaController@taldekideakLortu');
+    Route::post('taldekidePuntuakLortu', 'GuztiaController@taldekidePuntuakLortu');
+
     
   });
   Route::get('ranking', 'GuztiaController@getranking');

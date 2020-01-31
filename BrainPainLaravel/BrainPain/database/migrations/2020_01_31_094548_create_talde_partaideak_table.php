@@ -14,6 +14,7 @@ class CreateTaldePartaideakTable extends Migration
     public function up()
     {
         Schema::create('talde_partaideak', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('id_taldea')->unsigned();
             $table->foreign('id_taldea')->references('id')->on('taldeak');
             $table->integer('id_erabiltzailea')->unsigned();

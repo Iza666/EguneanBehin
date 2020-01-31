@@ -11,17 +11,17 @@
       <ion-label color="label">Sailkapena</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tabTaldeak" id="Taldeak">
+    <ion-tab-button tab="tabTaldeak" id="Taldeak" [disabled]="logged == false">
       <ion-icon color="icon" name="people"></ion-icon>
       <ion-label color="label">Taldeak</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tabPartidak" id="Partidak">
+    <ion-tab-button tab="tabPartidak" id="Partidak" [disabled]="logged == false">
       <ion-icon color="icon" name="logo-game-controller-b"></ion-icon>
       <ion-label color="label">Partidak</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3" id="profila">
+    <ion-tab-button tab="tab3" id="profila" [disabled]="logged == false">
       <ion-icon color="icon" name="person"></ion-icon>
       <ion-label color="label">Profila</ion-label>
     </ion-tab-button>

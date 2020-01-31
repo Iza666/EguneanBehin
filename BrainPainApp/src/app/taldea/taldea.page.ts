@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Taldea } from '../modeloak/taldea';
 import { SailkapenaService } from '../services/sailkapena.service';
 import { Sailkapena_simple } from '../modeloak/sailkapena_simple';
+import { Morralli } from '../modeloak/morralli';
 
 
 @Component({
@@ -17,18 +18,11 @@ export class TaldeaPage implements OnInit {
 
   ngOnInit() {
     this.taldeIzena = this.taldeakService.taldeIzenaLortu();
-    this.taldekideakLortu();
-    this.startCountdown(0.5);
+/*     this.taldekideakLortu();
+ */    this.startCountdown(0.5);
   }
   taldeIzena : string;
   taldea : Taldea;
-  //taldeen taldekideak lortzeko
-  taldekideakLortu(){
-    this.taldeakService.taldekideakLortu(this.taldeIzena).subscribe(
-      respuesta => {
-        this.taldea = respuesta;
-    });
-  }
   //timer bat denbora baten ondoren dena exekutatzeko
   startCountdown(seconds){
     var counter = seconds;
@@ -40,14 +34,14 @@ export class TaldeaPage implements OnInit {
   
       if(counter < 0 ){
         this.erabiltzaileenSailkapenekoDatuak();
-        this.bete();
-        clearInterval(interval);
+/*         this.bete();
+ */        clearInterval(interval);
         console.log('Ding!');
       };
     }, 1000);
   }
   //html-a betetzen du taldekideen informazioarekin
-  bete(){
+  /* bete(){
     var a = document.getElementById("taldeIzena");
     a.innerHTML= this.taldea[0].izena;
     var a = document.getElementById("taldekide1");
@@ -60,20 +54,34 @@ export class TaldeaPage implements OnInit {
     a.innerHTML= this.taldea[0].partaide4 + " " + this.sailkapena[2].Totala;
     var a = document.getElementById("taldekide5");
     a.innerHTML= this.taldea[0].partaide5 + " " + this.sailkapena[3].Totala;
-  }
+  } */
 
 
-  sailkapena: Sailkapena_simple[] = [];
+  sailkapena: Morralli[] = [];
   zurePuntuak: number;
+  taldeIzenaa : string;
+  token :string;
   //taldekideen sailkapeneko datuak hartzen ditu
   erabiltzaileenSailkapenekoDatuak(){
-    this.taldeakService.taldekidePuntuakLortu(this.taldea[0].partaide2, this.taldea[0].partaide3,this.taldea[0].partaide4,this.taldea[0].partaide5).subscribe(respuesta => {
+    this.taldeakService.taldekideDenaLortu().subscribe(respuesta => {
       this.sailkapena = respuesta;
+      this.token = this.sailkapena[0].token;
+      this.taldeIzenaa = this.sailkapena[0].izena;
       console.log(this.sailkapena);
   });
   //logeatutako erabiltzailearen datuak hartzen ditu
     this.sailkapenaService.getZurePuntuak()
       .subscribe(data => {this.zurePuntuak = data[0].Totala}
         );
-    }
+  }
+  alertToken(){
+    const alert = document.createElement('ion-alert');
+    alert.header = 'Token-a';
+    alert.message = 'Hau da zure Token-a:  '+this.token;
+    alert.buttons = ['Ederto'];
+
+    document.body.appendChild(alert);
+    return alert.present();
+  }
 }
+

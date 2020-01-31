@@ -3,20 +3,17 @@
     <ion-title id="profila">
       Taldeak
     </ion-title>
+    <ion-button *ngIf="token != undefined" (click)="alertToken()"><ion-icon name="help"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-item-divider color="laranjaLarrosa"></ion-item-divider>
 
 <ion-content>
-  <ion-card   >
-    <ion-card-content>
-      <p class="taldeIzena" id="taldeIzena" bold></p>
-      <p id="taldekide1"></p>
-      <p id="taldekide2"></p>
-      <p id="taldekide3"></p>
-      <p id="taldekide4"></p>
-      <p id="taldekide5"></p>
-    </ion-card-content>
+  <ion-card>
+    <p class="taldeIzena" id="taldeIzena" bold>Taldearen izena: {{taldeIzenaa}}</p>
+    <ion-card-content ngFor="let per of sailkapena">
+<!--       <p id="taldekide1">{{per.erabiltzailea}}</p>
+ -->    </ion-card-content>
   </ion-card>
   
 

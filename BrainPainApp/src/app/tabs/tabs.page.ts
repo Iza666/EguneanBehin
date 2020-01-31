@@ -9,7 +9,28 @@ import { User } from '../modeloak/user';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
-user:User;
   constructor(private authService: AuthService) {}
+  logged: boolean = false;
+  done: boolean = false;
 
+  ngDoCheck() {
+    if(!this.done){
+      this.logged = this.authService.isLoggedIn;
+      if(this.logged == true){
+        this.done = true;
+      }
+    }
+
+      
+    /* if(this.bueltak !=0){
+      if(this.authService.isLoggedIn == true && this.user == null){
+        this.authService.user().subscribe(
+          user => {
+            this.user = user;
+          });
+        this.bueltak--;
+      }
+    } */
+  }
 }
+

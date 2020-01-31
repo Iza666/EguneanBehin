@@ -20,10 +20,6 @@ class TaldeaController extends Controller
         $taldea = new Taldea();
         $taldea->izena = $request->izena;
         $taldea->partaide1 = auth()->user()->erabiltzailea;
-        $taldea->partaide2 = $request->partaide2;
-        $taldea->partaide3 = $request->partaide3;
-        $taldea->partaide4 = $request->partaide4;
-        $taldea->partaide5 = $request->partaide5;
         $taldea->save();
 
         $denak = Taldea::where('partaide1', auth()->user()->erabiltzailea)->get();

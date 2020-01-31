@@ -160,4 +160,5 @@ export class GalderaPage implements OnInit {
       }
     }.bind(this), 1000)
   }
+
 }

@@ -19,20 +19,16 @@ class TaldeaController extends Controller
     public function taldeaSortu(Request $request){
         $taldea = new Taldea();
         $taldea->izena = $request->izena;
-        $taldea->partaide1 = auth()->user()->erabiltzailea;
-        $taldea->partaide2 = $request->partaide2;
-        $taldea->partaide3 = $request->partaide3;
-        $taldea->partaide4 = $request->partaide4;
-        $taldea->partaide5 = $request->partaide5;
+        $taldea->sortzailea = auth()->user()->erabiltzailea;
         $taldea->save();
 
-        $denak = Taldea::where('partaide1', auth()->user()->erabiltzailea)->get();
+        $denak = Taldea::where('sortzailea', auth()->user()->erabiltzailea)->get();
 
         return response()->json($denak, 200);
     }
     //erabiltzaile baten taldeak lortzeko metodoa
     public function taldeaLortu(){
-        $denak = DB::table('taldeak')->where('partaide1', auth()->user()->erabiltzailea)->get();
+        $denak = DB::table('taldeak')->where('sortzailea', auth()->user()->erabiltzailea)->get();
         return response()->json($denak, 200);
 
     }

@@ -1,0 +1,11 @@
+--Laravel
+php artisan serve -> laravel hasieratzeko 
+php artisan key:generate -> key bat generatzeko
+composer install -> dena instalatzeko
+.env -> aldatu datu basea 
+php artisan migrate -> datuak migratu
+
+--Ionic
+node.js instalatu
+npm install
+ionic serve

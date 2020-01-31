@@ -46,33 +46,13 @@ export class TabTaldeakPage {
         {
           name: 'izena',
           placeholder: 'Sartu taldearen izena'
-        },
-        
-        {
-          name: 'partaide2',
-          placeholder: 'Sartu partaidea'
-        }
-        ,
-        {
-          name: 'partaide3',
-          placeholder: 'Sartu partaidea'
-        }
-        ,
-        {
-          name: 'partaide4',
-          placeholder: 'Sartu partaidea'
-        }
-        ,
-        {
-          name: 'partaide5',
-          placeholder: 'Sartu partaidea'
         }
       ],
       buttons: [
         {
           text: 'Listo!',
           handler: data => {
-            this.taldeaSortu(data.izena, data.partaide2, data.partaide3, data.partaide4, data.partaide5);
+            this.taldeaSortu(data.izena);
           }
         }
       ]
@@ -81,9 +61,9 @@ export class TabTaldeakPage {
   }
   //alert-ean sartutako datuak zerbitzura bidaltzen ditu
   taldeak : Taldea[] = [];
-  taldeaSortu(izena: string, partaide2: string, partaide3: string, partaide4: string, partaide5: string){
+  taldeaSortu(izena: string){
     console.log("Metodoan nago");
-    this.taldeakService.taldeaSortu(izena, partaide2, partaide3, partaide4, partaide5).subscribe(
+    this.taldeakService.taldeaSortu(izena).subscribe(
       respuesta => {
         console.log(respuesta);
         this.taldeak = respuesta;

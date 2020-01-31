@@ -19,11 +19,11 @@ export class TaldeakService {
   ) { }
 
     //taldea sortzeko laravel-en
-  taldeaSortu(izena: string, partaide2: string, partaide3: string, partaide4: string, partaide5: string) {
+  taldeaSortu(izena: string) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token
     });
-    return this.http.post<Taldea[]>(this.envService.API_URL + 'taldeaSortu', { izena:izena, partaide2:partaide2, partaide3:partaide3, partaide4:partaide4, partaide5:partaide5},{ headers: headers}).pipe(
+    return this.http.post<Taldea[]>(this.envService.API_URL + 'taldeaSortu', { izena:izena},{ headers: headers}).pipe(
       tap(respuesta => {
         console.log(respuesta)
       }),

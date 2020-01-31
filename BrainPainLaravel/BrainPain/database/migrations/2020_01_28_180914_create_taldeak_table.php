@@ -14,15 +14,9 @@ class CreateTaldeakTable extends Migration
     public function up()
     {
         Schema::create('taldeak', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id')->unsigned();
             $table->string('izena');
-            $table->string('partaide1');
-            $table->string('partaide2');
-            $table->string('partaide3');
-            $table->string('partaide4');
-            $table->string('partaide5');
-
-
+            $table->string('sortzailea');
         });
     }
 

@@ -97,7 +97,7 @@ export class GalderaPage implements OnInit {
           console.log(respuesta);
       });
       console.log("he hecho mierda");
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('/tabs/tabPartidak');
     }
   }
   //erantzun posibleak shuffle egiten ditu

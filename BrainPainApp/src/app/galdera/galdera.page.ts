@@ -134,4 +134,8 @@ export class GalderaPage implements OnInit {
       }
     }.bind(this), 1000)
   }
+
+ galderaIrudia(){
+    document.getElementById("galdera_irudia").innerHTML ="<img src="+this.galderak[0].argazkia+">"
+  } 
 }

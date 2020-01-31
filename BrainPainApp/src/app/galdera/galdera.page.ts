@@ -39,13 +39,47 @@ export class GalderaPage implements OnInit {
   erantzuna: string;
   optzioRandom: string[] = [];
   zenbatZuzen: number = 0;
+  jokatutaChecked: boolean = false;
+  jokatuta: boolean;
 
   constructor(private SailkapenaService: SailkapenaService,
     private authService: AuthService, private http: HttpClient, private router: Router, private galderakService: GalderakService) {
-    this.startTimer();
   }
-
   ngOnInit() {
+    this.checkJokatuta();
+    this.startGalderak(1);
+  }
+  startGalderak(seconds){
+    var counter = seconds;
+    var interval = setInterval(() => {
+      console.log(counter);
+      counter--;
+      if(counter < 0 ){
+        if(!this.jokatuta)
+        {
+          this.startTimer();
+          //partida berria sortu ondoren galdera random bat bueltatzen du eta this.galderak-en gordetzen du
+          this.galderakService.partidaSortu().subscribe(function(respuesta) {
+            console.log(respuesta);
+            this.respuesta=respuesta;
+            this.galderak = respuesta.galdera;
+            this.erantzunRandom();
+          }.bind(this)
+          )
+        }
+        else{
+          this.router.navigateByUrl('/tabs/tab1');
+        }
+        clearInterval(interval);
+        console.log('Ding!');
+      };
+    }, 1000);
+  }
+  checkJokatuta(){
+    this.jokatutaChecked = true;
+    this.galderakService.checkJokatutaService().subscribe(data => {this.jokatuta = data},
+      error => console.log("Error ::"+ error));
+    console.log(this.jokatuta);
   }
   //hasieran user objetua deklaratzeko logeatutako erabiltzailearen datuekin
   ionViewWillEnter() {
@@ -55,14 +89,6 @@ export class GalderaPage implements OnInit {
         console.log(user);
       }
     );
-    //partida berria sortu ondoren galdera random bat bueltatzen du eta this.galderak-en gordetzen du
-    this.galderakService.partidaSortu().subscribe(function(respuesta) {
-      console.log(respuesta);
-      this.respuesta=respuesta;
-      this.galderak = respuesta.galdera;
-      this.erantzunRandom();
-    }.bind(this)
-    )
   }
 
   //erantzundako galderaren erantzuna bidaltzen du datu basera, hau 9 biderrez egiten du eta 10.enean beste metodo bateri deitzen dio

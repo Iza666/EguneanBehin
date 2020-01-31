@@ -4,8 +4,9 @@
     <ion-text>{{count+1}} /10</ion-text>
     <label class="denbora" [innerHTML]="minutes">00</label><label class="denbora">:</label><label class="denbora" [innerHTML]="seconds">00</label>
   </ion-toolbar>
+  <ion-item-divider color="jokatu"></ion-item-divider>
 </ion-header>
-<ion-item-divider color="jokatu"></ion-item-divider>
+
 
 <form #form="ngForm" (ngSubmit)="erantzuna(form)" method="post"></form>
 <ion-content *ngFor="let resp of galderak">

@@ -63,6 +63,10 @@ export class TaldeakService {
       }),
     );
   }
+
+
+
+
   //chanchullo klikatutako taldearen izena lortzeko
   taldearenIzena: string;
   taldeIzena(taldeIzena:string){
@@ -70,6 +74,16 @@ export class TaldeakService {
   }
   taldeIzenaLortu(): string{
     return this.taldearenIzena;
+  }
+  talderaSartu(token: string){
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer" + " " + this.authService.token
+    });
+    return this.http.post<boolean>(this.envService.API_URL + 'talderaSartu', {token: token} , { headers: headers}).pipe(
+      tap(respuesta => {
+        console.log(respuesta)
+      }),
+    );
   }
 
 }

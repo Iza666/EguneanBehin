@@ -44,9 +44,12 @@ Route::group([
     Route::get('jokatuta', 'PartidaController@getjokatuta');
     Route::get('partidakLortu', 'PartidaController@partidakLortu');
     Route::post('taldeaSortu', 'TaldeaController@taldeaSortu');
-    Route::post('taldeaLortu', 'TaldeaController@taldeaLortu');
+    Route::post('taldeaLortu', 'TaldeaController@sortutakoTaldeaLortu');
     Route::get('zurePuntuak', 'SailkapenaController@GetZureRanking');
     Route::post('taldekideDenaLortu', 'TaldeaController@taldekideDenaLortu');
+    Route::post('talderaSartu', 'TaldeaController@talderaSartu');
+    Route::post('taldeakLortu', 'TaldeaController@taldeakLortu');
+
 
     
   });

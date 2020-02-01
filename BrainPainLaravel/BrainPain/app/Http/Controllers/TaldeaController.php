@@ -35,11 +35,17 @@ class TaldeaController extends Controller
 
         return response()->json($denak, 200);
     }
-    //erabiltzaile baten taldeak lortzeko metodoa
-    public function taldeaLortu(){
+    //erabiltzaile batek sortutako taldeak lortzeko metodoa
+    public function sortutakoTaldeaLortu(){
         $denak = DB::table('taldeak')->where('sortzailea', auth()->user()->erabiltzailea)->get();
         return response()->json($denak, 200);
-
+    }
+    //erabiltzaile baten taldeak lortzeko metodoa
+    public function taldeakLortu(){
+        $denak = DB::table('talde_partaideak')->join('taldeak', 'taldeak.id', '=', 'talde_partaideak.id_taldea')
+                ->get();
+                var_dump($denak);
+        return response()->json($denak, 200);
     }
     //taldekide guztien puntuazioak hartzen ondoren printeatzeko
     public function taldekideDenaLortu(){
@@ -52,7 +58,23 @@ class TaldeaController extends Controller
                             ->get();
         return response()->json($userPuntuak, 200);
     }
-    
+    //taldekide bat sartzeko token batekin
+    public function talderaSartu(Request $request){
+        $taldea = DB::table('taldeak')->where('token', $request->token)->get();
+        $eginda = false;
+        if(sizeof($taldea) == 0){
+            return response()->json($eginda, 200);
+        }
+        else{
+            $taldePartaide = new Talde_partaideak();
+            $taldePartaide->id_taldea = $taldea[0]->id;
+            $taldePartaide->id_erabiltzailea = auth()->user()->id;
+            $taldePartaide->save();
+            $eginda = true;
+            return response()->json($eginda, 200);
+        }
+                           
+    }
 
 
 

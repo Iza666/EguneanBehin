@@ -11,9 +11,9 @@
 <ion-content>
   <ion-card>
     <p class="taldeIzena" id="taldeIzena" bold>Taldearen izena: {{taldeIzenaa}}</p>
-    <ion-card-content ngFor="let per of sailkapena">
-<!--       <p id="taldekide1">{{per.erabiltzailea}}</p>
- -->    </ion-card-content>
+    <ion-card-content ngFor="let per of sailkapena; index i">
+      <p id="taldekide1"></p>
+   </ion-card-content>
   </ion-card>
 
 </ion-content>

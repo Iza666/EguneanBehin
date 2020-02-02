@@ -53,8 +53,8 @@ class TaldeaController extends Controller
                            ->join('users', 'users.id', '=', 'talde_partaideak.id_erabiltzailea')
                            ->join('taldeak', 'talde_partaideak.id_taldea', '=', 'taldeak.id')
                             ->join('partidak', 'talde_partaideak.id_erabiltzailea', '=', 'partidak.id_erabiltzailea', 'left outer')
-                            ->select('users.erabiltzailea', 'taldeak.izena', 'taldeak.token', DB::raw('sum(partidak.puntuak) as Totala'))
-                            ->groupBy('users.erabiltzailea', 'taldeak.izena', 'taldeak.token')->orderBy('Totala', 'desc')
+                            ->select('users.id','users.erabiltzailea', 'taldeak.izena', 'taldeak.token', DB::raw('sum(partidak.puntuak) as Totala'))
+                            ->groupBy('users.id','users.erabiltzailea', 'taldeak.izena', 'taldeak.token')->orderBy('Totala', 'desc')
                             ->get();
         return response()->json($userPuntuak, 200);
     }
@@ -74,6 +74,23 @@ class TaldeaController extends Controller
             return response()->json($eginda, 200);
         }
                            
+    }
+    public function isAdmin(Request $request){
+        $taldea = DB::table('taldeak')->where('token', $request->token)->get();
+        $sortzailea = $taldea[0]->sortzailea;
+        $erabiltzailea = DB::table('users')->where('erabiltzailea',$sortzailea)->get();
+        $eginda = false;
+        if(sizeof($erabiltzailea) == 0){
+            return response()->json($eginda, 200);
+        }
+        else{
+            $eginda = true;
+            return response()->json($eginda, 200);
+        }
+    }
+    public function ezabatuTaldetik(Request $request){
+        DB::table('talde_partaideak')->where('id_erabiltzailea', $request->id)->delete();
+            return response()->json(true, 200);
     }
 
 

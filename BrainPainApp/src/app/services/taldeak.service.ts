@@ -63,10 +63,6 @@ export class TaldeakService {
       }),
     );
   }
-
-
-
-
   //chanchullo klikatutako taldearen izena lortzeko
   taldearenIzena: string;
   taldeIzena(taldeIzena:string){
@@ -85,5 +81,25 @@ export class TaldeakService {
       }),
     );
   }
-
+  //sortzailea den edo ez bueltatzen du taldekideak ezabatu ahal izateko
+  isAdmin(token: string){
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer" + " " + this.authService.token
+    });
+    return this.http.post<boolean>(this.envService.API_URL + 'isAdmin', {token: token} , { headers: headers}).pipe(
+      tap(respuesta => {
+        console.log(respuesta)
+      }),
+    );
+  }
+  ezabatuTaldetik(i: string, id : number){
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer" + " " + this.authService.token
+    });
+    return this.http.post<boolean>(this.envService.API_URL + 'ezabatuTaldetik', {i: i, id:id} , { headers: headers}).pipe(
+      tap(respuesta => {
+        console.log(respuesta)
+      }),
+    );
+  }
 }

@@ -49,7 +49,8 @@ Route::group([
     Route::post('taldekideDenaLortu', 'TaldeaController@taldekideDenaLortu');
     Route::post('talderaSartu', 'TaldeaController@talderaSartu');
     Route::post('taldeakLortu', 'TaldeaController@taldeakLortu');
-
+    Route::post('isAdmin', 'TaldeaController@isAdmin');
+    Route::post('ezabatuTaldetik', 'TaldeaController@ezabatuTaldetik');
 
     
   });

@@ -79,9 +79,11 @@ export class TaldeaPage implements OnInit {
     alert.header = 'Token-a';
     alert.message = 'Hau da zure Token-a:  '+this.token;
     alert.buttons = ['Ederto'];
-
     document.body.appendChild(alert);
     return alert.present();
+  }
+  isSortzailea(){
+    
   }
 }
 

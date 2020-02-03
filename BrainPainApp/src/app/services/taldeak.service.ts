@@ -53,11 +53,11 @@ export class TaldeakService {
     );
   }
   //taldekideen puntuak lortzeko metodoa
-  taldekideDenaLortu(){
+  taldekideDenaLortu(taldeIzena : string){
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token
     });
-    return this.http.post<Morralli[]>(this.envService.API_URL + 'taldekideDenaLortu', {} , { headers: headers}).pipe(
+    return this.http.post<Morralli[]>(this.envService.API_URL + 'taldekideDenaLortu', {taldeIzena : taldeIzena} , { headers: headers}).pipe(
       tap(respuesta => {
         console.log(respuesta)
       }),

@@ -69,11 +69,11 @@ export class TaldeaPage implements OnInit {
  
   //taldekideen sailkapeneko datuak hartzen ditu
   erabiltzaileenSailkapenekoDatuak(){
-    this.taldeakService.taldekideDenaLortu().subscribe(respuesta => {
+    console.log(this.taldeIzena)
+    this.taldeakService.taldekideDenaLortu(this.taldeIzena).subscribe(respuesta => {
       this.sailkapena = respuesta;
       this.token = this.sailkapena[0].token;
       this.taldeIzenaa = this.sailkapena[0].izena;
-      console.log(this.sailkapena);
   });
   //logeatutako erabiltzailearen datuak hartzen ditu
     this.sailkapenaService.getZurePuntuak()
@@ -115,7 +115,6 @@ export class TaldeaPage implements OnInit {
       if(data == true){
         this.ezabatuta = true;
         console.log(this.ezabatuta)
-
       }
       else{
         this.ezabatuta = false;

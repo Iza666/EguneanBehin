@@ -31,30 +31,25 @@ class TaldeaController extends Controller
         $taldePartaide->id_erabiltzailea = auth()->user()->id;
         $taldePartaide->save();
 
-        $denak = Taldea::where('sortzailea', auth()->user()->erabiltzailea)->get();
-
+        $denak =DB::table('talde_partaideak')->join('taldeak', 'taldeak.id', '=', 'talde_partaideak.id_taldea')
+        ->where('talde_partaideak.id_erabiltzailea', auth()->user()->id)->get();
         return response()->json($denak, 200);
     }
     //erabiltzaile batek sortutako taldeak lortzeko metodoa
     public function sortutakoTaldeaLortu(){
-        $denak = DB::table('taldeak')->where('sortzailea', auth()->user()->erabiltzailea)->get();
+        $denak =DB::table('talde_partaideak')->join('taldeak', 'taldeak.id', '=', 'talde_partaideak.id_taldea')
+        ->where('talde_partaideak.id_erabiltzailea', auth()->user()->id)->get();
         return response()->json($denak, 200);
     }
-    //erabiltzaile baten taldeak lortzeko metodoa
-    public function taldeakLortu(){
-        $denak = DB::table('talde_partaideak')->join('taldeak', 'taldeak.id', '=', 'talde_partaideak.id_taldea')
-                ->get();
-                var_dump($denak);
-        return response()->json($denak, 200);
-    }
+    
     //taldekide guztien puntuazioak hartzen ondoren printeatzeko
-    public function taldekideDenaLortu(){
+    public function taldekideDenaLortu(Request $request){
         $userPuntuak = DB::table('talde_partaideak')
                            ->join('users', 'users.id', '=', 'talde_partaideak.id_erabiltzailea')
                            ->join('taldeak', 'talde_partaideak.id_taldea', '=', 'taldeak.id')
                             ->join('partidak', 'talde_partaideak.id_erabiltzailea', '=', 'partidak.id_erabiltzailea', 'left outer')
                             ->select('users.id','users.erabiltzailea', 'taldeak.izena', 'taldeak.token', DB::raw('sum(partidak.puntuak) as Totala'))
-                            ->groupBy('users.id','users.erabiltzailea', 'taldeak.izena', 'taldeak.token')->orderBy('Totala', 'desc')
+                            ->groupBy('users.id','users.erabiltzailea', 'taldeak.izena', 'taldeak.token')->where('taldeak.izena', $request->taldeIzena)->orderBy('Totala', 'desc')
                             ->get();
         return response()->json($userPuntuak, 200);
     }
@@ -92,7 +87,15 @@ class TaldeaController extends Controller
         DB::table('talde_partaideak')->where('id_erabiltzailea', $request->id)->delete();
             return response()->json(true, 200);
     }
-
+    public function generateRandomString($length = 5) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 
 
 /* 
@@ -110,14 +113,6 @@ class TaldeaController extends Controller
         return response()->json($taldea, 200);
     }
     
-    public function generateRandomString($length = 5) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
-    } */
+     */
 
 }

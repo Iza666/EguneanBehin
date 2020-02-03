@@ -26,4 +26,15 @@ export class ErabiltzaileakService {
       }),
     );
   }
+  argazkiaIgo(argazkia: string){
+    console.log("argazkia IGon gaude")
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer" + " " + this.authService.token
+    });
+    return this.http.post<string>(this.envService.API_URL + 'argazkiaIgo', { argazkia: argazkia},{ headers: headers}).pipe(
+      tap(respuesta => {
+        console.log(respuesta)
+      }),
+    );
+  }
 }

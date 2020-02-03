@@ -10,12 +10,12 @@
 <ion-content >
   <!-- *ngIf="user != undefined" -->
     <ion-avatar>
-      <ion-img class="avatarArgazkia" src="assets/img/eguzkitze.png"></ion-img>
+      <ion-img id="avatarArgazkia" src="assets/img/Profila.png"></ion-img>
     </ion-avatar>
     <!--irudia igo-->
     <ion-button color="jokatuBotoia" id="argazkiBtn">
       <ion-icon name="camera"></ion-icon>  
-      <ion-input type="file" (change)="changeListener($event)"></ion-input>
+      <ion-input type="file" accept=".png, .jpeg, .jpg, .gif" (change)="irudiaIgo($event)"></ion-input>
     </ion-button>
     
     <ion-text id="erabiltzaileaText" *ngIf="user != undefined">

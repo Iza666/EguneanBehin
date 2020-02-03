@@ -30,7 +30,7 @@
       <p *ngIf=" i > 2" class="posizioa">#{{i+1}}</p>
       
       <ion-avatar>
-        <ion-img  src="assets/img/eguzkitze.png" class="image">Argazkia</ion-img>
+        <ion-img id="argazkia" class="image" [src]="sailkapen.argazkia">Argazkia</ion-img>
       </ion-avatar>
       <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
 

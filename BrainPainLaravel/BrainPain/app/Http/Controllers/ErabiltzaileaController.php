@@ -25,4 +25,12 @@ class ErabiltzaileaController extends Controller
             ->update(['email'=>$request->email]);
             return response()->json("aldatuta", 200);
     }
+    //profileko argazkia aldatzen du
+    public function argazkiaIgo(Request $request)
+    {
+        DB::table('users')
+            ->where('id', auth()->user()->id)
+            ->update(['argazkia'=>$request->argazkia]);
+            return response()->json("aldatuta", 200);
+    }
 }

@@ -49,7 +49,6 @@ export class Tab2Page {
   }
   //erabiltzailearen postua buelatzen du
   getZurePostua(){
-    console.log("2");
     this.SailkapenaService.getZurePuntuak()
     .subscribe(data => {this.zurePuntuak = data[0].Totala},
       error=> console.log("Error ::"+ error))

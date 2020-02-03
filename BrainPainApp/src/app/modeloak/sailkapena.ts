@@ -7,6 +7,7 @@ export class Sailkapena{
     email_verified_at: string;
     password: string;
     telefonoa: number;
+    argazkia: string;
     remember_token: string;
     created_at: string;
     updated_at: string;

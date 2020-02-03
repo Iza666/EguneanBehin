@@ -19,7 +19,7 @@ class CreateGalderakTable extends Migration
             $table->string('opt1_erantzuna');
             $table->string('opt2');
             $table->string('opt3');
-            $table->longText('argazkia');
+            $table->longText('argazkia')->default("assets/img/galderaIkurra.png");
         });
     }
 

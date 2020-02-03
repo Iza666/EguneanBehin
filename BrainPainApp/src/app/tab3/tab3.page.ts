@@ -14,11 +14,6 @@ import { GalderakService } from '../services/galderak.service';
 export class Tab3Page {
   user: User;
   processing:boolean;
-  base64Image: String;
-  file: File;
-  myimage: File;
-  imagena: string;
- 
 
   constructor(private galderakService: GalderakService, private authService: AuthService,
     private alertService: AlertService,private alertCtrl: AlertController, private erabiltzaileakService: ErabiltzaileakService) {}
@@ -26,50 +21,6 @@ export class Tab3Page {
   ngOnInit() {
     
   }
-  /* changeListener($event) : void {
-    this.file = $event.target.files[0];
-    console.log(this.file);
-    var base64String = window.btoa(this.file);
-  } */
-
-  changeListener(event) : void {
-    var f = event.target.files[0];
-    var reader = new FileReader();
-    reader.onload = (function(theFile) {
-      return function(e)           {
-        var binaryData = e.target.result;
-        //Converting Binary Data to base 64
-        var base64String = window.btoa(binaryData);
-        //showing file converted to base64
-        this.imagena = base64String;
-        this.galderakService.hireamama(base64String);
-        console.log('File converted to base64 successfuly!');
-      };
-    })(f).bind(this);
-    // Read in the image file as a data URL.
-    reader.readAsBinaryString(f);
-  }
-
-  saveProfile_click() {
-    console.log("saveProfile_click");
-
-    // Add your code here
-    /* this.afAuth.authState.take(1).subscribe(auth => {
-      this.afDatabase.object('profile/${this.uid}').set(this.profile)
-        .then(() => {
-          //this.uploadProfileImage();
-          this.navCtrl.pop();
-        });
-    }) */
-  }
-
-  /* uploadProfileImage(){
-    console.log("uploadProfileImage");
-    let fileRef = firebase.storage().ref('profileImages/' + this.uid + ".jpg");
-    fileRef.put(this.file).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-    });
-  } */
 
   bueltak : number = 0;
   ngDoCheck() {
@@ -79,15 +30,18 @@ export class Tab3Page {
           user => {
             this.user = user;
             console.log(user);
+            
           }
-        );
+        ).add(() => {
+          var argazkia = document.getElementById("avatarArgazkia") as HTMLImageElement;
+          argazkia.src = this.user.argazkia;
+        });
         this.bueltak++;
       }
     }
   }
   //datuak aldatzeko agertzen den alert-a
   async aldatuizena(){
-    console.log(this.imagena);
     if(this.user.argazkia == "a"){
       this.user.argazkia ="";
     }
@@ -124,7 +78,6 @@ export class Tab3Page {
   }
   //datuak aldatzen dituen metodoa, sartutako datuak zerbitzura bidaltzen ditu
   datuakAldatu(erabiltzailea: string, email: string){
-    console.log("Metodoan nago");
     this.erabiltzaileakService.profilaAldatu(erabiltzailea, email).subscribe(
       respuesta => {
         console.log(respuesta);
@@ -133,5 +86,49 @@ export class Tab3Page {
       });
   }
 
-  
+  irudiaIgo(event) : void {
+    var f = event.target.files[0];
+    var reader = new FileReader();
+    reader.onload = (function(theFile) {
+      return function(e){
+        var argazkia: string;
+        var extension = f.type.split('/')[1];
+        
+        var binaryData = e.target.result;
+        var base64String = window.btoa(binaryData);
+        
+        if(extension == "png"){
+          argazkia = "data:image/png;base64,"+base64String;
+        }
+        else if(extension == "jpeg"){
+          argazkia = "data:image/jpeg;base64,"+base64String;
+        }
+        else if(extension == "jpg"){
+          argazkia = "data:image/jpg;base64,"+base64String;
+        }
+        else if(extension == "gif"){
+          argazkia = "data:image/gif;base64,"+base64String;
+        }
+        else{
+          this.showAlert();
+        }
+          
+        this.erabiltzaileakService.argazkiaIgo(argazkia).subscribe(
+          respuesta => {
+            console.log(respuesta);
+            window.location.reload();
+          });
+      };
+    })(f).bind(this);
+    reader.readAsBinaryString(f);
+  }
+  showAlert(){
+    const alert = document.createElement('ion-alert');
+    alert.header = 'Artxiboa ez da irudia!';
+    alert.message = 'Aukeratu irudi bat mesedez.';
+    alert.buttons = ['Ados'];
+
+    document.body.appendChild(alert);
+    return alert.present();
+  }
 }

@@ -27,8 +27,8 @@ class SailkapenaController extends Controller
     {
         $sailkapena = DB::table('partidak')
             ->join('users', 'users.id', '=', 'partidak.id_erabiltzailea')
-            ->select('id_erabiltzailea', 'users.id', 'users.erabiltzailea', DB::raw('sum(puntuak) as Totala'))
-            ->groupBy('id_erabiltzailea', 'users.id', 'users.erabiltzailea')
+            ->select('id_erabiltzailea', 'users.id', 'users.erabiltzailea', 'users.argazkia', DB::raw('sum(puntuak) as Totala'))
+            ->groupBy('id_erabiltzailea', 'users.id', 'users.erabiltzailea', 'users.argazkia')
             ->orderBy('Totala', 'desc')->get();
 
         return response()->json($sailkapena, 200);

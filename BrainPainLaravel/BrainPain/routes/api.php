@@ -41,6 +41,7 @@ Route::group([
     Route::get('usertaldea', 'TaldeaController@getUserTaldea' );
     Route::post('endedMatchInsert', 'PartidaController@endedMatchInsert'); 
     Route::post('aldatuProfila', 'ErabiltzaileaController@aldatuProfila');
+    Route::post('argazkiaIgo', 'ErabiltzaileaController@argazkiaIgo');
     Route::get('jokatuta', 'PartidaController@getjokatuta');
     Route::get('partidakLortu', 'PartidaController@partidakLortu');
     Route::post('taldeaSortu', 'TaldeaController@taldeaSortu');

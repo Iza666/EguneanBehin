@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->longText('argazkia')->default(0);
+            $table->longText('argazkia')->default("assets/img/Profila.png");
             $table->rememberToken();
             $table->timestamps();
         });

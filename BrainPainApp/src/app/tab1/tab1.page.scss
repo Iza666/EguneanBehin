@@ -1,6 +1,4 @@
 #hasiera{
-  float: left;
-  width:100%;
   text-align: center;
   color: rgb(200, 200, 200);
 }
@@ -11,13 +9,13 @@ ion-toolbar ion-button{
   transform: translate(0%, -60%);
   margin-right: 2%;
 }
+ion-toolbar ion-button ion-icon{
+  color: #FF3849;
+}
 :host{
   ion-toolbar ion-button{
     --ripple-color: rgb(100, 100, 100);
   }
-}
-#logoutButton ion-icon{
-  color: #FF3849;
 }
 ion-item-divider{
   min-height: 1px !important;

@@ -3,7 +3,12 @@
     <ion-title id="profila">
       Taldea : {{taldeIzenaa}}
     </ion-title>
-    <ion-button *ngIf="token != undefined" (click)="alertToken()"><ion-icon name="help"></ion-icon></ion-button>
+    <ion-button fill="none" href="" (click)="dismissLogin()" class="activated">
+      <ion-icon name="md-arrow-round-back"></ion-icon>
+    </ion-button>
+    <ion-button *ngIf="token != undefined" (click)="alertToken()">
+      <ion-icon name="help"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-item-divider color="laranjaLarrosa"></ion-item-divider>

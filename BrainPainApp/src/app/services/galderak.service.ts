@@ -23,6 +23,12 @@ export class GalderakService {
 
   }
 
+  hireamama(base64){
+    console.log(base64);
+
+  }
+
+
   //JOKATU AHAL DU GURE ERABILTZAILE MAITEAAAAAAK?!?!?!
   checkJokatutaService(){
     const headers = new HttpHeaders({

@@ -9,9 +9,6 @@ ion-content{
     --ion-background-color: rgb(30, 30, 30);
     --ion-color: rgb(200, 200, 200);
 }
-.labelColor{
-    color: rgb(230, 230, 230);
-}
 .avatarArgazkia{
     position: fixed;
     left: 50%;
@@ -38,6 +35,10 @@ ion-content{
     background-image: linear-gradient(#3c3c3c, #3c3c3c), linear-gradient(to bottom right, #FF8000, #FF0080);
     background-origin: border-box;
     background-clip: content-box, border-box;
+}
+ion-input{
+    position: fixed;
+    opacity: 0;
 }
 ion-text{
     width: 85%;

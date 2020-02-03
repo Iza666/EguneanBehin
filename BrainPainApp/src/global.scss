@@ -37,6 +37,13 @@
   ion-toolbar{
     --ion-background-color: rgb(20, 20, 20);
   }
+  ion-item-divider{
+    min-height: 1px !important;
+  }
+  ion-content{
+    --ion-background-color: rgb(30, 30, 30);
+    --ion-color: rgb(200, 200, 200);
+  }
 }
 .ion-color-laranjaLarrosa {
   --ion-color-base: var(--ion-color-laranjaLarrosa) !important;

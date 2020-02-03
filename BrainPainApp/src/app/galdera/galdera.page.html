@@ -15,7 +15,7 @@
       <ion-card-title id="titulua">{{resp.galdera}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-img src={{resp.argazkia}}></ion-img>
+      <ion-img src="data:image/jpeg;base64,{{resp.argazkia}}"></ion-img>
     </ion-card-content>
   </ion-card>
   <ion-button size="large" color="jokatuBotoia" name="opt1" class="galderaBotoia gB1" expand="block" (click)="bidaliErantzuna(0)">{{optzioRandom[0]}}</ion-button>

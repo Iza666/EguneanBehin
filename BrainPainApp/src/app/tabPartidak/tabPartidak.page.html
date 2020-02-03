@@ -10,17 +10,16 @@
 <ion-content>
   <ion-card *ngFor="let partida of erabPartidak; index as i;">
     <ion-card-content>
-      <p class="lista"><ion-card-title class="erabiltzailea">{{partida.erabiltzailea}}</ion-card-title></p>
+      <ion-icon name="calendar"></ion-icon>   
+      {{partida.data}}<BR>
+      <ion-icon name="time"></ion-icon>  
+      {{partida.zenbat_denbora}}
+      <ion-icon name="checkmark"></ion-icon>  
+      {{partida.zenbat_zuzen}}/10
       <ion-button [disabled]="true" color="jokatubotoia">
         <p class="puntuak" t>{{partida.puntuak}}</p>
         <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
       </ion-button>
-      <ion-icon name="calendar"></ion-icon>   
-      {{partida.data}}
-      <ion-icon name="calendar"></ion-icon>  
-      {{partida.zenbat_denbora}}
-      <ion-icon name="checkmark"></ion-icon>  
-      {{partida.zenbat_zuzen}}/10
     </ion-card-content>
   </ion-card>
 </ion-content>

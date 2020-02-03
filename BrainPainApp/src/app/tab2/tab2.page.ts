@@ -19,6 +19,9 @@ export class Tab2Page {
 
   constructor(private authService: AuthService, private SailkapenaService : SailkapenaService) {}
 
+  /* onViewDidLoad(){
+    this.ngOnInit();
+  } */
   ngOnInit() {
     if(this.authService.isLoggedIn == true)
     {

@@ -42,8 +42,7 @@ export class GalderaPage implements OnInit {
   jokatutaChecked: boolean = false;
   jokatuta: boolean;
 
-  constructor(private SailkapenaService: SailkapenaService,
-    private authService: AuthService, private http: HttpClient, private router: Router, private galderakService: GalderakService) {
+  constructor(private authService: AuthService, private http: HttpClient, private router: Router, private galderakService: GalderakService) {
   }
   ngOnInit() {
     this.checkJokatuta();

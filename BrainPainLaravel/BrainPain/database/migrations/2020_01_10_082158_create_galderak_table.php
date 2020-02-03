@@ -19,7 +19,7 @@ class CreateGalderakTable extends Migration
             $table->string('opt1_erantzuna');
             $table->string('opt2');
             $table->string('opt3');
-            $table->string('argazkia');
+            $table->longText('argazkia');
         });
     }
 

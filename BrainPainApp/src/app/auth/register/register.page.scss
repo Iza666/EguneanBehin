@@ -11,6 +11,11 @@ ion-toolbar ion-button{
     top: 60%;
     transform: translate(-50%, -50%);
 }
+:host{
+    ion-toolbar ion-button{
+      --ripple-color: rgb(100, 100, 100);
+    }
+}
 ion-icon{
     color:white;
 }

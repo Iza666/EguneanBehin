@@ -31,7 +31,6 @@ export class TabPartidakPage {
     this.partidakService.partidakLortu().subscribe(
       respuesta => {
         this.erabPartidak = respuesta;
-        this.alertService.presentToast("Datuak lortuta")
         console.log(this.erabPartidak);
     });
   }

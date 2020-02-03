@@ -17,6 +17,7 @@ export class TabTaldeakPage {
   user: User;
   processing:boolean;
   uploadImage: string;
+  insertEginda : boolean;
 
   constructor(private authService: AuthService,
     private alertService: AlertService,private alertCtrl: AlertController, private taldeakService: TaldeakService, private router: Router) {}
@@ -81,5 +82,54 @@ export class TabTaldeakPage {
   taldekideakLortu(taldeIzena : string){
     this.taldeakService.taldeIzena(taldeIzena);
     this.router.navigate(['/taldea']);
+  }
+  async tokenAlert(){
+    let alerta = await this.alertCtrl.create({
+      header: 'Sartu talde batera',
+      inputs: [
+        {
+          name: 'token',
+          placeholder: 'Sartu taldearen token-a'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Listo!',
+          handler: data => {
+            this.talderaSartu(data.token);
+          }
+        }
+      ]
+    });
+   await alerta.present();
+  }
+  talderaSartu(token: string){
+    this.taldeakService.talderaSartu(token).subscribe(
+      respuesta => {
+        this.insertEginda = respuesta;
+        console.log(this.insertEginda);
+        if(this.insertEginda == true){
+          this.alertService.presentToast("Eginda! Eguneratzen...")
+          this.countdownRefresh(1);
+        }
+        else{
+          this.alertService.presentToast("Ezin izan zara sartu, token-a ez da existitzen...")
+        }
+      });
+  }
+  countdownRefresh(seconds){
+    var counter = seconds;
+  
+    var interval = setInterval(() => {
+      console.log(counter);
+      counter--;
+      
+  
+      if(counter < 0 ){
+        window.location.reload();
+        clearInterval(interval);
+        console.log('Ding!');
+      };
+    }, 1000);
   }
 }

@@ -17,6 +17,7 @@ class CreateTaldeakTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('izena');
             $table->string('sortzailea');
+            $table->string('token');
         });
     }
 

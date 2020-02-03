@@ -38,16 +38,19 @@ Route::group([
       //TODAS LAS RUTAS QUE REQUIEREN LOGIN
     Route::get('insertMatch', 'PartidaController@insertMatch');
     Route::post('insertQuestion', 'PartidaController@insertQuestion');
-    Route::get('usertaldea', 'TaldeakController@getUserTaldea' );
+    Route::get('usertaldea', 'TaldeaController@getUserTaldea' );
     Route::post('endedMatchInsert', 'PartidaController@endedMatchInsert'); 
     Route::post('aldatuProfila', 'ErabiltzaileaController@aldatuProfila');
     Route::get('jokatuta', 'PartidaController@getjokatuta');
     Route::get('partidakLortu', 'PartidaController@partidakLortu');
     Route::post('taldeaSortu', 'TaldeaController@taldeaSortu');
-    Route::post('taldeaLortu', 'TaldeaController@taldeaLortu');
+    Route::post('taldeaLortu', 'TaldeaController@sortutakoTaldeaLortu');
     Route::get('zurePuntuak', 'SailkapenaController@GetZureRanking');
-    Route::post('taldekideakLortu', 'TaldeakController@taldekideakLortu');
-    Route::post('taldekidePuntuakLortu', 'TaldeakController@taldekidePuntuakLortu');
+    Route::post('taldekideDenaLortu', 'TaldeaController@taldekideDenaLortu');
+    Route::post('talderaSartu', 'TaldeaController@talderaSartu');
+    Route::post('taldeakLortu', 'TaldeaController@taldeakLortu');
+    Route::post('isAdmin', 'TaldeaController@isAdmin');
+    Route::post('ezabatuTaldetik', 'TaldeaController@ezabatuTaldetik');
 
     
   });

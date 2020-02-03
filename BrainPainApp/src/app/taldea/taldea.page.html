@@ -3,28 +3,21 @@
     <ion-title id="profila">
       Taldeak
     </ion-title>
+    <ion-button *ngIf="token != undefined" (click)="alertToken()"><ion-icon name="help"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-item-divider color="laranjaLarrosa"></ion-item-divider>
 
 <ion-content>
-  <ion-card   >
-    <ion-card-content>
-      <p class="taldeIzena" id="taldeIzena" bold></p>
-      <p id="taldekide1"></p>
-      <p id="taldekide2"></p>
-      <p id="taldekide3"></p>
-      <p id="taldekide4"></p>
-      <p id="taldekide5"></p>
+  <ion-card *ngFor="let sailkapen of sailkapena; index as i;">
+<!--     <ion-card-content [ngClass]="{'urrea': i == 0, 'zilarra': i == 1, 'brontzea': i == 2}">
+ -->  <ion-card-content>
+      <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
+
+      <ion-button (click)="erabiltzaileaEzabatuTaldetik(i)"><ion-icon name="trash"></ion-icon></ion-button>
+         <p class="puntuak" t>{{sailkapen.Totala}}</p>
+<!--         <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
+ -->   
     </ion-card-content>
   </ion-card>
-  
-
-
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button color="light" (click)="gehituTaldea()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
 </ion-content>

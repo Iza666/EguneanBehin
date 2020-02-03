@@ -5,6 +5,7 @@ import { EnvService } from './env.service';
 import { tap } from 'rxjs/operators';
 import { Taldea } from 'src/app/modeloak/taldea';
 import { Sailkapena_simple } from '../modeloak/sailkapena_simple';
+import { Morralli } from '../modeloak/morralli';
 
 
 @Injectable({
@@ -52,11 +53,11 @@ export class TaldeakService {
     );
   }
   //taldekideen puntuak lortzeko metodoa
-  taldekidePuntuakLortu(partaide2:string, partaide3:string, partaide4:string, partaide5:string ){
+  taldekideDenaLortu(){
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token
     });
-    return this.http.post<Sailkapena_simple[]>(this.envService.API_URL + 'taldekidePuntuakLortu', {partaide2:partaide2, partaide3:partaide3, partaide4:partaide4, partaide5:partaide5} , { headers: headers}).pipe(
+    return this.http.post<Morralli[]>(this.envService.API_URL + 'taldekideDenaLortu', {} , { headers: headers}).pipe(
       tap(respuesta => {
         console.log(respuesta)
       }),
@@ -70,5 +71,35 @@ export class TaldeakService {
   taldeIzenaLortu(): string{
     return this.taldearenIzena;
   }
-
+  talderaSartu(token: string){
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer" + " " + this.authService.token
+    });
+    return this.http.post<boolean>(this.envService.API_URL + 'talderaSartu', {token: token} , { headers: headers}).pipe(
+      tap(respuesta => {
+        console.log(respuesta)
+      }),
+    );
+  }
+  //sortzailea den edo ez bueltatzen du taldekideak ezabatu ahal izateko
+  isAdmin(token: string){
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer" + " " + this.authService.token
+    });
+    return this.http.post<boolean>(this.envService.API_URL + 'isAdmin', {token: token} , { headers: headers}).pipe(
+      tap(respuesta => {
+        console.log(respuesta)
+      }),
+    );
+  }
+  ezabatuTaldetik(i: string, id : number){
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer" + " " + this.authService.token
+    });
+    return this.http.post<boolean>(this.envService.API_URL + 'ezabatuTaldetik', {i: i, id:id} , { headers: headers}).pipe(
+      tap(respuesta => {
+        console.log(respuesta)
+      }),
+    );
+  }
 }

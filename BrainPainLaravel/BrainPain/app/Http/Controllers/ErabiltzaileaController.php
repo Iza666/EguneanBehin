@@ -20,10 +20,6 @@ class ErabiltzaileaController extends Controller
         DB::table('users')
             ->where('id', auth()->user()->id)
             ->update(['erabiltzailea'=>$request->erabiltzailea]);  
-        DB::table('users')
-            ->where('id', auth()->user()->id)
-            ->update(['email'=>$request->email]);
-            return response()->json("aldatuta", 200);
     }
     //profileko argazkia aldatzen du
     public function argazkiaIgo(Request $request)

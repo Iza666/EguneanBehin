@@ -9,12 +9,12 @@ ion-content{
     text-align: center;
     color: rgb(200, 200, 200);
 }
-/* ion-card-content{
-    display: flex;
+ion-card-content{
     align-items: center;
     padding-right: 30%;
     background-color: rgb(60, 60, 60);
-} */
+    color: white;
+}
 ion-button.button-disabled {
     border-radius: 25px;
     --border-radius: 25px;
@@ -25,7 +25,7 @@ ion-button.button-disabled {
     position: absolute;
     top: 50%;
     right: 0;   
-    transform: translate(-0%, -50%);
+    transform: translate(-0%, -60%);
     margin-right: 2%; 
     --color: white;
     --opacity: 1;

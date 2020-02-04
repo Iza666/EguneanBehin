@@ -32,7 +32,7 @@ export class GalderaPage implements OnInit {
 
   galdera: any;
 
-  count: number = 0;
+  count: number = 1;
 
   seconds: number = 0;
   minutes: number = 0;
@@ -62,7 +62,9 @@ export class GalderaPage implements OnInit {
             console.log(respuesta);
             this.respuesta=respuesta;
             this.galderak = respuesta.galdera;
+            this.erantzuna = this.galderak[0].opt1_erantzuna;
             this.erantzunRandom();
+            return this.respuesta;
           }.bind(this)
           )
         }
@@ -92,30 +94,16 @@ export class GalderaPage implements OnInit {
 
   //erantzundako galderaren erantzuna bidaltzen du datu basera, hau 9 biderrez egiten du eta 10.enean beste metodo bateri deitzen dio
   //partidaren emaitzak gordetzeko partidak taulan
-  bidaliErantzuna(a: number) {
-    if (this.count != 9) {
-      if(this.erantzuna == this.optzioRandom[a]){
-        this.puntuak += 500;
-        this.zenbatZuzen += 1;
-      }
-      console.log("pidiendo pregunta count != 10");
-      this.galderakService.bidaliErantzuna(this.galderak[0].id, a, this.respuesta.idPartida).subscribe(
-        respuesta => {
-          this.respuesta = respuesta;
-          this.galderak = respuesta.galdera;
-          this.erantzuna = this.galderak[0].opt1_erantzuna;
-          this.erantzunRandom();
-          console.log(this.galderak);
-          return this.respuesta;
-        }
-      )
-      this.count++;
+  bidaliErantzuna(erantzuna: number) {
+    console.log(this.erantzuna);
+    if (this.count != 10) {
+      this.bidaliGalderaFuntzioa(erantzuna);
     }
     else {
+      this.bidaliGalderaFuntzioa(erantzuna);
       alert("Partida amaitu da, dena gordetzen...");
       console.log(this.puntuak);
       var dt = new Date();
-      var time = this.minutes + ":" + this.seconds;
       var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
       this.galderakService.bidaliAmaitutakoPartida(this.puntuak, d, this.minutes, this.seconds, this.respuesta.idPartida, this.zenbatZuzen).subscribe(
         respuesta => {
@@ -124,6 +112,23 @@ export class GalderaPage implements OnInit {
       console.log("he hecho mierda");
       this.router.navigateByUrl('/tabs/tabPartidak');
     }
+  }
+  bidaliGalderaFuntzioa(erantzuna: number){
+    if(this.erantzuna == this.optzioRandom[erantzuna]){
+      console.log(this.zenbatZuzen);
+      this.puntuak += 500;
+      this.zenbatZuzen += 1;
+    }
+    this.galderakService.bidaliErantzuna(this.galderak[0].id, erantzuna, this.respuesta.idPartida).subscribe(
+      respuesta => {
+        this.respuesta = respuesta;
+        this.galderak = respuesta.galdera;
+        this.erantzuna = this.galderak[0].opt1_erantzuna;
+        this.erantzunRandom();
+        return this.respuesta;
+      }
+    )
+    this.count++;
   }
   //erantzun posibleak shuffle egiten ditu
   erantzunRandom(){

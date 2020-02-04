@@ -53,10 +53,6 @@ export class GalderakService {
     );
   }
 
-
-
-
-
   puntuak: number = 0;
   datuak: Array<GalderaReply>;
   bidaliErantzuna(id_galdera: number, erantzuna: number, idPartida: number) {

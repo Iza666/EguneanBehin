@@ -48,8 +48,8 @@ class TaldeaController extends Controller
                            ->join('users', 'users.id', '=', 'talde_partaideak.id_erabiltzailea')
                            ->join('taldeak', 'talde_partaideak.id_taldea', '=', 'taldeak.id')
                             ->join('partidak', 'talde_partaideak.id_erabiltzailea', '=', 'partidak.id_erabiltzailea', 'left outer')
-                            ->select('users.id','users.erabiltzailea', 'taldeak.izena', 'taldeak.token', DB::raw('sum(partidak.puntuak) as Totala'))
-                            ->groupBy('users.id','users.erabiltzailea', 'taldeak.izena', 'taldeak.token')->where('taldeak.izena', $request->taldeIzena)->orderBy('Totala', 'desc')
+                            ->select('users.id','users.erabiltzailea', 'users.argazkia', 'taldeak.izena', 'taldeak.token', DB::raw('sum(partidak.puntuak) as Totala'))
+                            ->groupBy('users.id','users.erabiltzailea', 'users.argazkia', 'taldeak.izena', 'taldeak.token')->where('taldeak.izena', $request->taldeIzena)->orderBy('Totala', 'desc')
                             ->get();
         return response()->json($userPuntuak, 200);
     }

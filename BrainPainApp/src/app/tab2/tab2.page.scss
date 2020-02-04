@@ -16,8 +16,8 @@ ion-card-content{
     transform: translate(-88%, -65%);
 }
 .image{
-    width: 55px;
-    height: 55px;
+    width: 4.5em;
+    height: 4.5em;
     position: absolute;
     left: 13%;
     
@@ -41,6 +41,8 @@ ion-card-content{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
+    width: 25%;
+    text-align: center;
 }
 .lista{
     display:inline-block;

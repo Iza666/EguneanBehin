@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title id="taldea">
-      Taldea : {{taldeIzenaa}}
+      Taldea: {{taldeIzenaa}}
     </ion-title>
     <ion-button class="atzeraButton" color="jokatuBotoia" fill="none" (click)="goBack()">
       <ion-icon name="md-arrow-round-back"></ion-icon>
@@ -14,17 +14,37 @@
 <ion-item-divider color="laranjaLarrosa"></ion-item-divider>
 
 <ion-content>
-  <ion-card *ngFor="let sailkapen of sailkapena; index as i;">
-  <ion-card-content [ngClass]="{'urrea': i == 0, 'zilarra': i == 1, 'brontzea': i == 2}">
-    <ion-card-content>
-      <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
+  <div class="ehun" *ngIf="user != undefined">
+    <ion-card class="zurePosizioaCard">
+      <ion-card-content class="zurePosizioa">
+        <ion-text class="zurePosizioa">Zure postua: #{{zurePosizioa}}</ion-text>
+        <ion-button [disabled]="true" color="jokatubotoia">
+          <p class="zurePuntuak">{{zurePuntuak}}</p>
+          <ion-img src="assets/img/puntuak.png" ></ion-img>
+        </ion-button>    
+      </ion-card-content>
+    </ion-card>
+  </div>
 
-      <ion-button (click)="erabiltzaileaEzabatuTaldetik(i)">
-        <ion-icon name="trash"></ion-icon>
-      </ion-button>
-      <p class="puntuak" t>{{sailkapen.Totala}}</p>
-      <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
-   
+  <ion-card *ngFor="let sailkapen of sailkapena; index as i;">
+    <ion-card-content [ngClass]="{'urrea': i == 0, 'zilarra': i == 1, 'brontzea': i == 2}">
+      <!-- Medallak jarteko IF, funtziona -->
+      <ion-img class="medalli" *ngIf=" i == 0" src="assets/img/Lehena.png"></ion-img>
+      <ion-img class="medalli" *ngIf=" i == 1" src="assets/img/Bigarrena.png"></ion-img>
+      <ion-img class="medalli" *ngIf=" i == 2" src="assets/img/Hirugarrena.png"></ion-img>
+      <ion-text *ngIf=" i > 2" class="posizioa medalli">#{{i+1}}</ion-text>
+      
+      <ion-avatar>
+        <ion-img id="argazkia" class="image" [src]="sailkapen.argazkia">Argazkia</ion-img>
+      </ion-avatar>
+      <li class="lista">
+        <ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title>
+      </li>
+
+      <ion-button [disabled]="true" color="jokatubotoia">
+        <ion-text class="puntuak" t>{{sailkapen.Totala}}</ion-text>
+        <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
+      </ion-button>    
     </ion-card-content>
   </ion-card>
 </ion-content>

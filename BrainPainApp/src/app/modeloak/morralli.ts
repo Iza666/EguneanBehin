@@ -4,4 +4,5 @@ export class Morralli{
     izena: string;
     totala: number;
     token: string;
+    argazkia: string;
 }

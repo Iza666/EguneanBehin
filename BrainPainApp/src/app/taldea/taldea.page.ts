@@ -18,11 +18,6 @@ export class TaldeaPage implements OnInit {
 
   constructor(private navCtrl: NavController,private authService: AuthService, private taldeakService: TaldeakService, private route: ActivatedRoute, private sailkapenaService: SailkapenaService) { }
 
-  ngOnInit() {
-    this.taldeIzena = this.taldeakService.taldeIzenaLortu();
-/*     this.taldekideakLortu();
- */    this.startCountdown(0.5);
-  }
   taldeIzena : string;
   taldea : Taldea;
   sailkapena: Morralli[] = [];
@@ -34,8 +29,19 @@ export class TaldeaPage implements OnInit {
   ezabatuta : boolean = false;
   erabiltzaileIzena : string;
   erabiltzaileId : number;
+  zurePosizioa: number = 0;
+  zu: Morralli;
 
-
+  ngOnInit() {
+    this.taldeIzena = this.taldeakService.taldeIzenaLortu();
+    this.authService.user().subscribe(
+      user => {
+        this.user = user;
+      }
+    ).add(() => {
+      this.startCountdown(0.5);
+    });
+  }
   //timer bat denbora baten ondoren dena exekutatzeko
   startCountdown(seconds){
     var counter = seconds;
@@ -74,11 +80,26 @@ export class TaldeaPage implements OnInit {
       this.sailkapena = respuesta;
       this.token = this.sailkapena[0].token;
       this.taldeIzenaa = this.sailkapena[0].izena;
-  });
-  //logeatutako erabiltzailearen datuak hartzen ditu
+    }).add(() => {
+      console.log("HEMEN")
+      console.log(this.user.erabiltzailea)
+      this.zu = this.sailkapena.find( ({ erabiltzailea }) => erabiltzailea === this.user.erabiltzailea);
+      if(this.zu != undefined)
+      {
+        this.zurePosizioa = this.sailkapena.findIndex( ({ id }) => id === this.zu.id) + 1;
+      }
+    });
+    //logeatutako erabiltzailearen datuak hartzen ditu
     this.sailkapenaService.getZurePuntuak()
-      .subscribe(data => {this.zurePuntuak = data[0].Totala}
-        );
+    .subscribe(data => {this.zurePuntuak = data[0].Totala})
+    .add(() => {
+      this.nullToZero();
+    });
+  }
+  nullToZero(){
+    if(this.zurePuntuak == null){
+      this.zurePuntuak = 0;
+    }
   }
   alertToken(){
     const alert = document.createElement('ion-alert');

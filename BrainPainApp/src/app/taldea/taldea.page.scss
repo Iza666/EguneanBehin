@@ -1,18 +1,28 @@
-#profila{
+#taldea{
     text-align: center;
     color: rgb(200, 200, 200);
 }
-ion-toolbar ion-button{
+.atzeraButton{
     position: fixed;
     left: 15px;
     top: 60%;
     transform: translate(-50%, -50%);
 }
+.tokenButton{
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translate(0%, -60%);
+    margin-right: 2%;
+}
+/* ion-toolbar ion-button{
+    position: fixed;
+    left: 15px;
+    top: 60%;
+    transform: translate(-50%, -50%);
+} */
 :host{
     ion-toolbar ion-button{
         --ripple-color: rgb(100, 100, 100);
     }
-}
-.taldeIzena{
-    font-weight: bold;
 }

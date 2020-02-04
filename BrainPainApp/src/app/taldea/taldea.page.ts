@@ -6,7 +6,7 @@ import { SailkapenaService } from '../services/sailkapena.service';
 import { Morralli } from '../modeloak/morralli';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from '../modeloak/user';
-
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { User } from '../modeloak/user';
 })
 export class TaldeaPage implements OnInit {
 
-  constructor(private authService: AuthService, private taldeakService: TaldeakService, private route: ActivatedRoute, private sailkapenaService: SailkapenaService) { }
+  constructor(private navCtrl: NavController,private authService: AuthService, private taldeakService: TaldeakService, private route: ActivatedRoute, private sailkapenaService: SailkapenaService) { }
 
   ngOnInit() {
     this.taldeIzena = this.taldeakService.taldeIzenaLortu();
@@ -121,6 +121,10 @@ export class TaldeaPage implements OnInit {
         console.log(this.ezabatuta)
       }
     })
+  }
+
+  goBack(){
+    this.navCtrl.navigateRoot('/tabs/tabTaldeak');
   }
 }
 

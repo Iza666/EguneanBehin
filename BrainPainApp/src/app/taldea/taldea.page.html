@@ -3,10 +3,10 @@
     <ion-title id="profila">
       Taldea : {{taldeIzenaa}}
     </ion-title>
-    <ion-button fill="none" href="" (click)="dismissLogin()" class="activated">
+    <ion-button class="atzeraButton" color="jokatuBotoia" fill="none" (click)="goBack()">
       <ion-icon name="md-arrow-round-back"></ion-icon>
     </ion-button>
-    <ion-button *ngIf="token != undefined" (click)="alertToken()">
+    <ion-button class="tokenButton" color="jokatuBotoia" *ngIf="token != undefined" (click)="alertToken()">
       <ion-icon name="help"></ion-icon>
     </ion-button>
   </ion-toolbar>

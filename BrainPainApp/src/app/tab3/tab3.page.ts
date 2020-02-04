@@ -52,11 +52,6 @@ export class Tab3Page {
           name: 'erabiltzailea',
           value: this.user.erabiltzailea,
           placeholder: 'Sartu erabiltzailea'
-        },
-        {
-          name: 'email',
-          value: this.user.email,
-          placeholder: 'Sartu email-a'
         }
       ],
       buttons: [
@@ -69,7 +64,7 @@ export class Tab3Page {
         {
           text: 'ALDATU',
           handler: data => {
-            this.datuakAldatu(data.erabiltzailea, data.email);
+            this.datuakAldatu(data.erabiltzailea);
           }
         }
       ]
@@ -77,8 +72,8 @@ export class Tab3Page {
    await alerta.present();
   }
   //datuak aldatzen dituen metodoa, sartutako datuak zerbitzura bidaltzen ditu
-  datuakAldatu(erabiltzailea: string, email: string){
-    this.erabiltzaileakService.profilaAldatu(erabiltzailea, email).subscribe(
+  datuakAldatu(erabiltzailea: string){
+    this.erabiltzaileakService.profilaAldatu(erabiltzailea).subscribe(
       respuesta => {
         console.log(respuesta);
         window.location.reload();

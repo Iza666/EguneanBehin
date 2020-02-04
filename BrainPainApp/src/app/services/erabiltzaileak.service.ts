@@ -15,12 +15,11 @@ export class ErabiltzaileakService {
               private envService: EnvService) { }
 
   //profileko datuak aldatzeko erabiltzen duugn metodoa
-  profilaAldatu(erabiltzailea: string, email: string) {
+  profilaAldatu(erabiltzailea: string) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token
     });
-    console.log(erabiltzailea + " " + email);
-    return this.http.post<string>(this.envService.API_URL + 'aldatuProfila', { erabiltzailea: erabiltzailea, email: email},{ headers: headers}).pipe(
+    return this.http.post<string>(this.envService.API_URL + 'aldatuProfila', { erabiltzailea: erabiltzailea},{ headers: headers}).pipe(
       tap(respuesta => {
         console.log(respuesta)
       }),

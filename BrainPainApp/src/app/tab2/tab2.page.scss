@@ -1,26 +1,25 @@
-.erabiltzailea{
-    color: white;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-ion-card-content{
-    display: flex;
-    align-items: center;
-    padding-right: 30%;
-    background-color: rgb(60, 60, 60);
-}
-ion-card-content ion-img{
-    width: 50px;
-    height: 50px; 
-    float:left;
-}
 .izenburua{
     text-align: center;
     color: rgb(200, 200, 200);
 }
+ion-card-content{
+    display: flex;
+    padding-right: 30%;
+    background-color: rgb(50, 50, 50);
+}
+.medalli{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 35%;
+    left: 12%;
+    transform: translate(-88%, -65%);
+}
 .image{
-    height: 5vw; 
-    width: 5vw; 
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 13%;
     
     border-radius: 50%;
     --border-radius: 50%;
@@ -32,7 +31,16 @@ ion-card-content ion-img{
     display: inline-block;
     margin-left: 10px;
     margin-right: auto;
-    border-radius: 50%;
+}
+.erabiltzailea{
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
 }
 .lista{
     display:inline-block;
@@ -64,7 +72,9 @@ ion-button.button-disabled {
     background-origin: border-box;
     background-clip: content-box, border-box;
     position: absolute;
-    right: 0;   
+    right: 0;  
+    top: 50%; 
+    transform: translate(-0%, -50%); 
     margin-right: 2%; 
     --color: white;
     --opacity: 1;
@@ -74,13 +84,13 @@ ion-button.button-disabled ion-img{
 }
 
 .urrea{
-    border: 2px solid #FFF408;
+    border: 3px solid #FFF408;
 }
 .zilarra{
-    border: 2px solid #E5E5E5;
+    border: 3px solid #E5E5E5;
 }
 .brontzea{
-    border: 2px solid #EF9536;
+    border: 3px solid #EF9536;
 }
 
 .ehun{
@@ -102,6 +112,10 @@ ion-button.button-disabled ion-img{
     color: rgb(230, 230, 230);
     font-weight: bold;
     font-size: 1.1em;
+}
+.zurePostuaText{
+    position: absolute;
+    top: 50%;
 }
 .zurePuntuak{
     color: rgb(230, 230, 230);

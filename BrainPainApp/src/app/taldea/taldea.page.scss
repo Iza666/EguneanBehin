@@ -1,26 +1,21 @@
 #taldea{
-    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     color: rgb(200, 200, 200);
 }
 .atzeraButton{
-    position: fixed;
     left: 15px;
-    top: 60%;
-    transform: translate(-50%, -50%);
+    color: white;
 }
 .tokenButton{
     position: fixed;
     top: 50%;
     right: 0;
     transform: translate(0%, -60%);
-    margin-right: 2%;
+    color: white;
 }
-/* ion-toolbar ion-button{
-    position: fixed;
-    left: 15px;
-    top: 60%;
-    transform: translate(-50%, -50%);
-} */
 :host{
     ion-toolbar ion-button{
         --ripple-color: rgb(100, 100, 100);

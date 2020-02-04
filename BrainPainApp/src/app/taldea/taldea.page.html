@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title id="profila">
+    <ion-title id="taldea">
       Taldea : {{taldeIzenaa}}
     </ion-title>
     <ion-button class="atzeraButton" color="jokatuBotoia" fill="none" (click)="goBack()">
       <ion-icon name="md-arrow-round-back"></ion-icon>
     </ion-button>
-    <ion-button class="tokenButton" color="jokatuBotoia" *ngIf="token != undefined" (click)="alertToken()">
+    <ion-button class="tokenButton" color="jokatuBotoia" fill="none" *ngIf="token != undefined" (click)="alertToken()">
       <ion-icon name="help"></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -15,14 +15,16 @@
 
 <ion-content>
   <ion-card *ngFor="let sailkapen of sailkapena; index as i;">
-<!--     <ion-card-content [ngClass]="{'urrea': i == 0, 'zilarra': i == 1, 'brontzea': i == 2}">
- -->  <ion-card-content>
+  <ion-card-content [ngClass]="{'urrea': i == 0, 'zilarra': i == 1, 'brontzea': i == 2}">
+    <ion-card-content>
       <li class="lista"><ion-card-title class="erabiltzailea">{{sailkapen.erabiltzailea}}</ion-card-title></li>
 
-      <ion-button (click)="erabiltzaileaEzabatuTaldetik(i)"><ion-icon name="trash"></ion-icon></ion-button>
-         <p class="puntuak" t>{{sailkapen.Totala}}</p>
-<!--         <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
- -->   
+      <ion-button (click)="erabiltzaileaEzabatuTaldetik(i)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+      <p class="puntuak" t>{{sailkapen.Totala}}</p>
+      <ion-img id="puntuakImg" src="assets/img/puntuak.png" ></ion-img>
+   
     </ion-card-content>
   </ion-card>
 </ion-content>

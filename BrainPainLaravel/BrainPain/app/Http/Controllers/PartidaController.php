@@ -44,8 +44,8 @@ class PartidaController extends Controller
         $Erabiltzaile_Galdera->id_partida = $request->idPartida;
         $Erabiltzaile_Galdera->erantzuna = $request->erantzuna;
         $Erabiltzaile_Galdera->save();
-
-        $galdera = Galdera::orderByRaw("RAND()")->get()->take(1);
+      
+        $galdera = DB::select('SELECT * FROM `galderak` where id not in (select id_galdera from erabiltzaile_galderak where id_erabiltzailea = ?) ORDER BY RAND() LIMIT 1',[auth()->user()->id]);
         $array = array(
             'idPartida' => $request->idPartida,
             'galdera' => $galdera

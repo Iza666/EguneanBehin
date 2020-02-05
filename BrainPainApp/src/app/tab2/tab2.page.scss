@@ -1,9 +1,9 @@
-ion-card-content{
+ion-card-content{ //Card bakoitzaren estruktura eta atzealdeko kolorea
     display: flex;
     padding-right: 30%;
     background-color: rgb(50, 50, 50);
 }
-.medalli{
+.medalli{ //Medallaren argazkia edo posizioa azaltzen duen zenbakiaren kokapena
     width: 40px;
     height: 40px;
     position: absolute;
@@ -11,7 +11,7 @@ ion-card-content{
     left: 12%;
     transform: translate(-88%, -65%);
 }
-.image{
+.image{ //Erabiltzaile bakoitzaren argazkiaren kokapena eta borderraren kolorea
     width: 4.5em;
     height: 4.5em;
     position: absolute;
@@ -28,7 +28,7 @@ ion-card-content{
     margin-left: 10px;
     margin-right: auto;
 }
-.erabiltzailea{
+.erabiltzailea{ //Erabiltzaileen izenak erdian agertzeko, tamainua eta kolorea
     color: white;
     font-weight: bold;
     font-size: 1.1em;
@@ -40,29 +40,30 @@ ion-card-content{
     width: 25%;
     text-align: center;
 }
-.lista{
+.lista{ //Puntuak azaltzen dituen edukiontziaren estruktura
     display:inline-block;
     font-weight: bold;
     margin-left: 10px;
 }
-.posizioa{
+.posizioa{ //Posizioa azaltzen duen zenbakiaren ezaugarri gehiago
     width: 50px;
     text-align: center;
     color: rgb(230, 230, 230);
     font-weight: bold;
     font-size: 1.3em;
 }
-.puntuak{
+.puntuak{ //Puntuak azaltzen dituen textuaren kolorea eta letra mota
     margin-top: 3px;
     color: rgb(230, 230, 230);
     font-weight: bold;
     font-size: 1.3em;
 }
-#puntuakImg{
+#puntuakImg{ //Puntuak adierazten dituen ikonoaren tamaina eta inguruetako espazioa
     height: 25px;
     width: 25px;
+    margin-left: 3px;
 }
-ion-button.button-disabled {
+ion-button.button-disabled { //Puntuak adierazten dituen edukiontziaren diseinua
     border-radius: 25px;
     --border-radius: 25px;
     border: double 1px transparent;
@@ -77,32 +78,29 @@ ion-button.button-disabled {
     --color: white;
     --opacity: 1;
 }
-ion-button.button-disabled ion-img{
-    margin-left: 3px;
-}
 
-.urrea{
+.urrea{ //#1 postuan dagoen Card-aren borderra
     border: 3px solid #FFF408;
 }
-.zilarra{
+.zilarra{ //#2 postuan dagoen Card-aren borderra
     border: 3px solid #E5E5E5;
 }
-.brontzea{
+.brontzea{ //#3 postuan dagoen Card-aren borderra
     border: 3px solid #EF9536;
 }
 
-.ehun{
+.ehun{ //Logeatuta dagoen erabiltzailearen edukiontzia
     width: 100%;
     margin-top: -10px;
     margin-bottom: 5%;
-}
-.ehun ion-card-content{
+} 
+.ehun ion-card-content{ //Edukiaren ezkerreko padding-a
     padding-left: 50px;
 }
-.zurePosizioaCard{
+.zurePosizioaCard{ //Shadow propietatea agertu ez dedin
     box-shadow: none;
 }
-.zurePosizioa{
+.zurePosizioa{ //ion-card atzealde gabe. Bere posizioa
     background: none;
     margin-left: 5px;
     margin-top: 3px;
@@ -111,15 +109,15 @@ ion-button.button-disabled ion-img{
     font-weight: bold;
     font-size: 1.1em;
 }
-.zurePuntuak{
+.zurePuntuak{ //Erabiltzailearen puntuak adierazten dituen textuaren kolorea eta tamaina
     color: rgb(230, 230, 230);
     font-weight: bold;
     font-size: 1.1em;
 }
-.ehun ion-button.button-disabled{
+.ehun ion-button.button-disabled{ //Erabiltzailearen puntuen edukiontziaren margina
     margin-right: 10%;
 }
-.ehun ion-img{
+.ehun ion-img{ //Erabiltzailearen puntuak erakusten dituen ikonoaren tamainua
     height: 20px;
     width: 20px;
 }

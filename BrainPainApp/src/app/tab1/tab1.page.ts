@@ -75,10 +75,4 @@ export class Tab1Page implements OnInit {
     document.body.appendChild(alert);
     return alert.present();
   }
-  //Logout egiteko metodoa
-  logout(){
-    this.authService.storage.remove('token');
-    window.location.reload();
-  }
-
 }

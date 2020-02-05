@@ -5,6 +5,7 @@ import { AlertService } from 'src/app/services/alert.service';
 import { AlertController } from '@ionic/angular';
 import { ErabiltzaileakService } from '../services/erabiltzaileak.service';
 import { GalderakService } from '../services/galderak.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab3',
@@ -15,7 +16,7 @@ export class Tab3Page {
   user: User;
   processing:boolean;
 
-  constructor(private galderakService: GalderakService, private authService: AuthService,
+  constructor(private galderakService: GalderakService, private authService: AuthService, private router: Router,
     private alertService: AlertService,private alertCtrl: AlertController, private erabiltzaileakService: ErabiltzaileakService) {}
   
   ngOnInit() {
@@ -126,5 +127,10 @@ export class Tab3Page {
 
     document.body.appendChild(alert);
     return alert.present();
+  }
+  //Logout egiteko metodoa
+  logout(){
+    this.authService.storage.remove('token');
+    window.location.reload();
   }
 }

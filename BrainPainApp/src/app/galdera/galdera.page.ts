@@ -118,7 +118,7 @@ export class GalderaPage implements OnInit {
   bidaliGalderaFuntzioa(erantzuna: number){
     if(this.erantzuna == this.optzioRandom[erantzuna]){
       console.log(this.zenbatZuzen);
-      this.puntuak += 100;
+      this.puntuak += 500;
       this.zenbatZuzen += 1;
     }
     this.galderakService.bidaliErantzuna(this.galderak[0].id, erantzuna, this.respuesta.idPartida).subscribe(

@@ -1,3 +1,7 @@
+#profila{
+    text-align: center;
+    color: rgb(200, 200, 200);
+}
 ion-toolbar ion-button{
     position: absolute;
     top: 50%;
@@ -8,10 +12,17 @@ ion-toolbar ion-button{
 ion-toolbar ion-button ion-icon{
     color: white;
 }
+ion-item-divider{
+    min-height: 1px !important;
+}
 ion-card-content{
     align-items: center;
     padding-right: 30%;
     background-color: rgb(60, 60, 60);
+}
+ion-content{
+    --ion-background-color: rgb(30, 30, 30);
+    --ion-color: rgb(200, 200, 200);
 }
 ion-fab-button{
     --ion-color-base: rgb(45, 45, 45) !important;

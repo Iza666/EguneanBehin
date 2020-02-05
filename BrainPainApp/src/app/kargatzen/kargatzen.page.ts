@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { timer } from 'rxjs/observable/timer';
 
 @Component({
@@ -14,7 +14,7 @@ export class KargatzenPage implements OnInit {
   denbora: number = 4;
   erlojua = 4;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public native_Audio: NativeAudio) { }
 
   ngOnInit() {
   }
@@ -27,18 +27,21 @@ export class KargatzenPage implements OnInit {
     else{
       this.entered = true;
       timer(2000).subscribe( x =>{
-        this.startTimer();
-        timer(4000).subscribe( ahh =>{
+      this.startTimer();
+      timer(4000).subscribe( ahh =>{
           this.router.navigate(['/galdera']);
-        });
+      });
       });
     }
   }
   startTimer(){
+    this.native_Audio.preloadSimple('pi', './assets/soinua/kart-start-mario.mp3');
     var intervala = setInterval(function(){
       if(this.erlojua != -1){
         this.erlojua -= 1;
         this.denbora = this.erlojua;
+        console.log(this.denbora);
+        this.native_Audio.play('pi');
         this.gorde = true;
       }
       else{

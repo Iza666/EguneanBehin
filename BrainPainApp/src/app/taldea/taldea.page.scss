@@ -6,7 +6,7 @@
     color: rgb(200, 200, 200);
 }
 .atzeraButton{
-    left: 15px;
+    margin-left: 10px;
     color: white;
 }
 .tokenButton{
@@ -21,7 +21,6 @@
         --ripple-color: rgb(100, 100, 100);
     }
 }
-
 ion-card-content{
     display: flex;
     padding-right: 30%;
@@ -134,10 +133,6 @@ ion-button.button-disabled ion-img{
     color: rgb(230, 230, 230);
     font-weight: bold;
     font-size: 1.1em;
-}
-.zurePostuaText{
-    position: absolute;
-    top: 50%;
 }
 .zurePuntuak{
     color: rgb(230, 230, 230);

@@ -25,7 +25,7 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-//Tabs-eko koloreak maneiatzeko
+//Orrialde guztiek dituzten elementuen estiloak
 :root {
   ion-tab-button.tab-selected 
   {
@@ -45,6 +45,12 @@
     --ion-color: rgb(200, 200, 200);
   }
 }
+//Orrialdeetako goiburuetako tituluak
+.titulua{
+  text-align: center;
+  color: rgb(200, 200, 200);
+}
+//Botoiaren aparientzia, laranjatik larrosera doan kolore 'gradient' batekin
 .ion-color-laranjaLarrosa {
   --ion-color-base: var(--ion-color-laranjaLarrosa) !important;
   --ion-color-base-rgb: var(--ion-color-laranjaLarrosa-rgb) !important;
@@ -53,6 +59,7 @@
   --ion-color-shade: var(--ion-color-laranjaLarrosa-shade) !important;
   --ion-color-tint: var(--ion-color-laranjaLarrosa-tint) !important;
 }
+//Botoiaren aparientzia, urdinetik larrosera doan kolore 'gradient' batekin
 .ion-color-urdinaLarrosa {
   --ion-color-base: var(--ion-color-urdinaLarrosa) !important;
   --ion-color-base-rgb: var(--ion-color-urdinaLarrosa-rgb) !important;
@@ -61,6 +68,7 @@
   --ion-color-shade: var(--ion-color-urdinaLarrosa-shade) !important;
   --ion-color-tint: var(--ion-color-urdinaLarrosa-tint) !important;
 }
+//Atzealde transparentea duen botoiaren estiloa
 .ion-color-jokatuBotoia {
   --ion-color-base: var(--ion-color-jokatuBotoia) !important;
   --ion-color-base-rgb: var(--ion-color-jokatuBotoia-rgb) !important;
@@ -69,12 +77,15 @@
   --ion-color-shade: var(--ion-color-jokatuBotoia-shade) !important;
   --ion-color-tint: var(--ion-color-jokatuBotoia-tint) !important;
 }
+//Galderen orriaren item-dividerr-aren kolorea
 .ion-color-jokatu{
   --ion-color-base: var(--ion-color-jokatu) !important;
 }
+//Tabs-eko ikonoen berezko kolorea
 .ion-color-icon{
   --ion-color-base: var(--ion-color-icon) !important;
 }
+//Aurkitzen garen orrian, tabs-en, orri horren ikonoaren kolorea
 .ion-color-icon-selected{
   --ion-color-base: var(--ion-color-icon-selected) !important;
 }

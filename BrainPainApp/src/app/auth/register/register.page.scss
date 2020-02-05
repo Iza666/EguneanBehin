@@ -1,15 +1,6 @@
-ion-item-divider{
-    min-height: 1px !important;
-}
-ion-content{
-    --ion-background-color: rgb(30, 30, 30);
-    --ion-color: rgb(200, 200, 200);
-}
 ion-toolbar ion-button{
-    position: fixed;
-    left: 15px;
-    top: 60%;
-    transform: translate(-50%, -50%);
+    margin-left: 10px;
+    color: white;
 }
 :host{
     ion-toolbar ion-button{
@@ -29,11 +20,6 @@ ion-title{
 .textua{
     color:white;
 }
-.button{
-    margin-top: -6px;
-    background-color: transparent;
-    margin-left: +20px;
-}
 .email-label, .password-label, .erabiltzailea-label{
     font-size: 30px;
     color: white;
@@ -48,8 +34,6 @@ ion-title{
 :host {
     ion-item {
         --background-focused: rgb(60, 60, 60);
-        //--color-focused: black;
-        //--color-selected: red;
         --border-color: rgb(100, 100, 100);
         --highlight-color-valid: linear-gradient(to bottom right, #FF8000, #FF0080);
         --highlight-color-invalid: linear-gradient(to bottom right, #FF8000, #FF0080);

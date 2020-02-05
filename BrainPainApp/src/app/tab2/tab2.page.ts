@@ -19,9 +19,6 @@ export class Tab2Page {
 
   constructor(private authService: AuthService, private SailkapenaService : SailkapenaService) {}
 
-  /* onViewDidLoad(){
-    this.ngOnInit();
-  } */
   ngOnInit() {
     if(this.authService.isLoggedIn == true)
     {
@@ -61,6 +58,7 @@ export class Tab2Page {
       this.zurePosizioa = this.sailkapena.findIndex( ({ id_erabiltzailea }) => id_erabiltzailea === this.zu.id_erabiltzailea) + 1;
     }
   }
+  //null balioa 0-ra bihurtzeko
   nullToZero(){
     if(this.zurePuntuak == null){
       this.zurePuntuak = 0;

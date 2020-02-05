@@ -23,6 +23,14 @@ export class GalderakService {
 
   }
 
+
+  d = new Date();
+  m = this.d.getUTCMinutes();
+  puntuak: number = 0;
+  datuak: Array<GalderaReply>;
+  h = this.d.getUTCHours();
+
+
   //JOKATU AHAL DU GURE ERABILTZAILE MAITEAAAAAAK?!?!?!
   checkJokatutaService(){
     const headers = new HttpHeaders({
@@ -53,8 +61,7 @@ export class GalderakService {
     );
   }
 
-  puntuak: number = 0;
-  datuak: Array<GalderaReply>;
+  //erantzundako galderaren erantzuna bidaltzen duen metodoa
   bidaliErantzuna(id_galdera: number, erantzuna: number, idPartida: number) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token
@@ -67,13 +74,6 @@ export class GalderakService {
       }),
     );
   }
-
-
-  d = new Date();
-  m = this.d.getUTCMinutes();
-
-  h = this.d.getUTCHours();
-
 
   //BADABIILL CLAVEE
   partidaSortu(): Observable<GalderaReply> {

@@ -76,6 +76,7 @@ export class GalderaPage implements OnInit {
       };
     }, 1000);
   }
+  //jokatuta dagoen edo ez komprobatzen du 
   checkJokatuta(){
     this.jokatutaChecked = true;
     this.galderakService.checkJokatutaService().subscribe(data => {this.jokatuta = data},

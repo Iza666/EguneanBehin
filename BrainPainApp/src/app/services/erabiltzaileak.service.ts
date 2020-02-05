@@ -25,6 +25,7 @@ export class ErabiltzaileakService {
       }),
     );
   }
+  //argazkiaren string-a igotzen duen metodoa (base64-an)
   argazkiaIgo(argazkia: string){
     console.log("argazkia IGon gaude")
     const headers = new HttpHeaders({

@@ -92,6 +92,7 @@ export class TaldeakService {
       }),
     );
   }
+  //taldekidea taldetik ezabatzeko metodoa
   ezabatuTaldetik(i: string, id : number){
     const headers = new HttpHeaders({
       'Authorization': "Bearer" + " " + this.authService.token

@@ -103,6 +103,7 @@ export class TabTaldeakPage {
     });
    await alerta.present();
   }
+  //token-aren bitartez taldera sartu ahal izateko
   talderaSartu(token: string){
     this.taldeakService.talderaSartu(token).subscribe(
       respuesta => {
@@ -117,6 +118,7 @@ export class TabTaldeakPage {
         }
       });
   }
+  //refreskatzeko timer-a
   countdownRefresh(seconds){
     var counter = seconds;
   

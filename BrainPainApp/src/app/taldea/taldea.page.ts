@@ -6,7 +6,7 @@ import { SailkapenaService } from '../services/sailkapena.service';
 import { Morralli } from '../modeloak/morralli';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from '../modeloak/user';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { NavController } from '@ionic/angular';
 })
 export class TaldeaPage implements OnInit {
 
-  constructor(private navCtrl: NavController,private authService: AuthService, private taldeakService: TaldeakService, private route: ActivatedRoute, private sailkapenaService: SailkapenaService) { }
+  constructor(private navCtrl: NavController,private alertCtrl: AlertController,private authService: AuthService, private taldeakService: TaldeakService, private route: ActivatedRoute, private sailkapenaService: SailkapenaService) { }
 
   taldeIzena : string;
   taldea : Taldea;
@@ -57,7 +57,7 @@ export class TaldeaPage implements OnInit {
       };
     }, 1000);
   }
-
+  //bigarren timer-a
   startCountdown2(seconds){
     var counter = seconds;
   
@@ -96,19 +96,35 @@ export class TaldeaPage implements OnInit {
       this.nullToZero();
     });
   }
+  //erabiltzailearen puntuak null bueltatzen badu 0 bihurtzeko
   nullToZero(){
     if(this.zurePuntuak == null){
       this.zurePuntuak = 0;
     }
   }
-  alertToken(){
-    const alert = document.createElement('ion-alert');
-    alert.header = 'Token-a';
-    alert.message = 'Hau da zure Token-a:  '+this.token;
-    alert.buttons = ['Ederto'];
-    document.body.appendChild(alert);
-    return alert.present();
+  //Token-a hartzeko alert-a
+  async alertToken(){
+
+    let alerta = await this.alertCtrl.create({
+      header: 'Taldearen Token-a:',
+      inputs: [
+        {
+          name: 'token',
+          value: this.token,
+          placeholder: 'Taldearen Token-a:'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Listo!',
+          handler: data => {
+          }
+        }
+      ]
+    });
+   await alerta.present();
   }
+  //taldearen sortzailea den edo ez jakiteko
   isSortzailea(token: string){
     this.taldeakService.isAdmin(token)
     .subscribe(data => {
@@ -128,6 +144,7 @@ export class TaldeaPage implements OnInit {
     });
     console.log(this.user);
   }
+  //klikatutako erabiltzailea taldetik ezabatzeko
   erabiltzaileaEzabatuTaldetik(i:number){
     this.erabiltzaileIzena = this.sailkapena[i].erabiltzailea;
     this.erabiltzaileId = this.sailkapena[i].id;
@@ -143,29 +160,8 @@ export class TaldeaPage implements OnInit {
       }
     })
   }
-
+  //atzera joateko
   goBack(){
     this.navCtrl.navigateRoot('/tabs/tabTaldeak');
   }
 }
-
-
-
-
-
-//html-a betetzen du taldekideen informazioarekin
-  /* bete(){
-    var a = document.getElementById("taldeIzena");
-    a.innerHTML= this.taldea[0].izena;
-    var a = document.getElementById("taldekide1");
-    a.innerHTML= this.taldea[0].partaide1 + " " + this.zurePuntuak;
-    var a = document.getElementById("taldekide2");
-    a.innerHTML= this.taldea[0].partaide2 + " " + this.sailkapena[0].Totala;
-    var a = document.getElementById("taldekide3");
-    a.innerHTML= this.taldea[0].partaide3 + " " + this.sailkapena[1].Totala;
-    var a = document.getElementById("taldekide4");
-    a.innerHTML= this.taldea[0].partaide4 + " " + this.sailkapena[2].Totala;
-    var a = document.getElementById("taldekide5");
-    a.innerHTML= this.taldea[0].partaide5 + " " + this.sailkapena[3].Totala;
-  } */
-

@@ -80,7 +80,7 @@ export class Tab3Page {
         this.alertService.presentToast("Aldatuta, eguneratzen...")
       });
   }
-
+  //irudia igotzeko metodoa
   irudiaIgo(event) : void {
     var f = event.target.files[0];
     var reader = new FileReader();
@@ -117,6 +117,7 @@ export class Tab3Page {
     })(f).bind(this);
     reader.readAsBinaryString(f);
   }
+  //igotako artxiboa irudi bat ez bada agertzen den metodoa
   showAlert(){
     const alert = document.createElement('ion-alert');
     alert.header = 'Artxiboa ez da irudia!';

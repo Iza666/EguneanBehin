@@ -70,6 +70,7 @@ class TaldeaController extends Controller
         }
                            
     }
+    //taldearen sortzailea den edo ez ikusteko
     public function isAdmin(Request $request){
         $taldea = DB::table('taldeak')->where('token', $request->token)->get();
         $sortzailea = $taldea[0]->sortzailea;
@@ -83,10 +84,12 @@ class TaldeaController extends Controller
             return response()->json($eginda, 200);
         }
     }
+    //erabiltzailea taldetik ezabatzeko
     public function ezabatuTaldetik(Request $request){
         DB::table('talde_partaideak')->where('id_erabiltzailea', $request->id)->delete();
             return response()->json(true, 200);
     }
+    //token-arentzako random string-a sortzeko
     public function generateRandomString($length = 5) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -96,23 +99,4 @@ class TaldeaController extends Controller
         }
         return $randomString;
     }
-
-
-/* 
-        AURREKO METODOAK
-
-    //erabiltzaile baten taldeak lortzeko metodoa
-    public function taldeaLortu(){
-        $denak = DB::table('taldeak')->where('sortzailea', auth()->user()->erabiltzailea)->get();
-        return response()->json($denak, 200);
-
-    }
-    //talde bateko taldekideak lortzeko metodoa
-    public function taldekideakLortu(Request $request){
-        $taldea = DB::table('taldeak')->where('izena', $request->taldeIzena)->get();
-        return response()->json($taldea, 200);
-    }
-    
-     */
-
 }

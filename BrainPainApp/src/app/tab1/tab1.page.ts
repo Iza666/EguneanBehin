@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/modeloak/user';
 import { AlertService } from 'src/app/services/alert.service';
-import { Platform, NavController } from '@ionic/angular';
-import { LoginPage } from '../auth/login/login.page';
+import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import {GalderakService} from '../services/galderak.service';
+import { GalderakService } from '../services/galderak.service';
 import { Router } from '@angular/router'
 
 

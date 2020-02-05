@@ -16,11 +16,17 @@ export class Tab3Page {
   user: User;
   processing:boolean;
 
-  constructor(private galderakService: GalderakService, private authService: AuthService, private router: Router,
-    private alertService: AlertService,private alertCtrl: AlertController, private erabiltzaileakService: ErabiltzaileakService) {}
+  constructor(private galderakService: GalderakService,
+    private authService: AuthService,
+    private router: Router,
+    private alertService: AlertService,
+    private alertCtrl: AlertController, 
+    private erabiltzaileakService: ErabiltzaileakService) {}
   
   ngOnInit() {
-    
+    if(this.authService.isLoggedIn == false){
+      this.router.navigateByUrl("/tabs/tab1");
+    }
   }
 
   bueltak : number = 0;

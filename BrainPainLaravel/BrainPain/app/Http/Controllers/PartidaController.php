@@ -71,8 +71,18 @@ class PartidaController extends Controller
     {
         $denbora = explode(":", $request->zenbat_denbora);
         $minutuakSegundutan = floor($denbora[0] * 60);
-        $totala = $minutuakSegundutan + $denbora[1];
-        $puntuFinal = $request->puntuak / $totala;
+        $segunduakTotala = $minutuakSegundutan + $denbora[1];
+
+        if($segunduakTotala <= 28) //YYYYYY ostia YYYYYYY
+        {
+            $biderkatzailea = (sqrt(-14*($segunduakTotala - 100)))+28;
+            $puntuFinal = (($request->puntuak * $biderkatzailea) / 10);
+        }
+        else{
+            $biderkatzailea = (sqrt(-400*($segunduakTotala - 100)))+28;
+            $puntuFinal = (($request->puntuak * $biderkatzailea) / 10);
+        }
+
 
         Partida::where('id_erabiltzailea', auth()->user()->id)->
             where('data',$request->d)->    

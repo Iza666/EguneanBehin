@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title id="profila">
+    <ion-title class="titulua">
       Profila
     </ion-title>
     <ion-button fill="clear" (click)="logout()">
@@ -13,10 +13,10 @@
 <ion-content >
   <!-- *ngIf="user != undefined" -->
     <ion-avatar>
-      <ion-img id="avatarArgazkia" src="assets/img/Profila.png"></ion-img>
+      <ion-img class="avatarArgazkia gradiantNaranja" src="assets/img/Profila.png"></ion-img>
     </ion-avatar>
     <!--irudia igo-->
-    <ion-button color="jokatuBotoia" id="argazkiBtn">
+    <ion-button color="jokatuBotoia" class="argazkiBtn gradiantNaranja">
       <ion-icon name="camera"></ion-icon>  
       <ion-input type="file" accept=".png, .jpeg, .jpg, .gif" (change)="irudiaIgo($event)"></ion-input>
     </ion-button>
@@ -24,7 +24,7 @@
     <ion-text id="erabiltzaileaText" *ngIf="user != undefined">
       <span id="userSpan">{{ user["erabiltzailea"]  }}</span>
     </ion-text>
-    <ion-button (click)="aldatuizena()" color="jokatuBotoia" id="icon1">
+    <ion-button (click)="aldatuizena()" color="jokatuBotoia" class="icon1 gradiantNaranja">
       <ion-icon name="md-create"></ion-icon>
     </ion-button>
 

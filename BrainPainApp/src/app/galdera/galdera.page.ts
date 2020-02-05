@@ -9,6 +9,7 @@ import { Router } from '@angular/router'
 import { GalderakService } from '../services/galderak.service';
 import { GalderaReply } from '../modeloak/galderaReply';
 import { Galdera } from '../modeloak/galdera';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-galdera',
@@ -42,7 +43,7 @@ export class GalderaPage implements OnInit {
   jokatutaChecked: boolean = false;
   jokatuta: boolean;
 
-  constructor(private authService: AuthService, private http: HttpClient, private router: Router, private galderakService: GalderakService) {
+  constructor(private alertService : AlertService, private authService: AuthService, private http: HttpClient, private router: Router, private galderakService: GalderakService) {
   }
   ngOnInit() {
     this.checkJokatuta();
@@ -102,7 +103,7 @@ export class GalderaPage implements OnInit {
     }
     else {
       this.bidaliGalderaFuntzioa(erantzuna);
-      alert("Partida amaitu da, dena gordetzen...");
+      this.alertService.presentToast("Partida amaitu da, dena gordetzen...");        
       console.log(this.puntuak);
       var dt = new Date();
       var d = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();

@@ -19,30 +19,16 @@
     </ion-card-content>
   </ion-card>
   <!-- Bigarren txartela-->
-
   <ion-list lines="none">
     <ion-item>
       <ion-icon slot="start" color="medium" name="book"></ion-icon>
       <div (click)="showAlert()">
-        <ion-label class="labelColor">Arauak</ion-label>
+        <ion-label class="labelColor">Instrukzioak</ion-label>
       </div>
     </ion-item>
-    
-    <ion-item href="../tab2/tab2.page.html">
-      <ion-icon slot="start" color="medium" name="build"></ion-icon>
-      <ion-label class="labelColor">Oharrak</ion-label>
-    </ion-item>
-
-    <ion-item href="">
-      <ion-icon slot="start" color="medium" name="grid"></ion-icon>
-      <ion-label class="labelColor">Mezuak bidali</ion-label>
-    </ion-item>
-
-    <ion-item href="">
-      <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
-      <ion-label class="labelColor">Aplikazioa baloratu</ion-label>
-    </ion-item>
   </ion-list>
+
+  <ion-img id="argazkia" class="gif" src="assets/img/gif.gif">Argazkia</ion-img>
   
   <ion-row id="buttons">
     <ion-col>
@@ -52,6 +38,4 @@
       <ion-button id="urdina" expand="full" color="jokatuBotoia" [routerLink]="['/register']">Erregistratu</ion-button>
     </ion-col>
   </ion-row>
-
-
 </ion-content>

@@ -73,14 +73,14 @@ class PartidaController extends Controller
         $minutuakSegundutan = floor($denbora[0] * 60);
         $segunduakTotala = $minutuakSegundutan + $denbora[1];
 
-        if($segunduakTotala <= 28) //YYYYYY ostia YYYYYYY
+        if($segunduakTotala <= 28)
         {
-            $biderkatzailea = (sqrt(-14*($segunduakTotala - 100)))+28;
-            $puntuFinal = (($request->puntuak * $biderkatzailea) / 10);
+            $biderkatzailea = (pow(($segunduakTotala - 28),2)/-14)+75;
+            $puntuFinal = ($request->puntuak * $biderkatzailea);
         }
         else{
-            $biderkatzailea = (sqrt(-400*($segunduakTotala - 100)))+28;
-            $puntuFinal = (($request->puntuak * $biderkatzailea) / 10);
+            $biderkatzailea = (pow(($segunduakTotala - 28),2)/-600)+75;
+            $puntuFinal = ($request->puntuak * $biderkatzailea);
         }
 
 

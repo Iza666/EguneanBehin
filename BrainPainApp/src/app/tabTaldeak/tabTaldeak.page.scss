@@ -15,6 +15,12 @@ ion-card-content{
 }
 ion-fab-button{
     --ion-color-base: rgb(45, 45, 45) !important;
+    border-radius: 50%;
+    --border-radius: 50%;
+    border: double 2px transparent;
+    background-image: linear-gradient(#3c3c3c, #3c3c3c), linear-gradient(to bottom right, #FF8000, #FF0080);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 }
 ion-fab-button ion-icon{
     color: #FD4A38;

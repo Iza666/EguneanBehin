@@ -57,8 +57,8 @@ export class Tab1Page implements OnInit {
   //arauak botoiari klik egiterakoan agertzen den alerta
   showAlert(){
     const alert = document.createElement('ion-alert');
-    alert.header = 'Arauak';
-    alert.message = 'Ondo pasatu pasatu gabe!';
+    alert.header = 'Instrukzioak';
+    alert.message = 'Egunean behin soilik jolastu ahalko duzu. Partida bakoitzean 10 galdera erantzun beharko dituzu, ahalik eta denbora gutxienean. Ondo pasatu pasatu gabe!';
     alert.buttons = ['Ederto'];
 
     document.body.appendChild(alert);
